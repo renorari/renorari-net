@@ -16,6 +16,7 @@
         <script>
             const button = document.getElementById("beep");
             const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            // mouse
             button.addEventListener("mousedown", function () {
                 const oscillator = audioCtx.createOscillator();
                 oscillator.type = 'sine';
@@ -27,6 +28,7 @@
                     button.removeEventListener("mouseup", function () { });
                 });
             });
+            // key
             button.addEventListener("keypress", function (event) {
                 if (event.key == " ") {
                     const oscillator = audioCtx.createOscillator();
@@ -39,6 +41,18 @@
                         button.removeEventListener("keyup", function () { });
                     });
                 }
+            });
+            // touch
+            button.addEventListener("touchstart", function () {
+                const oscillator = audioCtx.createOscillator();
+                oscillator.type = 'sine';
+                oscillator.frequency.value = 1000;
+                oscillator.connect(audioCtx.destination);
+                oscillator.start();
+                button.addEventListener("touchend", function () {
+                    oscillator.stop();
+                    button.removeEventListener("touchend", function () { });
+                });
             });
         </script>
     </section>
