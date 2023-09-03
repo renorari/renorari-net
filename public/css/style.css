@@ -40,7 +40,7 @@
 
 * {
     box-sizing: border-box;
-    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out, box-shadow 0.1s ease-in-out, filter 0.1s ease-in-out !important;
+    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out, box-shadow 0.1s ease-in-out, filter 0.1s ease-in-out, color 0.1s ease-in-out;
 }
 
 *:focus:not(.focus-visible) {
@@ -238,6 +238,7 @@ select {
     color: var(--text);
     font-family: "Koruri", sans-serif;
     font-size: 1em;
+    line-height: 1;
     width: 100%;
     margin: 0.5em 0;
     padding: 0.25em 0.5em;
@@ -292,6 +293,7 @@ input[type="number"] {
     color: var(--text);
     font-family: "Koruri", sans-serif;
     font-size: 1em;
+    line-height: 1;
     width: 100%;
     margin: 0.5em 0;
     margin-top: 0;
