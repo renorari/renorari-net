@@ -77,6 +77,7 @@ QR Maker
                 qr.src = "https://api.qrserver.com/v1/create-qr-code/?size=" + size + "x" + size + "&data=" + text + "&format=" + format + "&color=" + color + "&bgcolor=" + bgcolor + "&ecc=" + ecc + "&margin=" + margin;
                 const a = document.createElement("a");
                 a.href = qr.src;
+                a.target = "_blank";
                 a.download = "qr." + format;
                 a.click();
             };
