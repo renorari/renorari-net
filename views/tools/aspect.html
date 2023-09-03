@@ -31,7 +31,10 @@ Aspect Ratio
             calc.addEventListener("click", function () {
                 const width = Number(document.getElementById("width").value);
                 const height = Number(document.getElementById("height").value);
-                const ratio = (1 - (1 / Math.max(width, height)) * Math.min(width, height)) * -100;
+                let ratio = (1 - (1 / Math.max(width, height)) * Math.min(width, height)) * 100;
+                if (width > height) {
+                    ratio *= -1;
+                }
                 result.innerHTML = ratio;
                 result.style.aspectRatio = `${width}/${height}`;
                 result.style.border = "1px solid var(--primary)";
