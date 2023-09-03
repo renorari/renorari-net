@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import dotenv from "dotenv";
 import express from "express";
+import {JSDOM} from "jsdom";
 import generateErrorPage from "./modules/generate_error_page";
 
 dotenv.config();
@@ -51,7 +52,9 @@ server.get("/*", (req, res) => {
         } else {
             const title = content.split(/\r\n|\r|\n/)[0];
             const contentHtml = content.replace(title, "");
-            res.send(html.replace(/{{content}}/g, contentHtml).replace(/{{title}}/g, title));
+            const document = new JSDOM(contentHtml);
+            const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 100) ?? "";
+            res.send(html.replace(/{{content}}/g, contentHtml).replace(/{{title}}/g, title).replace(/{{description}}/g, description + "..."));
         }
     });
 });
