@@ -24,8 +24,21 @@
                 oscillator.start();
                 button.addEventListener("mouseup", function () {
                     oscillator.stop();
-                    button.removeEventListener("mouseup", function () {});
+                    button.removeEventListener("mouseup", function () { });
                 });
+            });
+            button.addEventListener("keypress", function (event) {
+                if (event.key == " ") {
+                    const oscillator = audioCtx.createOscillator();
+                    oscillator.type = 'sine';
+                    oscillator.frequency.value = 1000;
+                    oscillator.connect(audioCtx.destination);
+                    oscillator.start();
+                    button.addEventListener("keyup", function () {
+                        oscillator.stop();
+                        button.removeEventListener("keyup", function () { });
+                    });
+                }
             });
         </script>
     </section>
