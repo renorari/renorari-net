@@ -1,10 +1,13 @@
 import fs from "node:fs";
+import dotenv from "dotenv";
 import express from "express";
 import generateErrorPage from "./modules/generate_error_page";
 
+dotenv.config();
+
 const redirects = JSON.parse(fs.readFileSync("./redirects.json", "utf-8"));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT ?? 3000;
 const server = express();
 
 server.use(express.static("public"));
