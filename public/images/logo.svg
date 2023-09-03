@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="16"
+   height="16"
+   viewBox="0 0 16 16"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient9">
+      <stop
+         style="stop-color:#ff55dd;stop-opacity:1"
+         offset="0"
+         id="stop8" />
+      <stop
+         style="stop-color:#ff5599;stop-opacity:1"
+         offset="1"
+         id="stop9" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4">
+      <stop
+         style="stop-color:#8de9f4;stop-opacity:1;"
+         offset="0"
+         id="stop4" />
+      <stop
+         style="stop-color:#0fedf5;stop-opacity:1;"
+         offset="1"
+         id="stop5" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient4"
+       id="linearGradient5"
+       x1="4"
+       y1="12"
+       x2="12"
+       y2="4"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#linearGradient9"
+       id="linearGradient8"
+       x1="8"
+       y1="12"
+       x2="8"
+       y2="4"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     id="layer1">
+    <circle
+       style="fill:url(#linearGradient5);stroke-width:32;stroke-linecap:round;paint-order:fill markers stroke;fill-opacity:1"
+       id="path4"
+       cx="8"
+       cy="8"
+       r="8" />
+    <path
+       id="path7"
+       style="fill:url(#linearGradient8);stroke-width:32;stroke-linecap:round;paint-order:fill markers stroke;fill-opacity:1"
+       d="M 4.5 2 A 0.5 0.5 0 0 0 4 2.5 L 4 13.5 A 0.5 0.5 0 0 0 4.5 14 L 5.5 14 A 0.5 0.5 0 0 0 6 13.5 L 6 10.5 A 0.5 0.5 0 0 1 6.5 10 L 7.5 10 C 7.7761421 10 8.2247306 9.9957045 8.4980469 9.9570312 C 9.5103235 9.8137979 11.733976 9.1920044 11.978516 6.4980469 C 12.003439 6.2234841 12.003506 5.7749141 11.978516 5.5 C 11.73363 2.8060371 9.5099554 2.1860251 8.4980469 2.0429688 C 8.2250673 2.0043769 7.7761421 2 7.5 2 L 4.5 2 z M 6.5 4 L 7.5 4 C 7.7761421 4 8.2261075 4.0040589 8.4941406 4.0683594 C 9.0068299 4.1913522 9.7599744 4.5367372 9.953125 5.5039062 C 10.00709 5.7741251 10.007149 6.2257438 9.953125 6.4960938 C 9.7598634 7.4632281 9.0067908 7.8087101 8.4941406 7.9316406 C 8.2262376 7.9958822 7.7761421 8 7.5 8 L 6.5 8 A 0.5 0.5 0 0 1 6 7.5 L 6 4.5 A 0.5 0.5 0 0 1 6.5 4 z M 7 5 L 7 5.5 L 7 6.5 A 0.5 0.5 0 0 0 7.5 7 L 7.5 5.5 A 0.5 0.5 0 0 0 7 5 z M 8.5 5 L 8.5 5.5 L 8.5 6.5 A 0.5 0.5 0 0 0 9 7 L 9 5.5 A 0.5 0.5 0 0 0 8.5 5 z M 9.5 10 A 0.3903882 0.3903882 0 0 0 9.1210938 10.484375 L 9.8789062 13.515625 A 0.6403882 0.6403882 0 0 0 10.5 14 L 11.5 14 A 0.3903882 0.3903882 0 0 0 11.878906 13.515625 L 11.121094 10.484375 A 0.6403882 0.6403882 0 0 0 10.5 10 L 9.5 10 z " />
+  </g>
+</svg>

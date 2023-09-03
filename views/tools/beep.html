@@ -1,0 +1,32 @@
+!Beep
+<main>
+    <section>
+        <h2>!Beepとは</h2>
+        <p>
+            !Beepとは、れのらりが腕時計用に作成した、放送禁止音を鳴らすプログラムです。
+            <br>
+            大きな音が鳴りますので、音量にはご注意ください。
+        </p>
+    </section>
+    <section>
+        <h2>遊ぶ</h2>
+        下のボタンを押すと、ピー🤬という音がなります。
+        <br>
+        <button id="beep">Beep!</button>
+        <script>
+            const button = document.getElementById("beep");
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            button.addEventListener("mousedown", function () {
+                const oscillator = audioCtx.createOscillator();
+                oscillator.type = 'sine';
+                oscillator.frequency.value = 1000;
+                oscillator.connect(audioCtx.destination);
+                oscillator.start();
+                button.addEventListener("mouseup", function () {
+                    oscillator.stop();
+                    button.removeEventListener("mouseup", function () {});
+                });
+            });
+        </script>
+    </section>
+</main>

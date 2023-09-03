@@ -1,0 +1,162 @@
+{
+    "400": {
+        "name": "Bad Request",
+        "message": "構文が無効であるため、サーバーはリクエストを理解できません。"
+    },
+    "401": {
+        "name": "Unauthorized",
+        "message": "不許可または未認証です。"
+    },
+    "402": {
+        "name": "Payment Required",
+        "message": "(メッセージ無し)"
+    },
+    "403": {
+        "name": "Forbidden",
+        "message": "認証されていないなどの理由でクライアントにコンテンツのアクセス権がなく、サーバーは適切なレスポンスの返信を拒否しています。"
+    },
+    "404": {
+        "name": "Not Found",
+        "message": "サーバーはリクエストされたリソースを発見できません。"
+    },
+    "405": {
+        "name": "Method Not Allowed",
+        "message": "サーバーはリクエストメソッドを理解しているものの、無効にされており使用することができません。"
+    },
+    "406": {
+        "name": "Not Acceptable",
+        "message": "サーバーが サーバー駆動型コンテンツネゴシエーション (en-US) を行った結果、ユーザーエージェントから与えられた条件に合うコンテンツが見つけられませんでした。"
+    },
+    "407": {
+        "name": "Proxy Authentication Required",
+        "message": "プロキシーサーバーが不許可または未認証です。"
+    },
+    "408": {
+        "name": "Request Timeout",
+        "message": "クライアントが以前にリクエストを行っていないまたは、アイドル状態の接続です。"
+    },
+    "409": {
+        "name": "Conflict",
+        "message": "リクエストがサーバーの現在の状態と矛盾しています。"
+    },
+    "410": {
+        "name": "Gone",
+        "message": "リクエストされたコンテンツがサーバーから永久に削除され、転送先アドレスがありません。"
+    },
+    "411": {
+        "name": "Length Required",
+        "message": "サーバーが Content-Length ヘッダーフィールドを要求しているが、リクエストで定義されていないために、サーバーはリクエストを拒否しました。"
+    },
+    "412": {
+        "name": "Precondition Failed",
+        "message": "サーバー側で適合しない前提条件が、クライアント側のヘッダーに含まれています。"
+    },
+    "413": {
+        "name": "Payload Too Large",
+        "message": "リクエストの本体がサーバーで定めている上限を超えています。"
+    },
+    "414": {
+        "name": "URI Too Long",
+        "message": "クライアントがリクエストした URI が、サーバーで扱える長さを超えています。"
+    },
+    "415": {
+        "name": "Unsupported Media Type",
+        "message": "リクエストされたデータのメディア形式をサーバーが対応しておらず、サーバーはリクエストを拒否しました。"
+    },
+    "416": {
+        "name": "Range Not Satisfiable",
+        "message": "リクエスト内の Range ヘッダーフィールドで指定された範囲を満たすことができません。"
+    },
+    "417": {
+        "name": "Expectation Failed",
+        "message": "Expect リクエストヘッダーで指定された内容がサーバー側と適合しません。"
+    },
+    "418": {
+        "name": "I'm a teapot",
+        "message": "サーバーは、ティーポットでコーヒーを淹れようとする試みを拒否しています。"
+    },
+    "421": {
+        "name": "Misdirected Request",
+        "message": "リクエストは、レスポンスを生成できないサーバーに送られました。"
+    },
+    "422": {
+        "name": "Unprocessable Entity",
+        "message": "リクエストは適正ですが、意味が誤っているために従うことができません。"
+    },
+    "423": {
+        "name": "Locked",
+        "message": "アクセス中のリソースはロックされています。"
+    },
+    "424": {
+        "name": "Failed Dependency",
+        "message": "前のリクエストが失敗したため、このリクエストも失敗しました。"
+    },
+    "425": {
+        "name": "Too Early",
+        "message": "サーバーが、繰り返される可能性のあるリクエストを処理するリスクを望みません。"
+    },
+    "426": {
+        "name": "Upgrade Required",
+        "message": "サーバーは現在のプロトコルを使用したリクエストの実行を拒否しましたが、クライアントが別のプロトコルにアップグレードした後は受け入れることができます。"
+    },
+    "428": {
+        "name": "Precondition Required",
+        "message": "オリジンサーバーはリクエストが条件付きになることを必要としています。"
+    },
+    "429": {
+        "name": "Too Many Requests",
+        "message": "ユーザーは一定の時間内に大量のリクエストを送信しました (レート制限)。"
+    },
+    "431": {
+        "name": "Request Header Fields Too Large",
+        "message": "ヘッダーフィールドが大きすぎるため、サーバーはリクエストの処理を望みません。"
+    },
+    "451": {
+        "name": "Unavailable For Legal Reasons",
+        "message": "ユーザーエージェントが政府によって検閲されたウェブページなど、違法なリソースをリクエストしています。"
+    },
+    "500": {
+        "name": "Internal Server Error",
+        "message": "サーバー側で処理方法がわからない事態が発生しました。"
+    },
+    "501": {
+        "name": "Not Implemented",
+        "message": "リクエストメソッドをサーバーが対応しておらず、扱えません。"
+    },
+    "502": {
+        "name": "Bad Gateway",
+        "message": "このエラーレスポンスは、リクエストの処理に必要なレスポンスを受け取るゲートウェイとして動作するサーバーが無効なレスポンスを受け取りました。"
+    },
+    "503": {
+        "name": "Service Unavailable",
+        "message": "サーバーはリクエストを処理する準備ができていません。"
+    },
+    "504": {
+        "name": "Gateway Timeout",
+        "message": "ゲートウェイとして動作するサーバーが時間内にレスポンスを得られませんでした。"
+    },
+    "505": {
+        "name": "HTTP Version Not Supported",
+        "message": "リクエストで使用した HTTP のバージョンにサーバーが対応していません。"
+    },
+    "506": {
+        "name": "Variant Also Negotiates",
+        "message": "サーバーに内部構成エラーがあります。"
+    },
+    "507": {
+        "name": "Insufficient Storage",
+        "message": "サーバーがリクエストを完了させるのに必要な表現を保存することができなかったため、メソッドがリソースに対して実行できませんでした。"
+    },
+    "508": {
+        "name": "Loop Detected",
+        "message": "サーバーは、リクエストの処理中に無限ループを検出しました。"
+    },
+    "509": {
+        "name": "Not Extended",
+        "message": "サーバーがリクエストを処理するために、リクエストをさらに拡張することが必要です。"
+    },
+    "511": {
+        "name": "Network Authentication Required",
+        "message": "クライアントがネットワークでアクセスするために認証が必要です。"
+    }
+}

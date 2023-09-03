@@ -1,0 +1,30 @@
+Generator
+<main>
+    <section>
+        <h2>れのらりジェネレーターとは</h2>
+        <p>
+            れのらりジェネレーターとは、れのらりが名前を決める際に使用したプログラムを、一般公開したものです。
+            <br>
+            このプログラムでは、「れのらり」などのランダムな文字列を生成することができます。
+            <br>
+            「れのらり」以外の候補を生成しましょう!
+        </p>
+    </section>
+    <section>
+        <h2>遊ぶ</h2>
+        下のボタンを押すと、ランダムな文字列が生成されます。
+        <br>
+        <div id="result" style="width: 100%; text-align: center; font-size: 1.5em; font-weight: 600; padding: 1em 0;">
+            れのらり
+        </div>
+        <button id="gen" onclick="generate()">生成</button>
+        <script>
+            function generate() {
+                var S = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん";
+                var N = 4;
+                const text = Array.from(Array(N)).map(() => S[Math.floor(Math.random() * S.length)]).join('');
+                document.getElementById("result").innerHTML = text;
+            };
+        </script>
+    </section>
+</main>

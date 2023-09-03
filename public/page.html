@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Renorari - {{title}}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://renorari.net/">
+    <meta property="og:site_name" content="Renorari.net">
+    <meta property="og:description" content="Renorari.netへようこそ！">
+    <meta property="og:image" content="https://renorari.net/images/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@renorari">
+    <meta name="twitter:creator" content="@renorari">
+    <meta name="keywords" content="Renorari,れのらり">
+    <title>Renorari - {{title}}</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/favicon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/focus-visible@5.0.2/dist/focus-visible.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="/index.html">Renorari</a>
+            <span id="header-title">
+                {{title}}
+            </span>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="//kana.renorari.net/">Kana</a></li>
+                <li><a href="//blog.renorari.net/">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {{content}}
+
+    <footer>
+        <div id="copyright">
+            &copy; 2023 <a href="https://renorari.net/">Renorari</a>
+            <div id="socials">
+                <ul>
+                    <li>
+                        <a href="https://x.com/renorari">
+                            <img src="/social-icons/x-logo.svg" alt="X">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://discord.gg/WbSuHSjx2m">
+                            <img src="/social-icons/discord-mark.svg" alt="Discord">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://youtube.com/@m0zbek">
+                            <img src="/social-icons/yt-icon.svg" alt="YouTube">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/renorari">
+                            <img src="/social-icons/github-mark.svg" alt="GitHub">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="links">
+            <ul>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/privacy.html">Privacy policy</a></li>
+                <li><a href="/disclaimer.html">Disclaimer</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener("scroll", () => {
+            const header = document.querySelector("header");
+            const rect = header.getBoundingClientRect();
+            const top = parseInt(window.getComputedStyle(header).top);
+            if (!isNaN(top)) {
+                if (top >= rect.top) {
+                    header.classList.add("hover");
+                } else {
+                    header.classList.remove("hover");
+                }
+            }
+        });
+
+        window.addEventListener("resize", () => {
+            window.dispatchEvent(new Event("scroll"));
+        });
+        window.addEventListener("DOMContentLoaded", () => {
+            window.dispatchEvent(new Event("scroll"));
+        });
+    </script>
+</body>
+
+</html>

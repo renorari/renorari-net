@@ -1,0 +1,481 @@
+@import url("https://koruri.chillout.chat/koruri.css");
+
+:root {
+    --background: #ffffff;
+    --transparent-background: rgba(255, 255, 255, 0.75);
+    --text: #323232;
+    --text-light: #a8a8a8;
+    --link: #079ca2;
+    --selecting: rgba(15, 237, 245, 0.75);
+    --button-background: #079ca2;
+    --button-transparent: rgba(7, 156, 162, 0.1);
+    --button-active: #045f62;
+    --button-text: #ffffff;
+    --pop-background: #e7fdfe;
+    --primary: #079ca2;
+    --secondary: #52a207;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #161616;
+        --transparent-background: rgba(32, 32, 32, 0.75);
+        --text: #ffffff;
+        --text-light: #a8a8a8;
+        --link: #0fedf5;
+        --selecting: rgba(15, 237, 245, 0.75);
+        --button-background: #0fedf5;
+        --button-transparent: rgba(15, 237, 245, 0.1);
+        --button-active: #0a9ca2;
+        --button-text: #323232;
+        --pop-background: #022f31;
+        --primary: #0fedf5;
+        --secondary: #7ef50f;
+        --shadow: rgba(0, 0, 0, 0.1);
+    }
+}
+
+* {
+    box-sizing: border-box;
+transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out, box-shadow 0.1s ease-in-out, filter 0.1s ease-in-out !important;
+}
+
+*:focus:not(.focus-visible) {
+    outline: none;
+    box-shadow: none;
+    filter: none;
+}
+
+*:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--selecting);
+    filter: drop-shadow(0 0 0.5em var(--selecting));
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: "Koruri", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    display: block;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text);
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 0 0 0.5em 0;
+}
+
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+    content: "#";
+    color: var(--text-light);
+    margin: auto 0.25em;
+}
+
+p {
+    margin: 0 0 1em 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+table td,
+table th {
+    border: 1px solid var(--button-transparent);
+    padding: 0.5em 1em;
+}
+
+table th {
+    background-color: var(--button-transparent);
+    font-weight: 600;
+    text-align: left;
+}
+
+table tr:first-child th:first-child {
+    border-top-left-radius: 0.5em;
+}
+
+table tr:first-child td:last-child {
+    border-top-right-radius: 0.5em;
+}
+
+table tr:last-child th:first-child {
+    border-bottom-left-radius: 0.5em;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 0.5em;
+}
+
+button {
+    background-color: var(--button-transparent);
+    border: 1px solid var(--button-background);
+    border-radius: 0.5em;
+    color: var(--text);
+    cursor: pointer;
+    font-family: "Koruri", sans-serif;
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 1;
+    width: 100%;
+    margin: 0.5em 0;
+    padding: 0.5em 1em;
+}
+
+button:hover,
+button:focus {
+    background-color: var(--button-background);
+    color: var(--button-text);
+
+}
+
+button:active {
+    background-color: var(--button-active);
+    color: var(--button-text);
+}
+
+button:disabled {
+    background-color: var(--button-transparent);
+    border-color: var(--button-transparent);
+    color: var(--text-light);
+    cursor: not-allowed;
+}
+
+header {
+    background-color: var(--transparent-background);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    /*box-shadow: 0 0 0.5em var(--shadow);*/
+    padding: 0.5em 1em;
+    margin: 0;
+    margin-top: 1px;
+    margin-bottom: 1em;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 2em;
+    font-weight: 600;
+    margin: 0;
+    margin-left: 1em;
+    flex-grow: 1;
+}
+
+header h1::before {
+    content: "";
+    margin: 0;
+}
+
+header h1 a {
+    color: var(--text);
+}
+
+header h1 #header-title::before {
+    content: " - ";
+    color: var(--text-light);
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        text-align: center;
+        flex-direction: column;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    header h1 #header-title::before {
+        white-space: pre;
+        content: "\A";
+    }
+}
+
+.hover {
+    box-shadow: 0 0 0.5em var(--shadow);
+}
+
+nav {
+    padding: 0.5em 1em;
+    padding-top: 1em;
+    margin: 0;
+    flex-grow: 1;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: var(--text);
+    font-weight: 600;
+    font-size: 1em;
+    padding: 0.5em 1em;
+}
+
+@media screen and (max-width: 480px) {
+    nav {
+        padding: 0;
+        padding-top: 0.5em;
+    }
+
+    nav ul li a {
+        font-size: 1em;
+        font-weight: 500;
+    }
+
+}
+
+main {
+    flex-grow: 1;
+    padding: 0.5em 1em;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 60em;
+}
+
+footer {
+    background-color: var(--pop-background);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 1.5em 1em;
+    padding-right: 0;
+    margin: 0;
+    margin-top: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer #copyright {
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+footer #copyright a {
+    color: var(--text);
+}
+
+footer #socials {
+    margin: 1em;
+    padding: 0;
+}
+
+footer #socials ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer #socials ul li {
+    margin: 0.5em;
+    border: 1px solid var(--button-transparent);
+    border-radius: 100vw;
+    width: 2.5em;
+    height: 2.5em;
+}
+
+footer #socials ul li a {
+    width: 100%;
+    height: 100%;
+    border-radius: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+footer #socials ul li a img {
+    width: 67%;
+    height: 67%;
+    margin: auto;
+    filter: brightness(0);
+}
+
+@media (prefers-color-scheme: dark) {
+    footer #socials ul li a img {
+        filter: brightness(1);
+    }
+}
+
+footer #socials ul li:hover,
+footer #socials ul li:focus {
+    background-color: var(--button-transparent);
+}
+
+footer #links {
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+}
+
+footer #links ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+footer #links ul li {
+    border: 1px solid var(--button-transparent);
+    border-radius: 100vw;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 100%;
+}
+
+footer #links ul li:hover,
+footer #links ul li:focus {
+    background-color: var(--button-transparent);
+}
+
+footer #links ul li a {
+    display: block;
+    border-radius: 100vw;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    color: var(--text);
+    padding: 0.5em 1em;
+    width: 100%;
+}
+
+footer #links ul li a:hover {
+    text-decoration: none;
+}
+
+.additional {
+    font-size: 0.75em;
+    color: var(--text-light);
+}
+
+.panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    background-color: var(--transparent-background);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.5em var(--shadow);
+    margin: 0.5em;
+    margin-bottom: 2em;
+    padding: 0;
+    width: 100%;
+    max-width: 40%;
+    min-width: 20em;
+    color: var(--text);
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        width: 100%;
+        min-width: 100%;
+    }
+
+}
+
+.card:hover,
+.card:focus {
+    box-shadow: 0 0 1em var(--shadow);
+    text-decoration: none;
+}
+
+.card .card-image {
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    overflow: hidden;
+    width: 100%;
+}
+
+.card .card-image img {
+    width: 100%;
+    height: auto;
+}
+
+.card .card-content {
+    padding: 1em;
+}
+
+.card .card-content .card-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0;
+}
+
+.card .card-content .card-description {
+    margin: 0;
+    padding: 0;
+}
