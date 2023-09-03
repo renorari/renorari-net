@@ -1,4 +1,12 @@
 Generator
+<script>
+    function generate() {
+        var S = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん";
+        var N = 4;
+        const text = Array.from(Array(N)).map(() => S[Math.floor(Math.random() * S.length)]).join('');
+        document.getElementById("result").innerHTML = text;
+    };
+</script>
 <main>
     <section>
         <h2>れのらりジェネレーターとは</h2>
@@ -18,13 +26,5 @@ Generator
             れのらり
         </div>
         <button id="gen" onclick="generate()">生成</button>
-        <script>
-            function generate() {
-                var S = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん";
-                var N = 4;
-                const text = Array.from(Array(N)).map(() => S[Math.floor(Math.random() * S.length)]).join('');
-                document.getElementById("result").innerHTML = text;
-            };
-        </script>
     </section>
 </main>
