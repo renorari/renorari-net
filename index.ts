@@ -11,6 +11,27 @@ const PORT = process.env.PORT ?? 3000;
 const server = express();
 
 server.use(express.static("public"));
+
+server.get("/sitemap.xml", (req, res) => {
+    const getFiles = (dir: string): string[] => {
+        const dirents = fs.readdirSync(dir, { withFileTypes: true });
+        const files = dirents.map((dirent) => {
+            const res = dir + "/" + dirent.name;
+            return dirent.isDirectory() ? getFiles(res) : res;
+        });
+        return Array.prototype.concat(...files);
+    };
+    const files = getFiles("./views");
+    const urls = files.filter((file) => file.endsWith(".html")).map((file) => {
+        const url = file.replace("./views", "").replace("index.html", "");
+        return `<url><loc>https://renorari.net${url}</loc></url>`;
+    });
+    const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}</urlset>`;
+    res.header("Content-Type", "text/xml");
+    res.send(xml);
+});
+
+
 server.get("/*", (req, res) => {
     const html = fs.readFileSync("./public/page.html", "utf-8");
     let requestPath = decodeURI(req.url.endsWith("/") ? req.url + "index.html" : req.url).replace(/\.\./g, "");
