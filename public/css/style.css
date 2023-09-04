@@ -1,23 +1,21 @@
 @import url("https://koruri.chillout.chat/koruri.css");
 
-@media (prefers-color-scheme: light) {
-    :root {
-        --background: #ffffff;
-        --transparent-background: rgba(255, 255, 255, 0.75);
-        --text: #323232;
-        --text-light: #a8a8a8;
-        --link: #079ca2;
-        --selecting: rgba(15, 237, 245, 0.75);
-        --button-background: #079ca2;
-        --button-transparent: rgba(7, 156, 162, 0.1);
-        --button-active: #045f62;
-        --button-text: #ffffff;
-        --pop-background: #e7fdfe;
-        --primary: #079ca2;
-        --secondary: #52a207;
-        --new: #f50f0f;
-        --shadow: rgba(0, 0, 0, 0.1);
-    }
+:root {
+    --background: #ffffff;
+    --transparent-background: rgba(255, 255, 255, 0.75);
+    --text: #323232;
+    --text-light: #a8a8a8;
+    --link: #079ca2;
+    --selecting: rgba(15, 237, 245, 0.75);
+    --button-background: #079ca2;
+    --button-transparent: rgba(7, 156, 162, 0.1);
+    --button-active: #045f62;
+    --button-text: #ffffff;
+    --pop-background: #e7fdfe;
+    --primary: #079ca2;
+    --secondary: #52a207;
+    --new: #f50f0f;
+    --shadow: rgba(0, 0, 0, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -68,6 +66,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    transition: none;
 }
 
 a {
