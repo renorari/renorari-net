@@ -1,21 +1,23 @@
 @import url("https://koruri.chillout.chat/koruri.css");
 
-:root {
-    --background: #ffffff;
-    --transparent-background: rgba(255, 255, 255, 0.75);
-    --text: #323232;
-    --text-light: #a8a8a8;
-    --link: #079ca2;
-    --selecting: rgba(15, 237, 245, 0.75);
-    --button-background: #079ca2;
-    --button-transparent: rgba(7, 156, 162, 0.1);
-    --button-active: #045f62;
-    --button-text: #ffffff;
-    --pop-background: #e7fdfe;
-    --primary: #079ca2;
-    --secondary: #52a207;
-    --new: #f50f0f;
-    --shadow: rgba(0, 0, 0, 0.1);
+@media (prefers-color-scheme: light) {
+    :root {
+        --background: #ffffff;
+        --transparent-background: rgba(255, 255, 255, 0.75);
+        --text: #323232;
+        --text-light: #a8a8a8;
+        --link: #079ca2;
+        --selecting: rgba(15, 237, 245, 0.75);
+        --button-background: #079ca2;
+        --button-transparent: rgba(7, 156, 162, 0.1);
+        --button-active: #045f62;
+        --button-text: #ffffff;
+        --pop-background: #e7fdfe;
+        --primary: #079ca2;
+        --secondary: #52a207;
+        --new: #f50f0f;
+        --shadow: rgba(0, 0, 0, 0.1);
+    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -609,3 +611,74 @@ footer #links ul li a:hover {
     margin-right: 0.5em;
     vertical-align: middle;
 }
+
+/*#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background-color: var(--transparent-background);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#loading #loading-animation {
+    width: 5em;
+    height: 5em;
+    border-radius: 100%;
+    border: 0.5em solid var(--button-background);
+    animation: border 1s infinite linear, spin 1s infinite ease-in-out;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes border {
+    0% {
+        border-top-color: var(--button-transparent);
+        border-right-color: var(--button-background);
+        border-bottom-color: var(--button-background);
+        border-left-color: var(--button-background);
+    }
+
+    25% {
+        border-top-color: var(--button-background);
+        border-right-color: var(--button-transparent);
+        border-bottom-color: var(--button-background);
+        border-left-color: var(--button-background);
+    }
+
+    50% {
+        border-top-color: var(--button-background);
+        border-right-color: var(--button-background);
+        border-bottom-color: var(--button-transparent);
+        border-left-color: var(--button-background);
+    }
+
+    75% {
+        border-top-color: var(--button-background);
+        border-right-color: var(--button-background);
+        border-bottom-color: var(--button-background);
+        border-left-color: var(--button-transparent);
+    }
+
+    100% {
+        border-top-color: var(--button-transparent);
+        border-right-color: var(--button-background);
+        border-bottom-color: var(--button-background);
+        border-left-color: var(--button-background);
+    }
+}*/
