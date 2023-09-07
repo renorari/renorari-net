@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import dotenv from "dotenv";
 import express from "express";
+import httpProxy from "http-proxy";
 import {JSDOM} from "jsdom";
 import generateErrorPage from "./modules/generate_error_page";
 
@@ -10,8 +11,13 @@ const redirects = JSON.parse(fs.readFileSync("./redirects.json", "utf-8"));
 
 const PORT = process.env.PORT ?? 3000;
 const server = express();
+const proxy = httpProxy.createProxyServer({});
 
 server.use(express.static("public"));
+
+server.get("/blog/*", (req, res) => {
+    proxy.web(req, res, { target: "http://localhost:3980" });
+});
 
 server.get("/sitemap.xml", (req, res) => {
     const getFiles = (dir: string): string[] => {
@@ -31,7 +37,6 @@ server.get("/sitemap.xml", (req, res) => {
     res.header("Content-Type", "text/xml");
     res.send(xml);
 });
-
 
 server.get("/*", (req, res) => {
     const html = fs.readFileSync("./public/page.html", "utf-8");
