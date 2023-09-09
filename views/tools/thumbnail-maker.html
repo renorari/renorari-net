@@ -1,0 +1,102 @@
+{"title": "Thumbnail Maker", "ogp_image": "https://renorari.net/images/ogp.png"}
+<main>
+    <section>
+        <h2>Thumbnail Maker</h2>
+        <p>
+            このページでは、サムネイルを生成することができます。
+            <br>
+            生成したサムネイルは、PNG形式でダウンロードすることができます。
+        </p>
+    </section>
+    <section>
+        <h2>Type - 1</h2>
+        <div>
+            <canvas width="1920" height="1080">
+                thumbnail
+            </canvas>
+            <label for="title">タイトル</label>
+            <input type="text" id="title" value="title">
+            <input type="color" id="title-color" value="#333333">
+            <label for="subtitle">サブタイトル</label>
+            <input type="text" id="subtitle" value="subtitle">
+            <input type="color" id="subtitle-color" value="#666666">
+            <label for="background-color">背景色1</label>
+            <input type="color" id="background-color" value="#e3bef4">
+            <label for="background-color-2">背景色2</label>
+            <input type="color" id="background-color-2" value="#ffffff">
+        </div>
+        <button id="download" onclick="download()">ダウンロード</button>
+        <style>
+            canvas {
+                max-width: 100%;
+                max-height: 100%;
+            }
+  @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+        </style>
+        <script>
+            async function generate() {
+                const font = new FontFace("Corporate Logo", "url(/fonts/corporate-logo-medium.otf)");
+                //await font.load();
+                const canvas = document.querySelector("canvas");
+                const ctx = canvas.getContext("2d");
+                const title = document.getElementById("title").value;
+                const subtitle = document.getElementById("subtitle").value;
+                const titleColor = document.getElementById("title-color").value;
+                const subtitleColor = document.getElementById("subtitle-color").value;
+                const backgroundColor = document.getElementById("background-color").value;
+                const backgroundColor2 = document.getElementById("background-color-2").value;
+                ctx.fillStyle = backgroundColor;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = backgroundColor2;
+                ctx.fillRect(96, 96, canvas.width - 192, canvas.height - 192);
+                ctx.fillStyle = subtitleColor;
+                ctx.font = "400 48px 'Corporate Logo'";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(subtitle, canvas.width / 2, canvas.height / 2 - 96);
+                ctx.fillStyle = titleColor;
+                ctx.font = "400 64px 'Corporate Logo'";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(title, canvas.width / 2, canvas.height / 2);
+                const data = {
+                    "title": title,
+                    "subtitle": subtitle,
+                    "titleColor": titleColor,
+                    "subtitleColor": subtitleColor,
+                    "backgroundColor": backgroundColor,
+                    "backgroundColor2": backgroundColor2
+                };
+                localStorage.setItem("thumbnail-1", JSON.stringify(data));
+            }
+            if (localStorage.getItem("thumbnail-1")) {
+                Object.assign(document.getElementById("title").value = JSON.parse(localStorage.getItem("thumbnail-1")).title);
+                Object.assign(document.getElementById("subtitle").value = JSON.parse(localStorage.getItem("thumbnail-1")).subtitle);
+                Object.assign(document.getElementById("title-color").value = JSON.parse(localStorage.getItem("thumbnail-1")).titleColor);
+                Object.assign(document.getElementById("subtitle-color").value = JSON.parse(localStorage.getItem("thumbnail-1")).subtitleColor);
+                Object.assign(document.getElementById("background-color").value = JSON.parse(localStorage.getItem("thumbnail-1")).backgroundColor);
+                Object.assign(document.getElementById("background-color-2").value = JSON.parse(localStorage.getItem("thumbnail-1")).backgroundColor2);
+            }
+            generate();
+            const title = document.getElementById("title");
+            const subtitle = document.getElementById("subtitle");
+            const titleColor = document.getElementById("title-color");
+            const subtitleColor = document.getElementById("subtitle-color");
+            const backgroundColor = document.getElementById("background-color");
+            const backgroundColor2 = document.getElementById("background-color-2");
+            title.addEventListener("input", generate);
+            subtitle.addEventListener("input", generate);
+            titleColor.addEventListener("input", generate);
+            subtitleColor.addEventListener("input", generate);
+            backgroundColor.addEventListener("input", generate);
+            backgroundColor2.addEventListener("input", generate);
+            function download() {
+                const canvas = document.querySelector("canvas");
+                const link = document.createElement("a");
+                link.href = canvas.toDataURL("image/png");
+                link.download = "thumbnail.png";
+                link.click();
+            }
+        </script>
+    </section>
+</main>
