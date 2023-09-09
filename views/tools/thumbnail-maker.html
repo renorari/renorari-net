@@ -1,4 +1,19 @@
 {"title": "Thumbnail Maker", "ogp_image": "https://renorari.net/images/ogp.png"}
+<style>
+    canvas {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    @font-face {
+        font-family: 'Corporate-Logo-Medium';
+        src: url('/fonts/corporate-logo-medium.woff2') format('woff2'),
+            url('corporate-logo-medium.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+</style>
 <main>
     <section>
         <h2>Thumbnail Maker</h2>
@@ -26,15 +41,12 @@
             <input type="color" id="background-color-2" value="#ffffff">
         </div>
         <button id="download" onclick="download()">ダウンロード</button>
-        <style>
-            canvas {
-                max-width: 100%;
-                max-height: 100%;
-            }
-        </style>
         <script>
             async function generate() {
-                const font = new FontFace("Corporate Logo", "url(/fonts/corporate-logo-medium.woff2) format('woff2'), url(/fonts/corporate-logo-medium.woff) format('woff')");
+                const font = new FontFace("Corporate-Logo-Medium", "url('/fonts/corporate-logo-medium.woff2') format('woff2'), url('/fonts/corporate-logo-medium.woff') format('woff')", {
+                    "weight": "400",
+                    "style": "normal"
+                });
                 await font.load();
                 const canvas = document.querySelector("canvas");
                 const ctx = canvas.getContext("2d");
@@ -49,12 +61,12 @@
                 ctx.fillStyle = backgroundColor2;
                 ctx.fillRect(96, 96, canvas.width - 192, canvas.height - 192);
                 ctx.fillStyle = subtitleColor;
-                ctx.font = "400 48px 'Corporate Logo'";
+                ctx.font = "400 48px 'Corporate-Logo-Medium'";
                 ctx.textAlign = "center";
                 ctx.textBaseline = "middle";
                 ctx.fillText(subtitle, canvas.width / 2, canvas.height / 2 - 96);
                 ctx.fillStyle = titleColor;
-                ctx.font = "400 64px 'Corporate Logo'";
+                ctx.font = "400 72px 'Corporate-Logo-Medium'";
                 ctx.textAlign = "center";
                 ctx.textBaseline = "middle";
                 ctx.fillText(title, canvas.width / 2, canvas.height / 2);
