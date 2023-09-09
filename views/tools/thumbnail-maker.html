@@ -36,7 +36,7 @@
         <script>
             async function generate() {
                 const font = new FontFace("Corporate Logo", "url(/fonts/corporate-logo-medium.otf)");
-                //await font.load();
+                await font.load();
                 const canvas = document.querySelector("canvas");
                 const ctx = canvas.getContext("2d");
                 const title = document.getElementById("title").value;
