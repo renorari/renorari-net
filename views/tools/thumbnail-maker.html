@@ -45,6 +45,7 @@
             <input type="color" id="background-color-2" value="#ffffff">
         </div>
         <button id="download" onclick="download()">ダウンロード</button>
+        <button id="reset" onclick="reset()">リセット</button>
         <script>
             async function generate() {
                 const font = new FontFace("Corporate-Logo-Medium", "url('/fonts/corporate-logo-medium.woff2') format('woff2'), url('/fonts/corporate-logo-medium.woff') format('woff')", {
@@ -111,6 +112,13 @@
                 link.href = canvas.toDataURL("image/png");
                 link.download = "thumbnail.png";
                 link.click();
+            }
+            function reset() {
+                if (!confirm("リセットしますか?")) {
+                    return;
+                }
+                localStorage.removeItem("thumbnail-1");
+                location.reload();
             }
         </script>
     </section>
