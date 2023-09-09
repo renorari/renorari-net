@@ -31,11 +31,10 @@
                 max-width: 100%;
                 max-height: 100%;
             }
-  @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
         </style>
         <script>
             async function generate() {
-                const font = new FontFace("Corporate Logo", "url(/fonts/corporate-logo-medium.otf)");
+                const font = new FontFace("Corporate Logo", "url(/fonts/corporate-logo-medium.woff2) format('woff2'), url(/fonts/corporate-logo-medium.woff) format('woff')");
                 await font.load();
                 const canvas = document.querySelector("canvas");
                 const ctx = canvas.getContext("2d");
