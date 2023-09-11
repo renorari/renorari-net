@@ -19,6 +19,11 @@ server.get("/blog/*", (req, res) => {
     proxy.web(req, res, { target: "http://localhost:3980" });
 });
 
+server.get("*", (req, res) => {
+    const short = redirects.short.filter((redirect: { from: string; to: string; }) => redirect.from == req.hostname + req.url)[0];
+    (short) && (res.redirect(short.to));
+});
+
 server.get("/sitemap.xml", (req, res) => {
     const getFiles = (dir: string): string[] => {
         const dirents = fs.readdirSync(dir, { withFileTypes: true });
@@ -41,7 +46,7 @@ server.get("/sitemap.xml", (req, res) => {
 server.get("/*", (req, res) => {
     const html = fs.readFileSync("./public/page.html", "utf-8");
     let requestPath = decodeURI(req.url.endsWith("/") ? req.url + "index.html" : req.url).replace(/\.\./g, "");
-    const redirect = redirects.filter((redirect: { from: string; to: string; }) => redirect.from == requestPath)[0];
+    const redirect = redirects.locate.filter((redirect: { from: string; to: string; }) => redirect.from == requestPath)[0];
     (redirect) && (requestPath = redirect.to);
     const contentPath = requestPath.replace("/", "./views/");
     fs.readFile(contentPath, "utf-8", (error, content) => {
