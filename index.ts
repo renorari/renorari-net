@@ -19,9 +19,10 @@ server.get("/blog/*", (req, res) => {
     proxy.web(req, res, { target: "http://localhost:3980" });
 });
 
-server.get("*", (req, res) => {
+server.get("*", (req, res, next) => {
     const short = redirects.short.filter((redirect: { from: string; to: string; }) => redirect.from == req.hostname + req.url)[0];
     (short) && (res.redirect(short.to));
+    next();
 });
 
 server.get("/sitemap.xml", (req, res) => {
