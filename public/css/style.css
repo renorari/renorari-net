@@ -16,6 +16,8 @@
     --secondary: #52a207;
     --new: #f50f0f;
     --shadow: rgba(0, 0, 0, 0.1);
+    --transparent-red: hsla(355, 92%, 95%, 0.75);
+    --transparent-green: hsla(90, 92%, 85%, 0.75);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,6 +37,8 @@
         --secondary: #7ef50f;
         --new: #f50f0f;
         --shadow: rgba(0, 0, 0, 0.1);
+        --transparent-red: hsla(355, 92%, 10%, 0.75);
+        --transparent-green: hsla(90, 92%, 10%, 0.75);
     }
 }
 
@@ -681,3 +685,63 @@ footer #links ul li a:hover {
         border-left-color: var(--button-background);
     }
 }*/
+
+canvas {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 0.25em;
+}
+
+.okng {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+.okng div {
+    background-color: var(--transparent-background);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.5em var(--shadow);
+    margin: 0.5em;
+    margin-bottom: 2em;
+    padding: 1em;
+    flex: 1 1 20em;
+    max-width: 30em;
+    min-width: 20em;
+    color: var(--text);
+}
+
+.okng .ok {
+    background: linear-gradient(var(--transparent-green) 0%, var(--transparent-background) 25%);
+}
+
+.okng .ng {
+    background: linear-gradient(var(--transparent-red) 0%, var(--transparent-background) 25%);
+}
+
+.okng div h4 {
+    font-size: 1.2em;
+}
+
+.okng div h4::before {
+    display: none;
+}
+
+.example div {
+    background-color: var(--transparent-background);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.5em var(--shadow);
+    margin: 0.5em;
+    margin-bottom: 1em;
+    padding: 1em;
+    color: var(--text);
+}
+
+.example div:last-child {
+    margin-bottom: 2em;
+}
