@@ -3,7 +3,9 @@ import dotenv from "dotenv";
 import express from "express";
 import httpProxy from "http-proxy";
 import {JSDOM} from "jsdom";
+import * as dateFns from "date-fns";
 import generateErrorPage from "./modules/generate_error_page";
+import extractJSONAndHTML from "./modules/extract_json_and_html";
 
 dotenv.config();
 
@@ -40,7 +42,9 @@ server.get("/sitemap.xml", (req, res) => {
     const files = getFiles("./views");
     const urls = files.filter((file) => file.endsWith(".html")).map((file) => {
         const url = file.replace("./views", "").replace("index.html", "");
-        return `<url><loc>https://renorari.net${url}</loc></url>`;
+        const lastmod = dateFns.format(fs.statSync(file).mtime, "yyyy-MM-dd");
+        const priority = Math.max(1 - (url.split("/").length - 2) * 0.1, 0.5);
+        return `<url><loc>https://renorari.net${url}</loc><lastmod>${lastmod}</lastmod><priority>${priority}</priority></url>`;
     });
     const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}</urlset>`;
     res.header("Content-Type", "text/xml");
@@ -64,8 +68,7 @@ server.get("/*", (req, res) => {
                 break;
             }
         } else {
-            const info = JSON.parse(content.split(/\r\n|\r|\n/)[0]);
-            const contentHtml = content.replace(content.split(/\r\n|\r|\n/)[0], "");
+            const {json:info, html: contentHtml} = extractJSONAndHTML(content);
             const document = new JSDOM(contentHtml);
             const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 100) ?? "";
             res.send(html.replace(/{{content}}/g, contentHtml).replace(/{{title}}/g, info.title).replace(/{{description}}/g, description + "...").replace(/{{path}}/g, requestPath).replace(/{{ogp_image}}/g, info.ogp_image));
