@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url("https://koruri.chillout.chat/koruri.css");
 
 :root {
@@ -45,6 +46,7 @@
 * {
     box-sizing: border-box;
     transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out, box-shadow 0.1s ease-in-out, filter 0.1s ease-in-out, color 0.1s ease-in-out;
+    overflow-wrap: break-word;
 }
 
 *:focus:not(.focus-visible) {
@@ -64,7 +66,7 @@ body {
     color: var(--text);
     font-family: "Koruri", sans-serif;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.75;
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -97,8 +99,8 @@ h5,
 h6 {
     color: var(--text);
     font-weight: 600;
-    line-height: 1.25;
-    margin: 0 0 0.5em 0;
+    line-height: 1.5;
+    margin: 0.5em 0;
 }
 
 h1::before,
@@ -584,7 +586,8 @@ footer #links ul li a:hover {
 
 .card .card-image img {
     width: 100%;
-    height: auto;
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
 }
 
 .card .card-content {
@@ -744,4 +747,9 @@ canvas {
 
 .example div:last-child {
     margin-bottom: 2em;
+}
+
+code {
+    font-family: 'Ubuntu Mono', monospace;
+    border-radius: 0.5em;
 }
