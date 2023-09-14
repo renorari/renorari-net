@@ -107,13 +107,16 @@
             }
         });
 
+        function onLoad() {
+            window.dispatchEvent(new Event("scroll"));
+            hljs.highlightAll();
+        }
+
         window.addEventListener("resize", () => {
             window.dispatchEvent(new Event("scroll"));
         });
-        window.addEventListener("DOMContentLoaded", () => {
-            window.dispatchEvent(new Event("scroll"));
-            hljs.highlightAll();
-        });
+        window.addEventListener("DOMContentLoaded", onLoad);
+        window.addEventListener("load", onLoad);
     </script>
 </body>
 
