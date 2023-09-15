@@ -587,6 +587,7 @@ footer #links ul li a:hover {
 }
 
 .card .card-image img {
+    border-radius: 0;
     width: 100%;
     aspect-ratio: 2 / 1;
     object-fit: cover;
