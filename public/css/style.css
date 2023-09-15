@@ -579,6 +579,7 @@ footer #links ul li a:hover {
 }
 
 .card .card-image {
+    border-radius: 0;
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
     overflow: hidden;
