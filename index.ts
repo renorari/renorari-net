@@ -1,9 +1,11 @@
 import fs from "node:fs";
+import cp from "node:child_process";
 import dotenv from "dotenv";
 import express from "express";
-import {JSDOM} from "jsdom";
+import { JSDOM } from "jsdom";
 import * as dateFns from "date-fns";
 import marked from "marked";
+import * as githubWebhooks from "@octokit/webhooks";
 import generateErrorPage from "./modules/generate_error_page";
 import extractJSONAndHTML from "./modules/extract_json_and_html";
 import extractYAMLAndMD from "./modules/extract_yaml_and_md";
@@ -22,7 +24,19 @@ interface blogInfo {
 
 const PORT = process.env.PORT ?? 3000;
 const server = express();
+const webhooks = new githubWebhooks.Webhooks({
+    secret: process.env.GITHUB_WEBHOOK_SECRET ?? ""
+});
 
+webhooks.on("push", async ({ payload }) => {
+    if (payload.ref === "refs/heads/main") {
+        cp.execSync("git pull origin main", { cwd: __dirname });
+        cp.execSync("npm install", { cwd: __dirname });
+        process.exit();
+    }
+});
+
+server.use(githubWebhooks.createNodeMiddleware(webhooks));
 server.use(express.static("public"));
 
 server.get("/blog/", (req, res) => {
