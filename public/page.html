@@ -107,14 +107,15 @@
             }
         });
 
+        window.addEventListener("resize", () => {
+            window.dispatchEvent(new Event("scroll"));
+        });
+
         function onLoad() {
             window.dispatchEvent(new Event("scroll"));
             hljs.highlightAll();
         }
 
-        window.addEventListener("resize", () => {
-            window.dispatchEvent(new Event("scroll"));
-        });
         window.addEventListener("DOMContentLoaded", onLoad);
         window.addEventListener("load", onLoad);
     </script>
