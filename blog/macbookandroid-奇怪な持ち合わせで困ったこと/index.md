@@ -24,6 +24,8 @@ tags:
   - "れのらり"
 ---
 
+![OGP](images/ogp.png)
+
 この記事では、MacBook ProとGoogle Pixel 6aの奇怪な持ち合わせをして困ったことや不便なことを書いていきます!
 
 ## ファイル転送
@@ -41,3 +43,9 @@ Apple製のホームアプリを利用するには、iPhoneが必要です。
 Google製のホームアプリが利用できるのは、iOSとAndroidとChromeOSのみです。  
 なので、MacOSでは利用できません。  
 (ブラウザ版のGoogle Homeは、ベータ版な上に監視カメラしか使えないのでNG)
+
+## AppStoreとGoogle Playのどっちも買わないといけない
+
+AppStoreとGoogle Play、会社が違うので、買い切りで買ったアプリは、どちらも買わないといけません。  
+(例えば、[Minecraft](https://www.minecraft.net/ja-jp/)など)
+(ちなみにMinecraftは、Microsoft Store, Mojang Store, Google Play Store, AppStore全部持ってます)
