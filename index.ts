@@ -133,12 +133,12 @@ server.get("/sitemap.xml", (req, res) => {
         const url = file.replace("./views", "").replace("index.html", "");
         const lastmod = dateFns.format(fs.statSync(file).mtime, "yyyy-MM-dd");
         const priority = Math.max(1 - (url.split("/").length - 2) * 0.1, 0.5);
-        return `<url><loc>https://renorari.net${url}</loc><lastmod>${lastmod}</lastmod><priority>${priority}</priority></url>`;
+        return `<url><loc>https://renorari.net${encodeURI(url)}</loc><lastmod>${lastmod}</lastmod><priority>${priority}</priority></url>`;
     });
     const blogUrls = fs.readdirSync("./blog").map((file) => {
         const url = "/blog/" + file.replace(".md", "");
         const lastmod = dateFns.format(fs.statSync("./blog/" + file).mtime, "yyyy-MM-dd");
-        return `<url><loc>https://renorari.net${url}</loc><lastmod>${lastmod}</lastmod><priority>0.8</priority></url>`;
+        return `<url><loc>https://renorari.net${encodeURI(url)}</loc><lastmod>${lastmod}</lastmod><priority>0.8</priority></url>`;
     });
     const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}${blogUrls.join()}</urlset>`;
     res.header("Content-Type", "text/xml");
