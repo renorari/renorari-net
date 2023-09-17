@@ -1,6 +1,6 @@
 ---
 title: "MacBook&Android 奇怪な持ち合わせで困ったこと"
-date: "2023-03-12"
+date: "2023-09-17"
 categories: 
   - "android"
   - "mac"
@@ -21,6 +21,8 @@ tags:
   - "スマートホーム"
   - "ファイル転送"
   - "ホームアプリ"
+  - "Minecraft"
+  - "ストアアプリ"
   - "れのらり"
 ---
 
