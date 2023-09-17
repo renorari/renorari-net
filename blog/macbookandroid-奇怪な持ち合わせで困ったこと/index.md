@@ -51,3 +51,8 @@ Google製のホームアプリが利用できるのは、iOSとAndroidとChromeO
 AppStoreとGoogle Play、会社が違うので、買い切りで買ったアプリは、どちらも買わないといけません。  
 (例えば、[Minecraft](https://www.minecraft.net/ja-jp/)など)  
 (ちなみにMinecraftは、Microsoft Store, Mojang Store, Google Play Store, AppStore全部持ってます)
+
+## テザリングができない
+
+Google PixelのUSBテザリングは、MacOSではできません。  
+追加のドライバをインストールするとできるらしいですが、セキュリティ的に怖いのでやっていません。
