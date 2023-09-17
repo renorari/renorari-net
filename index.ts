@@ -104,7 +104,8 @@ server.get("/blog/*", (req, res) => {
             const document = new JSDOM(contentHtml);
             const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 100) ?? "";
             const tags = info.tags.join(", ") + ", " + info.categories.join(", ");
-            res.send(html.replace(/{{content}}/g, `<main>${contentHtml}</main>`).replace(/{{title}}/g, info.title).replace(/{{description}}/g, description + "...").replace(/{{path}}/g, requestPath).replace(/{{ogp_image}}/g, "https://renorari.net/images/ogp.png").replace(/{{tags}}/g, tags));
+            const image = contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `/blog/${requestPath.replace("/blog/", "").replace(".md", "")}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "")}` : "https://renorari.net/images/ogp.png";
+            res.send(html.replace(/{{content}}/g, `<main>${contentHtml}</main>`).replace(/{{title}}/g, info.title).replace(/{{description}}/g, description + "...").replace(/{{path}}/g, requestPath).replace(/{{ogp_image}}/g, image).replace(/{{tags}}/g, tags));
         }
     });
 });
