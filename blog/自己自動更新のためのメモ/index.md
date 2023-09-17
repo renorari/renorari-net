@@ -1,5 +1,5 @@
 ---
-title: "自己自動更新のためのメモ"
+title: "GitHubで自己自動更新のためのメモ"
 date: "2023-09-17"
 categories:
   - "programming"
