@@ -9,6 +9,11 @@ tags:
   - "github"
   - "nodejs"
   - "webhook"
+  - "octokit"
+  - "child_process"
+  - "express"
+  - "自動更新"
+  - "自己自動更新"
   - "renorari"
   - "れのらり"
 ---
