@@ -1,0 +1,60 @@
+{"title": "Discord Channel Namer", "ogp_image": "https://renorari.net/images/discord-channel.png"}
+<main>
+    <section>
+        <h2>Discord Channel Namerとは</h2>
+        <p>
+            Discord Channel Namerとは、Discordのチャンネル名で大文字などの特殊文字を使用するためのツールです。
+            <br>
+            このツールでは、大文字などの特殊文字を使用したチャンネル名を生成することができます。
+        </p>
+    </section>
+    <section>
+        <h2>
+            大文字化
+        </h2>
+        <div>
+            <p>
+                下の入力欄に小文字を入れると、Discordチャンネル用の大文字化された文字列が生成されます。
+            </p>
+            <div>
+                <div id="l2u-result" style="font-size: 2em; text-align: center;"></div>
+                <input type="text" id="lowercase" placeholder="小文字を入力">
+                <button id="uppercase" onclick="uppercase()">大文字化</button>
+                <script>
+                    const l2u = {
+                        "a": "ꓮ",
+                        "b": "ꓐ",
+                        "c": "ꓚ",
+                        "d": "ꓓ",
+                        "e": "ꓰ",
+                        "f": "ꓝ",
+                        "g": "ꓖ",
+                        "h": "ꓧ",
+                        "i": "ꓲ",
+                        "j": "ꓙ",
+                        "k": "ꓗ",
+                        "l": "ꓡ",
+                        "m": "ꓟ",
+                        "n": "ꓠ",
+                        "o": "ꓳ",
+                        "p": "ꓑ",
+                        "q": "𝐐",
+                        "r": "ꓣ",
+                        "s": "ꓢ",
+                        "t": "ꓔ",
+                        "u": "ꓴ",
+                        "v": "ꓦ",
+                        "w": "ꓪ",
+                        "x": "ꓫ",
+                        "y": "ꓬ",
+                        "z": "ꓜ",
+                    }
+                    function uppercase() {
+                        const lowercase = document.getElementById("lowercase").value;
+                        const uppercase = Array.from(lowercase).map((c) => l2u[c] || c).join('');
+                        document.getElementById("l2u-result").innerHTML = uppercase;
+                    }
+                </script>
+        </div>
+    </section>
+</main>
