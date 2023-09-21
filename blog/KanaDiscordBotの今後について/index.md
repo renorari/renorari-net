@@ -1,6 +1,6 @@
 ---
 title: "Kana Discord Botの今後について"
-date: "2023-09-15"
+date: "2023-09-21"
 categories:
   - "programming"
   - "kana"
@@ -17,6 +17,10 @@ tags:
 ---
 
 ![今後のKana Discord Botについて](./images/ogp.png)
+
+## 注意
+
+この記事の内容は、撤回されました。
 
 ## はじめに
 
