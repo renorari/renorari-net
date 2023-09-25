@@ -105,7 +105,7 @@ server.get("/blog/*", (req, res) => {
             const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 100) ?? "";
             const tags = info.tags.join(", ") + ", " + info.categories.join(", ");
             const image = contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `https://renorari.net/blog/${requestPath.replace("/blog/", "").replace("/index.md", "")}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
-            res.send(html.replace(/{{content}}/g, `<main>${contentHtml}</main>`).replace(/{{title}}/g, info.title).replace(/{{description}}/g, description + "...").replace(/{{path}}/g, requestPath).replace(/{{ogp_image}}/g, image).replace(/{{tags}}/g, tags));
+            res.send(html.replace(/{{content}}/g, `<main>${contentHtml}</main>`).replace(/{{title}}/g, info.title).replace(/{{description}}/g, description + "...").replace(/{{path}}/g, requestPath.replace("index.md", "")).replace(/{{ogp_image}}/g, image).replace(/{{tags}}/g, tags));
         }
     });
 });
@@ -136,8 +136,10 @@ server.get("/sitemap.xml", (req, res) => {
         return `<url><loc>https://renorari.net${encodeURI(url)}</loc><lastmod>${lastmod}</lastmod><priority>${priority}</priority></url>`;
     });
     const blogUrls = fs.readdirSync("./blog").map((file) => {
-        const url = "/blog/" + file.replace(".md", "");
-        const lastmod = dateFns.format(fs.statSync("./blog/" + file).mtime, "yyyy-MM-dd");
+        const content = fs.readFileSync("./blog/" + file + "/index.md", "utf-8");
+        const info = extractYAMLAndMD(content).yaml as blogInfo;
+        const url = "/blog/" + file + "/";
+        const lastmod = info.date;
         return `<url><loc>https://renorari.net${encodeURI(url)}</loc><lastmod>${lastmod}</lastmod><priority>0.8</priority></url>`;
     });
     const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}${blogUrls.join()}</urlset>`;
@@ -191,7 +193,7 @@ server.get("/*", (req, res) => {
                 });
                 contentHtml = contentHtml.replace(/{{blog_posts}}/g, blogPosts.join(""));
             }
-            res.send(html.replace(/{{content}}/g, contentHtml).replace(/{{title}}/g, info.title).replace(/{{description}}/g, description + "...").replace(/{{path}}/g, requestPath).replace(/{{ogp_image}}/g, info.ogp_image).replace(/{{tags}}/g, ""));
+            res.send(html.replace(/{{content}}/g, contentHtml).replace(/{{title}}/g, info.title).replace(/{{description}}/g, description + "...").replace(/{{path}}/g, requestPath.replace("index.html", "")).replace(/{{ogp_image}}/g, info.ogp_image).replace(/{{tags}}/g, ""));
         }
     });
 });
