@@ -20,6 +20,7 @@ interface blogInfo {
     date: string;
     categories: string[];
     tags: string[];
+    coverImage: string | undefined;
 }
 
 const PORT = process.env.PORT ?? 3000;
@@ -58,7 +59,7 @@ server.get("/blog/", (req, res) => {
         const contentHtml = marked.parse(contentMd);
         const document = new JSDOM(contentHtml);
         const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 200) ?? "";
-        const image = contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `/blog/${file}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
+        const image = info.coverImage ? `/blog/${file}/images/${info.coverImage}` : contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `/blog/${file}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
         return `<a href="/blog/${file}/" class="card"><div class="card-image"><img src="${image}" alt="ogp image"></div><div class="card-content"><div class="card-title">${info.title}</div><div class="card-description">${description}...</div></div></a>`;
     });
     res.send(html.replace(/{{content}}/g, `<main><div class="panel">${files.join("")}</main>`).replace(/{{title}}/g, "ブログ").replace(/{{description}}/g, "ブログの一覧です。").replace(/{{path}}/g, "/blog/").replace(/{{ogp_image}}/g, "https://renorari.net/images/ogp.png"));
@@ -104,7 +105,7 @@ server.get("/blog/*", (req, res) => {
             const document = new JSDOM(contentHtml);
             const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 100) ?? "";
             const tags = info.tags.join(", ") + ", " + info.categories.join(", ");
-            const image = contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `https://renorari.net/blog/${requestPath.replace("/blog/", "").replace("/index.md", "")}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
+            const image = info.coverImage ? `https://renorari.net/blog/${requestPath.replace("/blog/", "").replace("/index.md", "")}/images/${info.coverImage}` : contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `https://renorari.net/blog/${requestPath.replace("/blog/", "").replace("/index.md", "")}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
             res.send(html.replace(/{{content}}/g, `<main>${contentHtml}</main>`).replace(/{{title}}/g, info.title).replace(/{{description}}/g, description + "...").replace(/{{path}}/g, requestPath.replace("index.md", "")).replace(/{{ogp_image}}/g, image).replace(/{{tags}}/g, tags));
         }
     });
