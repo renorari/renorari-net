@@ -33,9 +33,10 @@ Copilotを使用しているときは、他のウインドウの表示領域の�
 画面右側に表示されます。
 
 ![Copilot window](images/window.png)
+
 ![Copilot window](images/window2.png)
 
-CopilotはBingAIを使用していますが、ブラウザ版では最大5回までのチャットですが、  
+CopilotはBingAIを使用していて、ブラウザ版では最大5回までのチャットですが、  
 Windows版では600%の30回まで使用可能です。
 
 ## 使い方
