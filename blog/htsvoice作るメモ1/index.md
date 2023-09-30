@@ -117,6 +117,13 @@ tar jxvf HTS-demo_NIT-ATR503-M001.tar.bz2
 wget https://renorari.net/blog/htsvoice%E4%BD%9C%E3%82%8B%E3%83%A1%E3%83%A21/files/HTS-demo_NIT-ATR503-M001.patch
 cd HTS-demo_NIT-ATR503-M001
 patch -p1 -d . < ../HTS-demo_NIT-ATR503-M001.patch
+cd data/raw
+for name in *; do mv $name ${name/nitech_jp_atr503_m001_/}; done
+cd ../labels/full
+for name in *; do mv $name ${name/nitech_jp_atr503_m001_/}; done
+cd ../mono
+for name in *; do mv $name ${name/nitech_jp_atr503_m001_/}; done
+cd ../../../
 ./configure
 make
 ```
