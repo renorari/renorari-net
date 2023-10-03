@@ -24,7 +24,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #161616;
-        --transparent-background: rgba(32, 32, 32, 0.75);
+        --transparent-background: rgba(22, 22, 22, 0.75);
         --text: #ffffff;
         --text-light: #a8a8a8;
         --link: #0fedf5;
