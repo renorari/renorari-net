@@ -37,7 +37,7 @@
         --primary: #0fedf5;
         --secondary: #7ef50f;
         --new: #f50f0f;
-        --shadow: rgba(0, 0, 0, 0.1);
+        --shadow: rgba(0, 0, 0, 0.25);
         --transparent-red: hsla(355, 92%, 10%, 0.75);
         --transparent-green: hsla(90, 92%, 10%, 0.75);
     }
