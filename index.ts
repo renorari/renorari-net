@@ -32,8 +32,10 @@ const webhooks = new githubWebhooks.Webhooks({
 webhooks.on("push", async ({ payload }) => {
     if (payload.ref === "refs/heads/main") {
         cp.execSync("git pull origin main", { cwd: __dirname });
-        cp.execSync("npm install", { cwd: __dirname });
-        process.exit();
+        if (payload.commits.map(commit => commit.message).join("\n").match(/!restart/)) {
+            cp.execSync("npm install", { cwd: __dirname });
+            process.exit();
+        }
     }
 });
 
