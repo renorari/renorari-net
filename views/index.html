@@ -1,13 +1,103 @@
 {"title": "Home", "ogp_image": "https://renorari.net/images/ogp.png"}
+<style>
+    :root {
+        --background-image: url("/images/light.png");
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --background-image: url("/images/dark.png");
+        }
+    }
+
+    #fullscreen-header {
+        height: 100vh;
+    }
+
+    #fullscreen-header-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: var(--background-image);
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+        animation: hue 10s linear infinite;
+    }
+
+    @keyframes hue {
+        0% {
+            filter: hue-rotate(0deg);
+        }
+
+        100% {
+            filter: hue-rotate(360deg);
+        }
+    }
+
+    #fullscreen-header-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        clip-path: polygon(0 0, 50% 0, 75% 100%, 0 100%);
+        width: 100vw;
+        height: 100vh;
+        background: var(--background);
+    }
+
+    #fullscreen-header-content-clipped {
+        width: 62.5%;
+        height: 100%;
+        padding: 2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    @media screen and (max-width: 720px) {
+        #fullscreen-header-content {
+            clip-path: none;
+            background: none;
+        }
+
+        #fullscreen-header-content-clipped {
+            width: 100%;
+            padding: 1em;
+        }
+        
+    }
+
+    #fullscreen-header h1 {
+        font-size: 3em;
+        width: 100%;
+    }
+
+    #fullscreen-header h1::before {
+        content: "";
+        display: none;
+    }
+</style>
+<div id="fullscreen-header">
+    <div id="fullscreen-header-background"></div>
+    <div id="fullscreen-header-content">
+        <div id="fullscreen-header-content-clipped">
+            <h1>Renorari.net</h1>
+            <p>
+                このページでは、れのらりが運営しているサービスや、ソフトウェアについて紹介しています。
+            </p>
+        </div>
+    </div>
+</div>
+<script>
+    const fullscreenHeader = document.getElementById("fullscreen-header");
+    const header = document.querySelector("header");
+    const main = document.querySelector("main");
+    fullscreenHeader.insertAdjacentElement("afterend", header);
+</script>
 <main>
-    <section>
-        <h2>ようこそ</h2>
-        <p>
-            Renorari.netへようこそ！
-            <br>
-            このページでは、れのらりが運営しているサービスや、ソフトウェアについて紹介しています。
-        </p>
-    </section>
     <section>
         <h2>ブログ</h2>
         <p>
