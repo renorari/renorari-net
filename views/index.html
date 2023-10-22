@@ -69,7 +69,7 @@
             padding: 1em;
             padding-bottom: 25%;
         }
-        
+
     }
 
     #fullscreen-header h1 {
@@ -79,6 +79,30 @@
     #fullscreen-header h1::before {
         content: "";
         display: none;
+    }
+
+    #fullscreen-header #scroll-me {
+        position: absolute;
+        bottom: 1em;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2.5em;
+        animation: scroll 1s ease-in-out infinite;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        50% {
+            transform: translateX(-50%) translateY(0.5em);
+            font-size: 2em;
+        }
+
+        100% {
+            transform: translateX(-50%) translateY(0);
+        }
     }
 </style>
 <div id="fullscreen-header">
@@ -91,6 +115,9 @@
             </p>
         </div>
     </div>
+    <span id="scroll-me" class="material-symbols-rounded">
+        expand_more
+    </span>
 </div>
 <script>
     const fullscreenHeader = document.getElementById("fullscreen-header");

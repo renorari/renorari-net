@@ -756,3 +756,7 @@ code {
     font-family: 'Ubuntu Mono', monospace;
     border-radius: 0.5em;
 }
+
+.material-symbols-rounded {
+    user-select: none;
+}
