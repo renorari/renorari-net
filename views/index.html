@@ -53,9 +53,16 @@
         height: 100%;
         padding: 2em;
         display: flex;
+        flex-direction: row;
+    }
+
+    #fullscreen-header-content-text {
+        width: 100%;
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
+        flex: 1;
     }
 
     @media screen and (max-width: 720px) {
@@ -69,7 +76,12 @@
             padding: 1em;
             padding-bottom: 25%;
         }
+    }
 
+    #fullscreen-header-content-image {
+        width: 100%;
+        max-width: 5em;
+        margin-left: -1em;
     }
 
     #fullscreen-header h1 {
@@ -109,10 +121,13 @@
     <div id="fullscreen-header-background"></div>
     <div id="fullscreen-header-content">
         <div id="fullscreen-header-content-clipped">
-            <h1>Renorari.net</h1>
-            <p>
-                このページでは、れのらりが運営しているサービスや、ソフトウェアについて紹介しています。
-            </p>
+            <img src="/images/logo_nobackground.svg" alt="" id="fullscreen-header-content-image">
+            <div id="fullscreen-header-content-text">
+                <h1>Renorari.net</h1>
+                <p>
+                    このページでは、れのらりが運営しているサービスや、ソフトウェアについて紹介しています。
+                </p>
+            </div>
         </div>
     </div>
     <span id="scroll-me" class="material-symbols-rounded">
