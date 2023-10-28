@@ -100,7 +100,7 @@
         left: 50vw;
         transform: translateX(-50%);
         font-size: 2.5em;
-        animation: scroll 1s ease-in-out infinite;
+        animation: scroll 1s ease-in-out infinite, fadeout 9s ease-in-out 1s 1 both;
     }
 
     @keyframes scroll {
@@ -115,6 +115,16 @@
 
         100% {
             transform: translateX(-50%) translateY(0);
+        }
+    }
+
+    @keyframes fadeout {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
         }
     }
 </style>
