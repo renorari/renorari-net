@@ -5,6 +5,7 @@ import express from "express";
 import { JSDOM } from "jsdom";
 import * as dateFns from "date-fns";
 import marked from "marked";
+import { Routes, REST } from "discord.js";
 import * as githubWebhooks from "@octokit/webhooks";
 import generateErrorPage from "./modules/generate_error_page";
 import extractJSONAndHTML from "./modules/extract_json_and_html";
@@ -28,10 +29,34 @@ const server = express();
 const webhooks = new githubWebhooks.Webhooks({
     secret: process.env.GITHUB_WEBHOOK_SECRET ?? ""
 });
+const rest = new REST({ version: "10" });
 
 webhooks.on("push", async ({ payload }) => {
     if (payload.ref === "refs/heads/main") {
         cp.execSync("git pull origin main", { cwd: __dirname });
+        if (payload.commits.map(commit => commit.modified).flat().filter((path: string) => path.startsWith("blog/")).length > 0) {
+            const file = payload.commits.map(commit => commit.modified).flat().filter((path: string) => path.startsWith("blog/"))[0].split("/")[1];
+            const content = fs.readFileSync("./blog/" + file + "/index.md", "utf-8");
+            const extracted = extractYAMLAndMD(content);
+            const info = extracted.yaml as blogInfo;
+            const contentMd = extracted.md;
+            const contentHtml = marked.parse(contentMd);
+            const document = new JSDOM(contentHtml);
+            const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 200) ?? "";
+            const image = info.coverImage ? `/blog/${file}/images/${info.coverImage}` : contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `/blog/${file}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
+            rest.post(Routes.webhook(process.env.DISCORD_WEBHOOK_ID ?? "", process.env.DISCORD_WEBHOOK_TOKEN ?? ""), {
+                "body": {
+                    "embeds": [{
+                        title: info.title,
+                        description: description + "...",
+                        url: "https://renorari.net/blog/" + file + "/",
+                        thumbnail: {
+                            url: image
+                        }
+                    }]
+                }
+            });
+        }
         if (payload.commits.map(commit => commit.message).join("\n").match(/!rs/)) {
             cp.execSync("npm install", { cwd: __dirname });
             process.exit();
