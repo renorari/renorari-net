@@ -146,10 +146,12 @@
     </span>
 </div>
 <script>
-    const fullscreenHeader = document.getElementById("fullscreen-header");
-    const header = document.querySelector("header");
-    const main = document.querySelector("main");
-    fullscreenHeader.insertAdjacentElement("afterend", header);
+        document.addEventListener("DOMContentLoaded", function () {
+            const fullscreenHeader = document.getElementById("fullscreen-header");
+            const header = document.querySelector("header");
+            const main = document.querySelector("main");
+            fullscreenHeader.insertAdjacentElement("afterend", header);
+        });
 </script>
 <main>
     <section>
