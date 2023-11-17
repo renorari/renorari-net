@@ -159,7 +159,7 @@ table tr:last-child td:last-child {
     border-bottom-right-radius: 0.5em;
 }
 
-button {
+button, .button {
     background-color: var(--button-transparent);
     border: 1px solid var(--button-background);
     border-radius: 0.5em;
@@ -172,25 +172,34 @@ button {
     width: 100%;
     margin: 0.5em 0;
     padding: 0.5em 1em;
+    text-align: center;
+    text-decoration: none;
 }
 
 button:hover,
-button:focus {
+button:focus,
+.button:hover,
+.button:focus {
     background-color: var(--button-background);
     color: var(--button-text);
-
+    text-decoration: none;
 }
 
-button:active {
+button:active,
+.button:active {
     background-color: var(--button-active);
     color: var(--button-text);
+    text-decoration: none;
 }
 
-button:disabled {
+button:disabled,
+.button:disabled,
+.button.disabled {
     background-color: var(--button-transparent);
     border-color: var(--button-transparent);
     color: var(--text-light);
     cursor: not-allowed;
+    text-decoration: none;
 }
 
 label {
@@ -770,4 +779,27 @@ code {
 
 .material-symbols-rounded {
     user-select: none;
+}
+
+.page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.page-button {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-radius: 100vw;
+    width: 2em;
+    margin: 0.5em;
+}
+
+.page-button.next,
+.page-button.back {
+    width: auto;
 }

@@ -1,6 +1,6 @@
 ---
 title: "【強制キャンセル】XREAL公式ショップでキャンセルされた話"
-date: "2023-11-17"
+date: "2023-11-18"
 categories:
   - "xreal"
   - "ar"
@@ -52,3 +52,11 @@ XREAL air 2 Proが発売ということで、発売前に予約注文しまし�
 今後も更新していきますので、ぜひブックマークしてください。  
 また、何か情報があれば、[コンタクトページ](https://renorari.net/contact.html)にお送りください。  
 それでは、再見！
+
+---
+
+<div class="page">
+  <a class="button page-button disabled">1</a>
+  <a href="./2.md" class="button page-button">2</a>
+  <a href="./2.md" class="button page-button next">次へ</a>
+</div>
