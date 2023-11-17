@@ -1,3 +1,17 @@
+---
+title: "【強制キャンセル】XREAL公式ショップでキャンセルされた話"
+date: "2023-11-17"
+categories:
+  - "xreal"
+  - "ar"
+tags:
+  - "xreal"
+  - "air 2 pro"
+  - "キャンセル"
+  - "shopify"
+  - "強制キャンセル"
+---
+
 ## 発売日当日までの経緯
 
 XREAL air 2 Proが発売ということで、発売前に予約注文しました。  
