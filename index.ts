@@ -45,7 +45,7 @@ webhooks.on("push", async ({ payload }) => {
             const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 200) ?? "";
             const imageDir = file.split("/").slice(0, -1).join("/");
             const image = info.coverImage ? `https://renorari.net/blog/${imageDir}/images/${info.coverImage}` : contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `https://renorari.net/blog/${imageDir}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
-            rest.post(Routes.webhook(process.env.DISCORD_WEBHOOK_ID ?? "", process.env.DISCORD_WEBHOOK_TOKEN ?? ""), {
+            rest.post(Routes.webhook(process.env.DISCORD_WEBHOOK_ID ?? ""), {
                 "body": {
                     "embeds": [{
                         title: info.title,
