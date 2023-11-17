@@ -420,14 +420,12 @@ main {
 blockquote {
     border-left: 0.25em solid var(--text-light);
     padding-left: 0.5em;
-    margin-left: 1em;
 }
 
 hr {
     border: 0;
     border-top: .1em solid var(--text-light);
     margin: 1em 0;
-
 }
 
 footer {
