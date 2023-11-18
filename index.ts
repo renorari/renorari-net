@@ -5,7 +5,7 @@ import express from "express";
 import { JSDOM } from "jsdom";
 import * as dateFns from "date-fns";
 import marked from "marked";
-import { Routes, REST } from "discord.js";
+import { WebhookClient } from "discord.js";
 import * as githubWebhooks from "@octokit/webhooks";
 import generateErrorPage from "./modules/generate_error_page";
 import extractJSONAndHTML from "./modules/extract_json_and_html";
@@ -29,7 +29,7 @@ const server = express();
 const webhooks = new githubWebhooks.Webhooks({
     secret: process.env.GITHUB_WEBHOOK_SECRET ?? ""
 });
-const rest = new REST({ version: "10" });
+const discordWebhookClient = new WebhookClient({"id": process.env.DISCORD_WEBHOOK_ID ?? "", "token": process.env.DISCORD_WEBHOOK_TOKEN ?? ""});
 
 webhooks.on("push", async ({ payload }) => {
     if (payload.ref === "refs/heads/main") {
@@ -45,17 +45,15 @@ webhooks.on("push", async ({ payload }) => {
             const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 200) ?? "";
             const imageDir = file.split("/").slice(0, -1).join("/");
             const image = info.coverImage ? `https://renorari.net/blog/${imageDir}/images/${info.coverImage}` : contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `https://renorari.net/blog/${imageDir}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
-            rest.post(Routes.webhook(process.env.DISCORD_WEBHOOK_ID ?? "", process.env.DISCORD_WEBHOOK_TOKEN), {
-                "body": {
-                    "embeds": [{
-                        title: info.title,
-                        description: description + "...",
-                        url: "https://renorari.net/blog/" + file + "/",
-                        thumbnail: {
-                            url: image
-                        }
-                    }]
-                }
+            discordWebhookClient.send({
+                embeds: [{
+                    title: info.title,
+                    description: description + "...",
+                    url: "https://renorari.net/blog/" + file + "/",
+                    thumbnail: {
+                        url: image
+                    }
+                }]
             });
         }
         if (payload.commits.map(commit => commit.message).join("\n").match(/!rs/)) {
