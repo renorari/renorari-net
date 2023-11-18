@@ -85,7 +85,7 @@ server.get("/blog/", (req, res) => {
         const contentHtml = marked.parse(contentMd);
         const document = new JSDOM(contentHtml);
         const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 200) ?? "";
-        const imageDir = file.split("/").slice(0, -1).join("/");
+        const imageDir = file;
         const image = info.coverImage ? `/blog/${imageDir}/images/${info.coverImage}` : contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `/blog/${imageDir}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
         return `<a href="/blog/${file}/" class="card"><div class="card-image"><img src="${image}" alt="ogp image"></div><div class="card-content"><div class="card-title">${info.title}</div><div class="card-description">${description}...</div></div></a>`;
     });
