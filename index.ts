@@ -50,7 +50,7 @@ webhooks.on("push", async ({ payload }) => {
                     title: info.title,
                     description: description + "...",
                     url: "https://renorari.net/blog/" + file + "/",
-                    thumbnail: {
+                    image: {
                         url: image
                     }
                 }]
