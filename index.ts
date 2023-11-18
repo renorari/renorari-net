@@ -43,8 +43,7 @@ webhooks.on("push", async ({ payload }) => {
             const contentHtml = marked.parse(contentMd);
             const document = new JSDOM(contentHtml);
             const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 200) ?? "";
-            const imageDir = file.split("/").slice(0, -1).join("/");
-            console.log(imageDir)
+            const imageDir = file;
             const image = info.coverImage ? `https://renorari.net/blog/${imageDir}/images/${info.coverImage}` : contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `https://renorari.net/blog/${imageDir}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
             discordWebhookClient.send({
                 embeds: [{
