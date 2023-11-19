@@ -46,6 +46,7 @@ webhooks.on("push", async ({ payload }) => {
             const imageDir = file;
             const image = info.coverImage ? `https://renorari.net/blog/${imageDir}/images/${info.coverImage}` : contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `https://renorari.net/blog/${imageDir}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
             discordWebhookClient.send({
+                content: `<@&1089541200958197820> ブログが更新されました!\n# [${info.title}](https://renorari.net/blog/${file}/)`,
                 embeds: [{
                     title: info.title,
                     description: description + "...",
