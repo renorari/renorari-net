@@ -59,5 +59,6 @@ XREAL air 2 Proが発売ということで、発売前に予約注文しまし�
   <a class="button page-button disabled">1</a>
   <a href="./2.md" class="button page-button">2</a>
   <a href="./3.md" class="button page-button">3</a>
+  <a href="./4.md" class="button page-button">4</a>
   <a href="./2.md" class="button page-button next">次へ</a>
 </div>
