@@ -11,6 +11,7 @@ import generateErrorPage from "./modules/generate_error_page";
 import extractJSONAndHTML from "./modules/extract_json_and_html";
 import extractYAMLAndMD from "./modules/extract_yaml_and_md";
 import unicodeEscape from "./modules/unicode_escape";
+import toRFC822 from "./modules/date_toRFC822";
 
 dotenv.config();
 
@@ -192,7 +193,7 @@ server.get("/rss.xml", (req, res) => {
         const content = fs.readFileSync(file, "utf-8");
         const extracted = extractJSONAndHTML(content);
         const url = file.replace("./views", "").replace("index.html", "");
-        const lastmod = dateFns.format(fs.statSync(file).mtime, "EEE, dd MMM yyyy HH:mm:ss OOOO");
+        const lastmod = toRFC822(fs.statSync(file).mtime);
         const title = unicodeEscape(extracted.json.title ?? "");
         return `<item><title>${title}</title><link>https://renorari.net${encodeURI(url)}</link><guid>https://renorari.net${encodeURI(url)}</guid><pubDate>${lastmod}</pubDate></item>`;
     });
@@ -200,7 +201,7 @@ server.get("/rss.xml", (req, res) => {
         const content = fs.readFileSync("./blog/" + file + "/index.md", "utf-8");
         const info = extractYAMLAndMD(content).yaml as blogInfo;
         const url = "/blog/" + file + "/";
-        const lastmod = dateFns.format(new Date(info.date), "EEE, dd MMM yyyy HH:mm:ss OOOO");
+        const lastmod = toRFC822(new Date(info.date));
         const title = unicodeEscape(info.title);
         return `<item><title>${title}</title><link>https://renorari.net${encodeURI(url)}</link><guid>https://renorari.net${encodeURI(url)}</guid><pubDate>${lastmod}</pubDate></item>`;
     });
