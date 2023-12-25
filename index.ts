@@ -10,6 +10,7 @@ import * as githubWebhooks from "@octokit/webhooks";
 import generateErrorPage from "./modules/generate_error_page";
 import extractJSONAndHTML from "./modules/extract_json_and_html";
 import extractYAMLAndMD from "./modules/extract_yaml_and_md";
+import unicodeEscape from "./modules/unicode_escape";
 
 dotenv.config();
 
@@ -173,6 +174,37 @@ server.get("/sitemap.xml", (req, res) => {
         return `<url><loc>https://renorari.net${encodeURI(url)}</loc><lastmod>${lastmod}</lastmod><priority>0.8</priority></url>`;
     });
     const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}${blogUrls.join()}</urlset>`;
+    res.header("Content-Type", "text/xml");
+    res.send(xml);
+});
+
+server.get("/rss.xml", (req, res) => {
+    const getFiles = (dir: string): string[] => {
+        const dirents = fs.readdirSync(dir, { withFileTypes: true });
+        const files = dirents.map((dirent) => {
+            const res = dir + "/" + dirent.name;
+            return dirent.isDirectory() ? getFiles(res) : res;
+        });
+        return Array.prototype.concat(...files);
+    };
+    const files = getFiles("./views");
+    const items = files.filter((file) => file.endsWith(".html")).map((file) => {
+        const content = fs.readFileSync(file, "utf-8");
+        const extracted = extractJSONAndHTML(content);
+        const url = file.replace("./views", "").replace("index.html", "");
+        const lastmod = dateFns.format(fs.statSync(file).mtime, "EEE, dd MMM yyyy HH:mm:ss OOOO");
+        const title = unicodeEscape(extracted.json.title ?? "");
+        return `<item><title>${title}</title><link>https://renorari.net${encodeURI(url)}</link><guid>https://renorari.net${encodeURI(url)}</guid><pubDate>${lastmod}</pubDate></item>`;
+    });
+    const blogItems = fs.readdirSync("./blog").map((file) => {
+        const content = fs.readFileSync("./blog/" + file + "/index.md", "utf-8");
+        const info = extractYAMLAndMD(content).yaml as blogInfo;
+        const url = "/blog/" + file + "/";
+        const lastmod = dateFns.format(new Date(info.date), "EEE, dd MMM yyyy HH:mm:ss OOOO");
+        const title = unicodeEscape(info.title);
+        return `<item><title>${title}</title><link>https://renorari.net${encodeURI(url)}</link><guid>https://renorari.net${encodeURI(url)}</guid><pubDate>${lastmod}</pubDate></item>`;
+    });
+    const xml = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>renorari.net</title><link>https://renorari.net/</link><description>renorari.net</description><lastBuildDate>${dateFns.format(new Date(), "EEE, dd MMM yyyy HH:mm:ss OOOO")}</lastBuildDate>${items.join("")}${blogItems.join("")}</channel></rss>`;
     res.header("Content-Type", "text/xml");
     res.send(xml);
 });
