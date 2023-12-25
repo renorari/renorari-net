@@ -205,7 +205,7 @@ server.get("/rss.xml", (req, res) => {
         const title = unicodeEscape(info.title);
         return `<item><title>${title}</title><link>https://renorari.net${encodeURI(url)}</link><guid>https://renorari.net${encodeURI(url)}</guid><pubDate>${lastmod}</pubDate></item>`;
     });
-    const xml = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>renorari.net</title><link>https://renorari.net/</link><description>renorari.net</description><lastBuildDate>${dateFns.format(new Date(), "EEE, dd MMM yyyy HH:mm:ss OOOO")}</lastBuildDate>${items.join("")}${blogItems.join("")}</channel></rss>`;
+    const xml = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>renorari.net</title><link>https://renorari.net/</link><description>renorari.net</description><lastBuildDate>${toRFC822(new Date())}</lastBuildDate><atom:link href="https://renorari.net/rss.xml" rel="self" type="application/rss+xml" />${items.join("")}${blogItems.join("")}</channel></rss>`;
     res.header("Content-Type", "text/xml");
     res.send(xml);
 });
