@@ -12,7 +12,7 @@ function unicodeEscape(str: string) {
 
     for (let i = 0, len = strs.length; i < len; i++) {
         hex = strs[i].charCodeAt(0).toString(16);
-        result += "\\u" + ("0".repeat(Math.abs(hex.length - 4))) + hex;
+        result += "&#x" + ("0".repeat(Math.abs(hex.length - 4))) + hex +";";
     }
 
     return result;
