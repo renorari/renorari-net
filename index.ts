@@ -230,7 +230,7 @@ server.get("/*", (req, res) => {
             const info = extracted.json;
             let contentHtml = extracted.html;
             const document = new JSDOM(contentHtml);
-            const description = Object.keys(info).includes("description") ? info.description : document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 100) ?? "";
+            const description = Object.keys(info).includes("description") ? info.description : (document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 100) ?? "") + "...";
             if (content.match(/{{blog_posts}}/) !== null) {
                 //最近のものを4つ表示
                 const blogPosts = fs.readdirSync("./blog").sort((a, b) => {
@@ -256,7 +256,7 @@ server.get("/*", (req, res) => {
                 });
                 contentHtml = contentHtml.replace(/{{blog_posts}}/g, blogPosts.join(""));
             }
-            res.send(html.replace(/{{content}}/g, contentHtml).replace(/{{title}}/g, info.title).replace(/{{description}}/g, description + "...").replace(/{{path}}/g, requestPath.replace("index.html", "")).replace(/{{ogp_image}}/g, info.ogp_image).replace(/{{tags}}/g, ""));
+            res.send(html.replace(/{{content}}/g, contentHtml).replace(/{{title}}/g, info.title).replace(/{{description}}/g, description).replace(/{{path}}/g, requestPath.replace("index.html", "")).replace(/{{ogp_image}}/g, info.ogp_image).replace(/{{tags}}/g, ""));
         }
     });
 });
