@@ -230,7 +230,7 @@ server.get("/*", (req, res) => {
             const info = extracted.json;
             let contentHtml = extracted.html;
             const document = new JSDOM(contentHtml);
-            const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 100) ?? "";
+            const description = Object.keys(info).includes("description") ? info.description : document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 100) ?? "";
             if (content.match(/{{blog_posts}}/) !== null) {
                 //最近のものを4つ表示
                 const blogPosts = fs.readdirSync("./blog").sort((a, b) => {
