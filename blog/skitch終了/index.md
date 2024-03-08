@@ -22,7 +22,7 @@ tags:
 
 Skitch for Macが、App Storeから削除されました。
 
-![AppStoreで利用できないという表示](./images/スクリーンショット 2024-03-08 23.43.05.png)
+![AppStoreで利用できないという表示](./images/スクリーンショット%202024-03-08_23_43_05.png)
 
 また、Evernote公式サイトにもSkitchのページがなくなり、Skitchのサービスが終了したことがわかります。
 
