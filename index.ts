@@ -256,7 +256,7 @@ server.get("/*", (req, res) => {
                 });
                 contentHtml = contentHtml.replace(/{{blog_posts}}/g, blogPosts.join(""));
             }
-            res.send(html.replace(/{{content}}/g, contentHtml).replace(/{{title}}/g, info.title + " - Renorari").replace(/{{description}}/g, description).replace(/{{path}}/g, requestPath.replace("index.html", "")).replace(/{{ogp_image}}/g, info.ogp_image).replace(/{{tags}}/g, ""));
+            res.send(html.replace(/{{content}}/g, contentHtml).replace(/{{title}}/g, info.title).replace(/{{description}}/g, description).replace(/{{path}}/g, requestPath.replace("index.html", "")).replace(/{{ogp_image}}/g, info.ogp_image).replace(/{{tags}}/g, ""));
         }
     });
 });
