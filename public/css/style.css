@@ -124,6 +124,10 @@ img {
     border-radius: 0.5em;
 }
 
+main img {
+    margin-bottom: 0.5rem;
+}
+
 table {
     border-collapse: separate;
     border-spacing: 0;
