@@ -1,6 +1,6 @@
 ---
 title: "GeminiがPixelにも来た"
-date: "2023-04-25"
+date: "2024-04-25"
 categories: 
   - "google"
   - "gemini"
