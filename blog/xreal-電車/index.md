@@ -1,6 +1,6 @@
 ---
 title: "電車でXREALを使ったら便利すぎた"
-date: "2024-2-23"
+date: "2024-02-23"
 categories: 
   - "mac"
   - "xreal"
