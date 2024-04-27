@@ -23,7 +23,7 @@ tags:
 この記事は、Discord.jsで受信できる断続的な音声の穴埋めをするストリームのメモです。
 
 ```ts
-class fillSilenceStream extends stream.Transform {
+class FillSilenceStream extends stream.Transform {
     current: Buffer[];
     interval: NodeJS.Timeout;
 
