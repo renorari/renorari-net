@@ -26,12 +26,32 @@ interface blogInfo {
     coverImage: string | undefined;
 }
 
+interface UserCollection {
+    [key: string]: {
+        userId: string;
+        reason: string;
+    };
+}
+
 const PORT = process.env.PORT ?? 3000;
 const server = express();
 const webhooks = new githubWebhooks.Webhooks({
     secret: process.env.GITHUB_WEBHOOK_SECRET ?? ""
 });
 const discordWebhookClient = new WebhookClient({"id": process.env.DISCORD_WEBHOOK_ID ?? "", "token": process.env.DISCORD_WEBHOOK_TOKEN ?? ""});
+
+let nrUsers: UserCollection = {};
+let nrGuilds: UserCollection = {};
+let ugcMutedUsers: UserCollection = {};
+let ugcMutedGuilds: UserCollection = {};
+async function blockedUserCollectionUpdate() {
+    nrUsers = await fetch("https://kana.renorari.net/api/v2/discord/nr_users").then((response) => response.json());
+    nrGuilds = await fetch("https://kana.renorari.net/api/v2/discord/nr_guilds").then((response) => response.json());
+    ugcMutedUsers = await fetch("https://kana.renorari.net/api/v2/discord/muted_users").then((response) => response.json());
+    ugcMutedGuilds = await fetch("https://kana.renorari.net/api/v2/discord/muted_guilds").then((response) => response.json());
+}
+blockedUserCollectionUpdate();
+setInterval(blockedUserCollectionUpdate, 1000 * 60);
 
 webhooks.on("push", async ({ payload }) => {
     if (payload.ref === "refs/heads/main") {
@@ -140,6 +160,14 @@ server.get("/blog/*", (req, res) => {
             res.send(html.replace(/{{content}}/g, `<main>${contentHtml}</main>`).replace(/{{title}}/g, info.title).replace(/{{description}}/g, description + "...").replace(/{{path}}/g, requestPath.replace("index.md", "")).replace(/{{ogp_image}}/g, image).replace(/{{tags}}/g, tags));
         }
     });
+});
+
+server.get("/api/block-checker/:id", (req, res) => {
+    const id = req.params.id;
+    const kana = Object.keys(nrUsers).includes(id) || Object.keys(nrGuilds).includes(id);
+    const ugc = Object.keys(ugcMutedUsers).includes(id) || Object.keys(ugcMutedGuilds).includes(id);
+    console.log(id, kana, ugc, nrUsers, nrGuilds, ugcMutedUsers, ugcMutedGuilds);
+    res.json({ kana, ugc, takasumibot: false });
 });
 
 server.get("*", (req, res, next) => {

@@ -15,6 +15,7 @@
     --pop-background: #e7fdfe;
     --primary: #079ca2;
     --secondary: #52a207;
+    --danger: #a20c07;
     --new: #f50f0f;
     --shadow: rgba(0, 0, 0, 0.1);
     --transparent-red: hsla(355, 92%, 95%, 0.75);
@@ -36,6 +37,7 @@
         --pop-background: #022f31;
         --primary: #0fedf5;
         --secondary: #7ef50f;
+        --danger: #f5170f;
         --new: #f50f0f;
         --shadow: rgba(0, 0, 0, 0.25);
         --transparent-red: hsla(355, 92%, 10%, 0.75);
