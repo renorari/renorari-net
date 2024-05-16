@@ -62,7 +62,7 @@
                 </div>
                 <div class="card" id="result-takasumibot">
                     <h4>TakasumiBOT</h4>
-                    <p>現在確認することはできません</p>
+                    <p>未確認</p>
                 </div>
             </div>
         </div>
@@ -87,7 +87,7 @@
                         button.value = "Check";
                         updateBlockStatus("#result-kana", data.kana);
                         updateBlockStatus("#result-ugc", data.ugc);
-                        //updateBlockStatus("#result-takasumibot", false);
+                        updateBlockStatus("#result-takasumibot", data.takasumibot);
                     });
             }
         </script>
