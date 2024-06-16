@@ -90,6 +90,15 @@
                         updateBlockStatus("#result-takasumibot", data.takasumibot);
                     });
             }
+
+            document.addEventListener("DOMContentLoaded", () => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const userId = urlParams.get("id");
+                if (userId) {
+                    input.value = userId;
+                    checkBlock();
+                }
+            });
         </script>
     </section>
     <section>

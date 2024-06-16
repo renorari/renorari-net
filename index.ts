@@ -246,7 +246,7 @@ server.get("/rss.xml", (req, res) => {
 });
 
 server.get("/*", (req, res) => {
-    let requestPath = decodeURI(req.url.endsWith("/") ? req.url + "index.html" : req.url).replace(/\.\./g, "");
+    let requestPath = decodeURI(req.url.endsWith("/") ? req.url + "index.html" : req.url).replace(/\.\./g, "").split("?")[0];
     const redirect = redirects.locate.filter((redirect: { from: string; to: string; }) => redirect.from == requestPath)[0];
     (redirect) && (requestPath = redirect.to);
     const contentPath = requestPath.replace("/", "./views/");
