@@ -110,6 +110,19 @@
             color: #000;
             text-decoration: none;
         }
+
+        button {
+            background: #1747E5;
+            color: #fff;
+            border: none;
+            border-radius: .5rem;
+            padding: .5rem 1rem;
+            cursor: pointer;
+        }
+
+        footer {
+            font-size: .5rem;
+        }
     </style>
 </head>
 
@@ -335,6 +348,36 @@
                 <td>さいばれすきー(Miskey)</td>
                 <td><a href="https://mi.cbrx.io/@renorari">@renorari@mi.cbrx.io</a></td>
         </table>
+
+        <h2>
+            Download
+        </h2>
+        <div>
+            <button onclick="vcfDownload()">Download vCard</button>
+            <script>
+                async function vcfDownload() {
+                    const vcf = `BEGIN:VCARD\nVERSION:3.0\nN:中野楽士\nFN:NAKANO Gakuto\nORG:NIT Nagaoka Col., Dep. EC;Derta Gig Stu. Member;Sleepers (SW Nagaoka);Deliheart Dev.;QuettaPlex CTO;Nagaoka DAO;DevelopersPackages.org Member\nTEL;TYPE=CELL:070-9029-2952\nEMAIL:gakuchan.256@gmail.com\nURL:https:/renorari.net/\nPHOTO;ENCODING=b;TYPE=PNG:${
+                    await fetch('./gakuto_2024.png')
+                        .then(res => res.blob())
+                        .then(blob => new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.onload = () => resolve(reader.result);
+                            reader.onerror = reject;
+                            reader.readAsDataURL(blob);
+                        }))
+                        .then(dataUrl => dataUrl.replace(/^data:image\/(png|jpeg);base64,/, ''))
+                    }\nEND:VCARD`;
+                    const blob = new Blob([vcf], {
+                        type: 'text/x-vcard'
+                    });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'nakano_gakuto.vcf';
+                    a.click();
+                }
+            </script>
+        </div>
     </main>
 
     <footer>
