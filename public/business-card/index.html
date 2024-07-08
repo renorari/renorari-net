@@ -104,6 +104,10 @@
             text-decoration: underline;
         }
 
+        ul {
+            margin-inline-start: 1rem;
+        }
+
         .cards {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
@@ -128,6 +132,16 @@
             border-radius: .5rem;
             padding: .5rem 1rem;
             cursor: pointer;
+            transition: box-shadow .125s, transform .125s;
+        }
+
+        button:hover {
+            box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.1);
+        }
+
+        button:active {
+            transform: translateY(.1rem);
+            box-shadow: none;
         }
 
         footer {
