@@ -55,6 +55,9 @@
                 <div class="card" id="result-kana">
                     <h4>Kana / VoiceJP</h4>
                     <p>未確認</p>
+                    <div>
+                        ブロック解除の可能性: <span id="result-kana-removable">未確認</span>
+                    </div>
                 </div>
                 <div class="card" id="result-ugc">
                     <h4>UGC</h4>
@@ -88,6 +91,9 @@
                         updateBlockStatus("#result-kana", data.kana);
                         updateBlockStatus("#result-ugc", data.ugc);
                         updateBlockStatus("#result-takasumibot", data.takasumibot);
+                        if (data.kana) {
+                            document.getElementById("result-kana-removable").textContent = data.kana_is_removable ? "可能" : "不可能";
+                        }
                     });
             }
 

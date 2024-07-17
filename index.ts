@@ -38,7 +38,7 @@ const server = express();
 const webhooks = new githubWebhooks.Webhooks({
     secret: process.env.GITHUB_WEBHOOK_SECRET ?? ""
 });
-const discordWebhookClient = new WebhookClient({"id": process.env.DISCORD_WEBHOOK_ID ?? "", "token": process.env.DISCORD_WEBHOOK_TOKEN ?? ""});
+const discordWebhookClient = new WebhookClient({ "id": process.env.DISCORD_WEBHOOK_ID ?? "", "token": process.env.DISCORD_WEBHOOK_TOKEN ?? "" });
 
 let nrUsers: UserCollection = {};
 let nrGuilds: UserCollection = {};
@@ -192,7 +192,10 @@ server.get("/api/block-checker/:id", (req, res) => {
     const kana = Object.keys(nrUsers).includes(id) || Object.keys(nrGuilds).includes(id);
     const ugc = Object.keys(ugcMutedUsers).includes(id) || Object.keys(ugcMutedGuilds).includes(id);
     const takasumibot = Object.keys(takasumibotMuted).includes(id);
-    res.json({ kana, ugc, takasumibot});
+    res.json({
+        kana, ugc, takasumibot,
+        kana_is_removable: Object.keys(nrUsers).includes(id) ? (nrUsers[id].reason.includes("荒らし関連のユーザー") ? true : false) : null
+    });
 });
 
 server.get("*", (req, res, next) => {
