@@ -40,31 +40,48 @@ const webhooks = new githubWebhooks.Webhooks({
 });
 const discordWebhookClient = new WebhookClient({ "id": process.env.DISCORD_WEBHOOK_ID ?? "", "token": process.env.DISCORD_WEBHOOK_TOKEN ?? "" });
 
+const kanaUrl = process.env.KANA_URL ?? "https://kana.renorari.net";
 let nrUsers: UserCollection = {};
 let nrGuilds: UserCollection = {};
 let ugcMutedUsers: UserCollection = {};
 let ugcMutedGuilds: UserCollection = {};
 let takasumibotMuted: UserCollection = {};
 async function blockedUserCollectionUpdate() {
-    fetch("https://kana.renorari.net/api/v2/discord/nr_users").then((response) => {
+    fetch(`${kanaUrl}/api/v2/discord/nr_users`).then((response) => {
         response.ok && response.json().then((json) => {
             nrUsers = json;
+        }).catch((error) => {
+            console.error(error);
         });
+    }).catch((error) => {
+        console.error(error);
     });
-    fetch("https://kana.renorari.net/api/v2/discord/nr_guilds").then((response) => {
+    fetch(`${kanaUrl}/api/v2/discord/nr_guilds`).then((response) => {
         response.ok && response.json().then((json) => {
             nrGuilds = json;
+        }).catch((error) => {
+            console.error(error);
         });
+    }).catch((error) => {
+        console.error(error);
     });
-    fetch("https://kana.renorari.net/api/v2/discord/muted_users").then((response) => {
+    fetch(`${kanaUrl}/api/v2/discord/muted_users`).then((response) => {
         response.ok && response.json().then((json) => {
             ugcMutedUsers = json;
+        }).catch((error) => {
+            console.error(error);
         });
+    }).catch((error) => {
+        console.error(error);
     });
-    fetch("https://kana.renorari.net/api/v2/discord/muted_guilds").then((response) => {
+    fetch(`${kanaUrl}/api/v2/discord/muted_guilds`).then((response) => {
         response.ok && response.json().then((json) => {
             ugcMutedGuilds = json;
+        }).catch((error) => {
+            console.error(error);
         });
+    }).catch((error) => {
+        console.error(error);
     });
     fetch("https://api.takasumibot.com/v1/mute_user").then((response) => {
         response.ok && response.json().then((json: { success: boolean; message: string | null; data: { id: string; reason: string; time: string; }[]; }) => {
@@ -72,7 +89,11 @@ async function blockedUserCollectionUpdate() {
             json.data.forEach((user) => {
                 takasumibotMuted[user.id] = { userId: user.id, reason: user.reason };
             });
+        }).catch((error) => {
+            console.error(error);
         });
+    }).catch((error) => {
+        console.error(error);
     });
 }
 blockedUserCollectionUpdate();
