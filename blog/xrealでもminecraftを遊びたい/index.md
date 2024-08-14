@@ -43,9 +43,6 @@ Fabricが導入できたら、以下のModを導入します。
 - [Text Placeholder API](https://modrinth.com/mod/placeholder-api) - Mod Menuの依存Mod
 - [YetAnotherConfigLib](https://modrinth.com/mod/yacl) - Stereopsisの依存Mod
 
-まだ、Stereopsisのバージョン1.2.4はリリースされていませんので、下のリンクからRenorari版をダウンロードしてください。  
-[Renorari版Stereopsis 1.2.4](files/Stereopsis-1.2.4.jar)
-
 ### Minecraftの起動
 
 #### Stereopsisの設定
