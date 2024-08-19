@@ -10,6 +10,8 @@ tags:
   - "modrinth"
 ---
 
+![OGP](./images/ogp.png)
+
 こんにちは！  
 Minecraft 6年プレイヤーの私がお勧めする、Minecraftを軽量化するModをまとめてインストールする方法を紹介します。
 
