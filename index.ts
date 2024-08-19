@@ -340,5 +340,5 @@ server.get("/*", (req, res) => {
 });
 
 server.listen(PORT, () => {
-    console.log("Server is started on http://localhost:" + PORT);
+    console.log("Server is started on http://127.0.0.1:" + PORT);
 });
