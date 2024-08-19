@@ -197,13 +197,13 @@ server.get("/blog/*", (req, res) => {
             const extracted = extractYAMLAndMD(content);
             const info = extracted.yaml as blogInfo;
             const contentMd = extracted.md;
-            const contentHtml = marked.parse(contentMd);
+            const contentHtml = `<h1>${info.title}</h1>\n` + marked.parse(contentMd);
             const document = new JSDOM(contentHtml);
             const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 100) ?? "";
             const tags = info.tags.join(", ") + ", " + info.categories.join(", ");
             const imageDir = requestPath.replace("/blog/", "").split("/").slice(0, -1).join("/");
             const image = info.coverImage ? `https://renorari.net/blog/${imageDir}/images/${info.coverImage}` : contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `https://renorari.net/blog/${imageDir}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
-            res.send(html.replace(/{{content}}/g, `<main>${contentHtml}</main>`).replace(/{{title}}/g, info.title).replace(/{{description}}/g, description + "...").replace(/{{path}}/g, requestPath.replace("index.md", "")).replace(/{{ogp_image}}/g, image).replace(/{{tags}}/g, tags));
+            res.send(html.replace(/{{content}}/g, `<main>${contentHtml}</main>`).replace(/{{title}}/g, "ブログ").replace(/{{description}}/g, description + "...").replace(/{{path}}/g, requestPath.replace("index.md", "")).replace(/{{ogp_image}}/g, image).replace(/{{tags}}/g, tags));
         }
     });
 });
