@@ -197,7 +197,8 @@ server.get("/blog/*", (req, res) => {
             const extracted = extractYAMLAndMD(content);
             const info = extracted.yaml as blogInfo;
             const contentMd = extracted.md;
-            const contentHtml = `<h1>${info.title}</h1>\n` + marked.parse(contentMd);
+            const dateText = new Date(info.date).toLocaleDateString("ja-JP", { year: "numeric", month: "long", day: "numeric" });
+            const contentHtml = `<h1 class="blog-title">${info.title}</h1>\n<div class="update-date">最終更新: ${dateText}</div>` + marked.parse(contentMd);
             const document = new JSDOM(contentHtml);
             const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 100) ?? "";
             const tags = info.tags.join(", ") + ", " + info.categories.join(", ");

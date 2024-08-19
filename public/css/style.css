@@ -810,3 +810,13 @@ code {
 .page-button.back {
     width: auto;
 }
+
+.blog-title {
+    margin-bottom: 0;
+}
+
+.update-date {
+    font-size: 0.75em;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
