@@ -574,6 +574,7 @@ footer #links ul li a:hover {
     align-items: stretch;
     margin: 0;
     padding: 0;
+    gap: 1em;
 }
 
 .card {
@@ -582,7 +583,6 @@ footer #links ul li a:hover {
     -webkit-backdrop-filter: blur(16px);
     border-radius: 0.5em;
     box-shadow: 0 0 0.5em var(--shadow);
-    margin: 0.5em;
     margin-bottom: 2em;
     padding: 0;
     width: 100%;
