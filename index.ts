@@ -136,28 +136,29 @@ server.use(githubWebhooks.createNodeMiddleware(webhooks));
 server.use(express.static("public"));
 
 server.get("/blog/", (req, res) => {
-    const files = fs.readdirSync("./blog").sort((a, b) => {
-        const contentA = fs.readFileSync("./blog/" + a + "/index.md", "utf-8");
-        const extractedA = extractYAMLAndMD(contentA);
-        const infoA = extractedA.yaml as blogInfo;
-        const dateA = new Date(infoA.date);
-        const contentB = fs.readFileSync("./blog/" + b + "/index.md", "utf-8");
-        const extractedB = extractYAMLAndMD(contentB);
-        const infoB = extractedB.yaml as blogInfo;
-        const dateB = new Date(infoB.date);
-        return dateA > dateB ? -1 : 1;
-    }).map((file) => {
-        const content = fs.readFileSync("./blog/" + file + "/index.md", "utf-8");
-        const extracted = extractYAMLAndMD(content);
-        const info = extracted.yaml as blogInfo;
-        const contentMd = extracted.md;
-        const contentHtml = marked.parse(contentMd);
-        const document = new JSDOM(contentHtml);
-        const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 200) ?? "";
-        const imageDir = file;
-        const image = info.coverImage ? `/blog/${imageDir}/images/${info.coverImage}` : contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `/blog/${imageDir}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
-        return `<a href="/blog/${file}/" class="card"><div class="card-image"><img src="${image}" alt="ogp image"></div><div class="card-content"><div class="card-title">${info.title}</div><div class="card-description">${description}...</div></div></a>`;
-    });
+    const files = fs.readdirSync("./blog").filter((file) => fs.statSync("./blog/" + file).isDirectory())
+        .sort((a, b) => {
+            const contentA = fs.readFileSync("./blog/" + a + "/index.md", "utf-8");
+            const extractedA = extractYAMLAndMD(contentA);
+            const infoA = extractedA.yaml as blogInfo;
+            const dateA = new Date(infoA.date);
+            const contentB = fs.readFileSync("./blog/" + b + "/index.md", "utf-8");
+            const extractedB = extractYAMLAndMD(contentB);
+            const infoB = extractedB.yaml as blogInfo;
+            const dateB = new Date(infoB.date);
+            return dateA > dateB ? -1 : 1;
+        }).map((file) => {
+            const content = fs.readFileSync("./blog/" + file + "/index.md", "utf-8");
+            const extracted = extractYAMLAndMD(content);
+            const info = extracted.yaml as blogInfo;
+            const contentMd = extracted.md;
+            const contentHtml = marked.parse(contentMd);
+            const document = new JSDOM(contentHtml);
+            const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 200) ?? "";
+            const imageDir = file;
+            const image = info.coverImage ? `/blog/${imageDir}/images/${info.coverImage}` : contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `/blog/${imageDir}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
+            return `<a href="/blog/${file}/" class="card"><div class="card-image"><img src="${image}" alt="ogp image"></div><div class="card-content"><div class="card-title">${info.title}</div><div class="card-description">${description}...</div></div></a>`;
+        });
     res.send(html.replace(/{{content}}/g, `<main><div class="panel">${files.join("")}</main>`).replace(/{{title-full}}/g, "{{title}}").replace(/{{title}}/g, "ブログ").replace(/{{description}}/g, "ブログの一覧です。").replace(/{{path}}/g, "/blog/").replace(/{{ogp_image}}/g, "https://renorari.net/images/ogp.png"));
 });
 
@@ -245,13 +246,14 @@ server.get("/sitemap.xml", (req, res) => {
         const priority = Math.max(1 - (url.split("/").length - 2) * 0.1, 0.5);
         return `<url><loc>https://renorari.net${encodeURI(url)}</loc><lastmod>${lastmod}</lastmod><priority>${priority}</priority></url>`;
     });
-    const blogUrls = fs.readdirSync("./blog").map((file) => {
-        const content = fs.readFileSync("./blog/" + file + "/index.md", "utf-8");
-        const info = extractYAMLAndMD(content).yaml as blogInfo;
-        const url = "/blog/" + file + "/";
-        const lastmod = info.date;
-        return `<url><loc>https://renorari.net${encodeURI(url)}</loc><lastmod>${lastmod}</lastmod><priority>0.8</priority></url>`;
-    });
+    const blogUrls = fs.readdirSync("./blog").filter((file) => fs.statSync("./blog/" + file).isDirectory())
+        .map((file) => {
+            const content = fs.readFileSync("./blog/" + file + "/index.md", "utf-8");
+            const info = extractYAMLAndMD(content).yaml as blogInfo;
+            const url = "/blog/" + file + "/";
+            const lastmod = info.date;
+            return `<url><loc>https://renorari.net${encodeURI(url)}</loc><lastmod>${lastmod}</lastmod><priority>0.8</priority></url>`;
+        });
     const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}${blogUrls.join()}</urlset>`;
     res.header("Content-Type", "text/xml");
     res.send(xml);
@@ -275,14 +277,15 @@ server.get("/rss.xml", (req, res) => {
         const title = unicodeEscape(extracted.json.title ?? "");
         return `<item><title>${title}</title><link>https://renorari.net${encodeURI(url)}</link><guid>https://renorari.net${encodeURI(url)}</guid><pubDate>${lastmod}</pubDate></item>`;
     });
-    const blogItems = fs.readdirSync("./blog").map((file) => {
-        const content = fs.readFileSync("./blog/" + file + "/index.md", "utf-8");
-        const info = extractYAMLAndMD(content).yaml as blogInfo;
-        const url = "/blog/" + file + "/";
-        const lastmod = toRFC822(new Date(info.date));
-        const title = unicodeEscape(info.title);
-        return `<item><title>${title}</title><link>https://renorari.net${encodeURI(url)}</link><guid>https://renorari.net${encodeURI(url)}</guid><pubDate>${lastmod}</pubDate></item>`;
-    });
+    const blogItems = fs.readdirSync("./blog").filter((file) => fs.statSync("./blog/" + file).isDirectory())
+        .map((file) => {
+            const content = fs.readFileSync("./blog/" + file + "/index.md", "utf-8");
+            const info = extractYAMLAndMD(content).yaml as blogInfo;
+            const url = "/blog/" + file + "/";
+            const lastmod = toRFC822(new Date(info.date));
+            const title = unicodeEscape(info.title);
+            return `<item><title>${title}</title><link>https://renorari.net${encodeURI(url)}</link><guid>https://renorari.net${encodeURI(url)}</guid><pubDate>${lastmod}</pubDate></item>`;
+        });
     const xml = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>renorari.net</title><link>https://renorari.net/</link><description>renorari.net</description><lastBuildDate>${toRFC822(new Date())}</lastBuildDate><atom:link href="https://renorari.net/rss.xml" rel="self" type="application/rss+xml" />${items.join("")}${blogItems.join("")}</channel></rss>`;
     res.header("Content-Type", "text/xml");
     res.send(xml);
@@ -311,27 +314,28 @@ server.get("/*", (req, res) => {
             const description = Object.keys(info).includes("description") ? info.description : (document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 100) ?? "") + "...";
             if (content.match(/{{blog_posts}}/) !== null) {
                 //最近のものを4つ表示
-                const blogPosts = fs.readdirSync("./blog").sort((a, b) => {
-                    const contentA = fs.readFileSync("./blog/" + a + "/index.md", "utf-8");
-                    const extractedA = extractYAMLAndMD(contentA);
-                    const infoA = extractedA.yaml as blogInfo;
-                    const dateA = new Date(infoA.date);
-                    const contentB = fs.readFileSync("./blog/" + b + "/index.md", "utf-8");
-                    const extractedB = extractYAMLAndMD(contentB);
-                    const infoB = extractedB.yaml as blogInfo;
-                    const dateB = new Date(infoB.date);
-                    return dateA > dateB ? -1 : 1;
-                }).slice(0, 4).map((file) => {
-                    const content = fs.readFileSync("./blog/" + file + "/index.md", "utf-8");
-                    const extracted = extractYAMLAndMD(content);
-                    const info = extracted.yaml as blogInfo;
-                    const contentMd = extracted.md;
-                    const contentHtml = marked.parse(contentMd);
-                    const document = new JSDOM(contentHtml);
-                    const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 200) ?? "";
-                    const image = contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `/blog/${file}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
-                    return `<a href="/blog/${file}/" class="card"><div class="card-image"><img src="${image}" alt="ogp image"></div><div class="card-content"><div class="card-title">${info.title}</div><div class="card-description">${description}...</div></div></a>`;
-                });
+                const blogPosts = fs.readdirSync("./blog").filter((file) => fs.statSync("./blog/" + file).isDirectory())
+                    .sort((a, b) => {
+                        const contentA = fs.readFileSync("./blog/" + a + "/index.md", "utf-8");
+                        const extractedA = extractYAMLAndMD(contentA);
+                        const infoA = extractedA.yaml as blogInfo;
+                        const dateA = new Date(infoA.date);
+                        const contentB = fs.readFileSync("./blog/" + b + "/index.md", "utf-8");
+                        const extractedB = extractYAMLAndMD(contentB);
+                        const infoB = extractedB.yaml as blogInfo;
+                        const dateB = new Date(infoB.date);
+                        return dateA > dateB ? -1 : 1;
+                    }).slice(0, 4).map((file) => {
+                        const content = fs.readFileSync("./blog/" + file + "/index.md", "utf-8");
+                        const extracted = extractYAMLAndMD(content);
+                        const info = extracted.yaml as blogInfo;
+                        const contentMd = extracted.md;
+                        const contentHtml = marked.parse(contentMd);
+                        const document = new JSDOM(contentHtml);
+                        const description = document.window.document.body.textContent?.replace(/\r\n|\r|\n/g, "").replace(/ /g, "").slice(0, 200) ?? "";
+                        const image = contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "") ? `/blog/${file}/${contentHtml.match(/<img.*?>/)?.[0].match(/src=".*?"/)?.[0].replace(/src="|"/g, "").replace("./", "")}` : "https://renorari.net/images/ogp.png";
+                        return `<a href="/blog/${file}/" class="card"><div class="card-image"><img src="${image}" alt="ogp image"></div><div class="card-content"><div class="card-title">${info.title}</div><div class="card-description">${description}...</div></div></a>`;
+                    });
                 contentHtml = contentHtml.replace(/{{blog_posts}}/g, blogPosts.join(""));
             }
             res.send(html.replace(/{{content}}/g, contentHtml).replace(/{{title-full}}/g, "{{title}}").replace(/{{title}}/g, info.title).replace(/{{description}}/g, description).replace(/{{path}}/g, requestPath.replace("index.html", "")).replace(/{{ogp_image}}/g, info.ogp_image).replace(/{{tags}}/g, ""));
