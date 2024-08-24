@@ -614,14 +614,20 @@ footer #links ul li a:hover {
 }
 
 .card .card-image img {
+    margin-bottom: 0;
     border-radius: 0;
     width: 100%;
     aspect-ratio: 2 / 1;
     object-fit: cover;
 }
 
+.card .card-image.auto-aspect img {
+    aspect-ratio: auto;
+}
+
 .card .card-content {
     padding: 1em;
+    padding-top: 0.5em;
 }
 
 .card .card-content .card-title {
@@ -819,4 +825,10 @@ code {
     font-size: 0.75em;
     color: var(--text-light);
     margin-bottom: 2rem;
+}
+
+/* ドット絵用 */
+img.bit {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 }
