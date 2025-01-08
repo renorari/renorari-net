@@ -1,0 +1,85 @@
+{"title": "【高専】必須点数計算機", "ogp_image": "https://renorari.net/images/grade.png"}
+<main>
+    <section>
+        <h2>【高専】必須点数計算機</h2>
+        <p>
+            【高専】必須点数計算機は、次の定期試験で必要な点数を計算するためのツールです。
+            <br>
+            過去の試験の点数と、通知表の点数を入力することで、次回のテストで必要な点数を計算することができます。
+        </p>
+    </section>
+    <section>
+        <h2>過去の試験の点数</h2>
+        <p>
+            以下のフォームに、過去の試験の点数を入力してください。
+        </p>
+        <form>
+            <div class="form-group">
+                <label for="last">通知表の点数</label>
+                <input type="number" id="last" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="rate">テストの評価割合</label>
+                <div style="display: flex; gap: 1rem;">
+                    <output for="rate" id="rateOutput">0.8</output>
+                    <input type="range" id="rate" class="form-control" min="0.01" max="1" step="0.01" value="0.8"
+                        required style="flex: 1;">
+                    <script>
+                        document.getElementById('rate').addEventListener('input', function () {
+                            document.getElementById('rateOutput').value = this.value;
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>テストの点数</label>
+                <div class="test-inputs">
+                    <input type="number" id="exam1" class="form-control" placeholder="1回目" min="0" max="100" required>
+                    <input type="number" id="exam2" class="form-control" placeholder="2回目" min="0" max="100">
+                    <input type="number" id="exam3" class="form-control" placeholder="3回目" min="0" max="100">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">計算する</button>
+            <div id="result"></div>
+            <script>
+                document.querySelector('form').addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const last = Number(document.getElementById('last').value);
+                    const rate = Number(document.getElementById('rate').value);
+                    const examResult = [
+                        Number(document.getElementById('exam1').value || -1),
+                        Number(document.getElementById('exam2').value || -1),
+                        Number(document.getElementById('exam3').value || -1)
+                    ].filter(v => v >= 0);
+
+                    if (examResult.length > 3) {
+                        alert('テストの数は3つまでです');
+                        return;
+                    } else if (examResult.length === 0) {
+                        alert('テストの点数を入力してください');
+                        return;
+                    } else if (rate === 0) {
+                        alert('テストの評価割合は0より大きい値を入力してください');
+                        return;
+                    }
+
+                    const ave = (...args) => args.reduce((acc, cur) => acc + cur) / args.length;
+                    const displayNumber = (num) => Math.round(num * 10) / 10;
+
+                    const some = last - (ave(...examResult) * rate);
+                    const d = (200 - 4 * some) / rate - examResult.reduce((acc, cur) => acc + cur);
+
+                    if (rate === 1 && some > 0) {
+                        alert('テストの点数と通知表の点数が矛盾しています');
+                    }
+
+                    document.getElementById('result').innerHTML = `
+                    テスト以外の点: ${displayNumber(some)}<br>
+                    テストの平均点: ${displayNumber(ave(...examResult))}<br>
+                    テストで必要な点${examResult.length < 3 ? `(残り${4 - examResult.length}回の合計)` : ""}: ${displayNumber(d)}
+                `;
+                });
+            </script>
+        </form>
+    </section>
+</main>

@@ -253,6 +253,11 @@ input[type="email"]:disabled {
     cursor: not-allowed;
 }
 
+input[type="range"] {
+    width: 100%;
+    margin: 0.5em 0;
+}
+
 select {
     background-color: var(--transparent-background);
     backdrop-filter: blur(16px);
