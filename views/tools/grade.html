@@ -19,6 +19,27 @@
                 <input type="number" id="last" class="form-control" required>
             </div>
             <div class="form-group">
+                <label>テストの点数</label>
+                <div class="test-inputs">
+                    <input type="number" id="exam1" class="form-control" placeholder="1回目" min="0" max="100" required>
+                    <input type="number" id="exam2" class="form-control" placeholder="2回目" min="0" max="100">
+                    <input type="number" id="exam3" class="form-control" placeholder="3回目" min="0" max="100">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="passing">科目の合格点</label>
+                <div style="display: flex; gap: 1rem;">
+                    <output for="passing" id="passingOutput">50</output>
+                    <input type="range" id="passing" class="form-control" min="1" max="100" step="1" value="50"
+                        required style="flex: 1;">
+                    <script>
+                        document.getElementById('passing').addEventListener('input', function () {
+                            document.getElementById('passingOutput').value = this.value;
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="rate">テストの評価割合</label>
                 <div style="display: flex; gap: 1rem;">
                     <output for="rate" id="rateOutput">0.8</output>
@@ -31,21 +52,29 @@
                     </script>
                 </div>
             </div>
-            <div class="form-group">
-                <label>テストの点数</label>
-                <div class="test-inputs">
-                    <input type="number" id="exam1" class="form-control" placeholder="1回目" min="0" max="100" required>
-                    <input type="number" id="exam2" class="form-control" placeholder="2回目" min="0" max="100">
-                    <input type="number" id="exam3" class="form-control" placeholder="3回目" min="0" max="100">
-                </div>
-            </div>
             <button type="submit" class="btn btn-primary">計算する</button>
-            <div id="result"></div>
+            <div id="result">
+                <table>
+                    <tr>
+                        <th>テスト以外の点</th>
+                        <td id="some"></td>
+                    </tr>
+                    <tr>
+                        <th>テストの平均点</th>
+                        <td id="average"></td>
+                    </tr>
+                    <tr>
+                        <th>次のテストで必要な点</th>
+                        <td id="required"></td>
+                    </tr>
+                </table>
+            </div>
             <script>
                 document.querySelector('form').addEventListener('submit', function (e) {
                     e.preventDefault();
                     const last = Number(document.getElementById('last').value);
                     const rate = Number(document.getElementById('rate').value);
+                    const passing = Number(document.getElementById('passing').value);
                     const examResult = [
                         Number(document.getElementById('exam1').value || -1),
                         Number(document.getElementById('exam2').value || -1),
@@ -67,17 +96,22 @@
                     const displayNumber = (num) => Math.round(num * 10) / 10;
 
                     const some = last - (ave(...examResult) * rate);
-                    const d = (200 - 4 * some) / rate - examResult.reduce((acc, cur) => acc + cur);
+                    const d = 4 * (passing - some) / rate - examResult.reduce((acc, cur) => acc + cur);
 
-                    if (rate === 1 && some > 0) {
-                        alert('テストの点数と通知表の点数が矛盾しています');
+                    const alerts = [];
+                    if (rate === 1 && some > 0 || some > (1 - rate) * 100 || some < 0) {
+                        alerts.push('テストの点数と通知表の点数が矛盾しています');
                     }
 
-                    document.getElementById('result').innerHTML = `
-                    テスト以外の点: ${displayNumber(some)}<br>
-                    テストの平均点: ${displayNumber(ave(...examResult))}<br>
-                    テストで必要な点${examResult.length < 3 ? `(残り${4 - examResult.length}回の合計)` : ""}: ${displayNumber(d)}
-                `;
+                    // document.getElementById('result').innerHTML = `
+                    // ${alerts.length > 0 ? alerts.join('<br>') + '<br><br>' : ""}
+                    // テスト以外の点: ${displayNumber(some)}<br>
+                    // テストの平均点: ${displayNumber(ave(...examResult))}<br><br>
+                    // 次のテストで必要な点${examResult.length < 3 ? `(残り${4 - examResult.length}回の合計)` : ""}: ${d < 0 ? (some == 0 ? "(単位確定)" : "(ほぼ単位確定)") : displayNumber(d)}
+                    // `;
+                    document.getElementById('some').textContent = displayNumber(some);
+                    document.getElementById('average').textContent = displayNumber(ave(...examResult));
+                    document.getElementById('required').textContent = d < 0 ? (some == 0 ? "(単位確定)" : "(ほぼ単位確定)") : displayNumber(d);
                 });
             </script>
         </form>
