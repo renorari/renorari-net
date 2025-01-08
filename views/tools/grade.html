@@ -60,16 +60,25 @@
         <p id="alerts"></p>
         <table>
             <tr>
-                <th>テスト以外の点</th>
-                <td id="some"></td>
-            </tr>
-            <tr>
                 <th>テストの平均点</th>
                 <td id="average"></td>
             </tr>
             <tr>
+                <th>テスト以外の点</th>
+                <td id="some"></td>
+            </tr>
+            <tr>
+                <!-- 空白 -->
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
                 <th>次のテストで必要な点</th>
                 <td id="required"></td>
+            </tr>
+            <tr>
+                <th>次のテストで必要な点(その他の点なし)</th>
+                <td id="required-without-some"></td>
             </tr>
         </table>
     </section>
@@ -101,6 +110,7 @@
 
             const some = last - (ave(...examResult) * rate);
             const d = 4 * (passing - some) / rate - examResult.reduce((acc, cur) => acc + cur);
+            const dWithoutSome = 4 * (passing - 0) / rate - examResult.reduce((acc, cur) => acc + cur);
 
             const alerts = [];
             if (rate === 1 && some > 0 || some > (1 - rate) * 100 || some < 0) {
@@ -110,7 +120,8 @@
             document.getElementById('alerts').innerHTML = alerts.join('<br>');
             document.getElementById('some').textContent = displayNumber(some);
             document.getElementById('average').textContent = displayNumber(ave(...examResult));
-            document.getElementById('required').textContent = d < 0 ? (some == 0 ? "(単位確定)" : "(ほぼ単位確定)") : displayNumber(d);
+            document.getElementById('required').textContent = d <= 0 ? "(ほぼ単位確定)" : displayNumber(d);
+            document.getElementById('required-without-some').textContent = dWithoutSome <= 0 ? "(単位確定)" : displayNumber(dWithoutSome);
         });
     </script>
 </main>
