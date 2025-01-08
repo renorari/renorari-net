@@ -122,6 +122,13 @@
             document.getElementById('average').textContent = displayNumber(ave(...examResult));
             document.getElementById('required').textContent = d <= 0 ? "(ほぼ単位確定)" : displayNumber(d);
             document.getElementById('required-without-some').textContent = dWithoutSome <= 0 ? "(単位確定)" : displayNumber(dWithoutSome);
+
+            if (examResult.length !== 3) {
+                document.getElementById('required').textContent += ' (今後の合計)';
+                document.getElementById('required-without-some').textContent += ' (今後の合計)';
+            }
+
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
         });
     </script>
 </main>
