@@ -135,6 +135,13 @@ webhooks.on("push", async ({ payload }) => {
 server.use(githubWebhooks.createNodeMiddleware(webhooks));
 server.use(express.static("public"));
 
+server.use((req, res, next) => {
+    if (!req.url.includes(".") && !req.url.endsWith("/")) {
+        res.redirect(301, req.url + "/");
+    }
+    next();
+});
+
 server.get("/blog/", (req, res) => {
     const files = fs.readdirSync("./blog").filter((file) => fs.statSync("./blog/" + file).isDirectory())
         .sort((a, b) => {
