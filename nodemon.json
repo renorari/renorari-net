@@ -1,4 +1,0 @@
-{
-    "ext": "ts,html",
-    "exec": "ts-node index.ts"
-}
