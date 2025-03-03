@@ -1,5 +1,6 @@
 footer {
     display: flex;
+    flex-wrap: wrap;
 }
 
 footer>div {
@@ -30,6 +31,10 @@ footer>.about-me>.social>li>a {
 footer>.about-me>.social>li>a>img {
     width: 1.5rem;
     height: 1.5em;
+}
+
+footer>.links {
+    min-width: 10rem;
 }
 
 footer>.links>ul {
