@@ -4,18 +4,12 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background: var(--c-background);
 }
 
 nav>h1>img {
     width: auto;
     height: 2rem;
-}
-
-@media screen and (prefers-color-scheme: dark) {
-    nav>h1>img {
-        filter: invert(1);
-    }
+    filter: var(--f-black-image);
 }
 
 nav>ul {

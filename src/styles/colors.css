@@ -30,6 +30,8 @@
     --c-shadow: rgba(0, 0, 0, 0.05);
     --e-shadow: 0 0.354rem 2rem var(--c-shadow);
     --e-shadow-hover: 0 0.395rem 2.5rem var(--c-shadow);
+
+    --f-black-image: none;
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -57,5 +59,7 @@
         --c-quaternary-light: #bf305720;
 
         --c-shadow: rgba(0, 0, 0, 0.5);
+
+        --f-black-image: invert(1);
     }
 }
