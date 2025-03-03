@@ -5,8 +5,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    transition-property: background, color, fill, box-shadow, transform, filter;
     transition-duration: 0.25s;
+    transition-property: background, color, fill, box-shadow, transform, filter;
 }
 
 body {
@@ -57,6 +57,9 @@ a:hover {
 }
 
 main {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     flex: 1;
     width: 100%;
     max-width: 64rem;
