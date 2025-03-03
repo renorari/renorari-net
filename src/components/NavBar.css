@@ -1,5 +1,6 @@
 nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
@@ -8,7 +9,7 @@ nav {
 
 nav>h1>img {
     width: auto;
-    height: 1.5rem;
+    height: 2rem;
 }
 
 @media screen and (prefers-color-scheme: dark) {

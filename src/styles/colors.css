@@ -26,6 +26,10 @@
     --c-quaternary-thin: #e63a6980;
     --c-quaternary-light: #e63a6920;
     --c-quaternary-text: #ffffff;
+
+    --c-shadow: rgba(0, 0, 0, 0.05);
+    --e-shadow: 0 0.354rem 2rem var(--c-shadow);
+    --e-shadow-hover: 0 0.395rem 2.5rem var(--c-shadow);
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -37,11 +41,6 @@
         --c-text: #ffffff;
         --c-text-thin: #cccccc;
         --c-text-light: #999999;
-
-        --c-primary: #1747e5;
-        --c-primary-thin: #1747e580;
-        --c-primary-light: #1747e520;
-        --c-primary-text: #ffffff;
 
         --c-secondary: #4dbf5b;
         --c-secondary-thin: #4dbf5b80;
@@ -56,6 +55,7 @@
         --c-quaternary: #bf3057;
         --c-quaternary-thin: #bf305780;
         --c-quaternary-light: #bf305720;
-        --c-quaternary-text: #ffffff;
+
+        --c-shadow: rgba(0, 0, 0, 0.5);
     }
 }
