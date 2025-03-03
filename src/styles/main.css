@@ -1,0 +1,25 @@
+@import url("./fonts.css");
+@import url("./colors.css");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background 0.25s, color 0.25s, fill 0.25s, filter 0.25s;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--c-background);
+    font-family: "Koruri", sans-serif;
+    color: var(--c-text);
+}
+
+main {
+    flex: 1;
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 1rem;
+}

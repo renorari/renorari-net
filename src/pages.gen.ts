@@ -3,15 +3,10 @@
 // prettier-ignore
 import type { PathsForPages, GetConfigResponse } from 'waku/router';
 
-// prettier-ignore
-import type { getConfig as About_getConfig } from './pages/about';
-// prettier-ignore
-import type { getConfig as Index_getConfig } from './pages/index';
 
 // prettier-ignore
 type Page =
-| ({ path: '/about' } & GetConfigResponse<typeof About_getConfig>)
-| ({ path: '/' } & GetConfigResponse<typeof Index_getConfig>);
+| { path: '/'; render: 'dynamic' };
 
 // prettier-ignore
 declare module 'waku/router' {

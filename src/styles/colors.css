@@ -1,0 +1,61 @@
+:root {
+    --c-background: #f2f5ff;
+    --c-card-background: #ffffff80;
+    --c-card-title-background: #ffffff;
+
+    --c-text: #000000;
+    --c-text-thin: #333333;
+    --c-text-light: #666666;
+
+    --c-primary: #1747e5;
+    --c-primary-thin: #1747e580;
+    --c-primary-light: #1747e520;
+    --c-primary-text: #ffffff;
+
+    --c-secondary: #5ce66d;
+    --c-secondary-thin: #5ce66d80;
+    --c-secondary-light: #5ce66d20;
+    --c-secondary-text: #000000;
+
+    --c-tertiary: #f2c13d;
+    --c-tertiary-thin: #f2c13d80;
+    --c-tertiary-light: #f2c13d20;
+    --c-tertiary-text: #000000;
+
+    --c-quaternary: #e63a69;
+    --c-quaternary-thin: #e63a6980;
+    --c-quaternary-light: #e63a6920;
+    --c-quaternary-text: #ffffff;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+        --c-background: #14151a;
+        --c-card-background: #1a1a1a80;
+        --c-card-title-background: #1a1a1a;
+
+        --c-text: #ffffff;
+        --c-text-thin: #cccccc;
+        --c-text-light: #999999;
+
+        --c-primary: #1747e5;
+        --c-primary-thin: #1747e580;
+        --c-primary-light: #1747e520;
+        --c-primary-text: #ffffff;
+
+        --c-secondary: #4dbf5b;
+        --c-secondary-thin: #4dbf5b80;
+        --c-secondary-light: #4dbf5b20;
+        --c-secondary-text: #ffffff;
+
+        --c-tertiary: #cca333;
+        --c-tertiary-thin: #cca33380;
+        --c-tertiary-light: #cca33320;
+        --c-tertiary-text: #ffffff;
+
+        --c-quaternary: #bf3057;
+        --c-quaternary-thin: #bf305780;
+        --c-quaternary-light: #bf305720;
+        --c-quaternary-text: #ffffff;
+    }
+}
