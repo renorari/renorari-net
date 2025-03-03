@@ -1,0 +1,58 @@
+/* Renorari.net Style Fonts */
+
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
+
+@font-face {
+    font-family: "Koruri";
+    src: url("/fonts/Koruri-Regular.woff2") format("woff2"),
+        url("/fonts/Koruri-Regular.woff") format("woff"),
+        url("/fonts/Koruri-Regular.eot") format("embedded-opentype"),
+        url("/fonts/Koruri-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Koruri";
+    src: url("/fonts/Koruri-Light.woff2") format("woff2"),
+        url("/fonts/Koruri-Light.woff") format("woff"),
+        url("/fonts/Koruri-Light.eot") format("embedded-opentype"),
+        url("/fonts/Koruri-Light.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Koruri";
+    src: url("/fonts/Koruri-SemiBold.woff2") format("woff2"),
+        url("/fonts/Koruri-SemiBold.woff") format("woff"),
+        url("/fonts/Koruri-SemiBold.eot") format("embedded-opentype"),
+        url("/fonts/Koruri-SemiBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Koruri";
+    src: url("/fonts/Koruri-Bold.woff2") format("woff2"),
+        url("/fonts/Koruri-Bold.woff") format("woff"),
+        url("/fonts/Koruri-Bold.eot") format("embedded-opentype"),
+        url("/fonts/Koruri-Bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Koruri";
+    src: url("/fonts/Koruri-ExtraBold.woff2") format("woff2"),
+        url("/fonts/Koruri-ExtraBold.woff") format("woff"),
+        url("/fonts/Koruri-ExtraBold.eot") format("embedded-opentype"),
+        url("/fonts/Koruri-ExtraBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+}
