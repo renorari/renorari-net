@@ -1,15 +1,32 @@
 nav {
+    backdrop-filter: blur(10rem);
+    -webkit-backdrop-filter: blur(10rem);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    z-index: 10;
+    top: 0;
     padding: 1rem;
 }
 
+@media screen and (max-height: 50rem) {
+    nav {
+        position: initial;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+}
+
+nav>h1 {
+    display:contents;
+}
+
 nav>h1>img {
+    filter: var(--f-black-image);
     width: auto;
     height: 2rem;
-    filter: var(--f-black-image);
 }
 
 nav>ul {
@@ -26,4 +43,8 @@ nav>ul>li>a {
 nav>ul>li>a:hover {
     color: var(--c-primary);
     text-decoration: underline;
+}
+
+body:has(nav:nth-of-type(2)) nav:nth-of-type(1) {
+    display: none;
 }
