@@ -15,7 +15,9 @@ body {
     min-height: 100vh;
     background: var(--c-background);
     font-family: "Koruri", sans-serif;
+    line-height: 1.75;
     color: var(--c-text);
+    font-size: 1rem;
 }
 
 h1,
@@ -43,8 +45,16 @@ h4,
 h5,
 h6,
 p {
-    margin: 0.5rem 0;
+    margin: 1rem 0;
     font-size: 1rem;
+}
+
+p:first-child {
+    margin-top: 0;
+}
+
+p:last-child {
+    margin-bottom: 0;
 }
 
 a {

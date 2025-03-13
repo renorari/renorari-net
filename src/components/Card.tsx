@@ -4,7 +4,7 @@ import React, { CSSProperties, ReactNode } from "react";
 import { Link, LinkProps } from "waku/router/client";
 
 type CardProps = {
-    title: string;
+    title?: string | null;
     link?: LinkProps["to"] | `${string}://${string}`;
     style?: CSSProperties;
     children: ReactNode;
@@ -13,9 +13,7 @@ type CardProps = {
 export default function Card({ title, link, children,style }: CardProps) {
     const card = (
         <div className="card">
-            <div className="card-title">
-                {title}
-            </div>
+            {title && <div className="card-title">{title}</div>}
             <div className="card-content" style={style}>
                 {children}
             </div>
