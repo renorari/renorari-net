@@ -15,3 +15,9 @@ export default function ContactPage() {
         </main>
     );
 }
+
+export const getConfig = async () => {
+    return {
+        "render": "static"
+    } as const;
+};

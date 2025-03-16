@@ -47,3 +47,9 @@ export default function DisclaimerPage() {
         </main>
     );
 }
+
+export const getConfig = async () => {
+    return {
+        "render": "static"
+    } as const;
+};

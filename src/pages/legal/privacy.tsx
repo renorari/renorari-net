@@ -85,3 +85,9 @@ export default function PrivacyPage() {
         </main>
     );
 }
+
+export const getConfig = async () => {
+    return {
+        "render": "static"
+    } as const;
+};

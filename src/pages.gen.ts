@@ -3,15 +3,25 @@
 // prettier-ignore
 import type { PathsForPages, GetConfigResponse } from 'waku/router';
 
+// prettier-ignore
+import type { getConfig as About_getConfig } from './pages/about';
+// prettier-ignore
+import type { getConfig as Contact_getConfig } from './pages/contact';
+// prettier-ignore
+import type { getConfig as Index_getConfig } from './pages/index';
+// prettier-ignore
+import type { getConfig as LegalDisclaimer_getConfig } from './pages/legal/disclaimer';
+// prettier-ignore
+import type { getConfig as LegalPrivacy_getConfig } from './pages/legal/privacy';
 
 // prettier-ignore
 type Page =
-| { path: '/about'; render: 'dynamic' }
+| ({ path: '/about' } & GetConfigResponse<typeof About_getConfig>)
 | { path: '/blog'; render: 'dynamic' }
-| { path: '/contact'; render: 'dynamic' }
-| { path: '/'; render: 'dynamic' }
-| { path: '/legal/disclaimer'; render: 'dynamic' }
-| { path: '/legal/privacy'; render: 'dynamic' };
+| ({ path: '/contact' } & GetConfigResponse<typeof Contact_getConfig>)
+| ({ path: '/' } & GetConfigResponse<typeof Index_getConfig>)
+| ({ path: '/legal/disclaimer' } & GetConfigResponse<typeof LegalDisclaimer_getConfig>)
+| ({ path: '/legal/privacy' } & GetConfigResponse<typeof LegalPrivacy_getConfig>);
 
 // prettier-ignore
 declare module 'waku/router' {
