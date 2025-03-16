@@ -2,6 +2,7 @@ import React from "react";
 import ProfileCard from "../components/ProfileCard";
 import CardList from "../components/CardList";
 import ImageCard from "../components/ImageCard";
+import ContactList from "../components/ContactList";
 
 export default function AboutPage() {
     return (
@@ -21,6 +22,11 @@ export default function AboutPage() {
                     <ImageCard title="VoiceJP" image="/images/services/voicejp.svg" link="https://voicejp.renorari.net/" />
                     <ImageCard title="Union Global Chat" image="/images/services/ugc.svg" link="https://ugc.renorari.net/" />
                 </CardList>
+            </section>
+
+            <section id="contact">
+                <h2>連絡先</h2>
+                <ContactList />
             </section>
         </main>
     );
