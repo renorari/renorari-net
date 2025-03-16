@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "waku";
 
 export default function PrivacyPage() {
     return (
@@ -15,7 +16,7 @@ export default function PrivacyPage() {
                 <p>
                     本サービスはれのらり個人が運営するサイト及びサービスです。
                     <br />
-                    お問い合わせは、<a href="/contact.html">お問い合わせページ</a>からお願いします。
+                    お問い合わせは、<Link to="/contact">お問い合わせページ</Link>からお願いします。
                 </p>
                 <h3>2.個人情報の取得方法</h3>
                 <p>
@@ -46,13 +47,13 @@ export default function PrivacyPage() {
                 <p>
                     本サービスは本人から個人情報の開示を求められたときには、遅滞なく本人に対しこれを開示します。個人情報の利用目的の通知や訂正、追加、削除、利用の停止を希望される方は以下の手順でご請求ください。
                     <br />
-                    お問い合わせは、<a href="/contact.html">お問い合わせページ</a>からお願いします。
+                    お問い合わせは、<Link to="/contact">お問い合わせページ</Link>からお願いします。
                 </p>
                 <h3>6.個人情報取り扱いに関する相談や苦情の連絡先</h3>
                 <p>
                     本サービスの個人情報の取り扱いに関するご質問やご不明点、苦情、その他のお問い合わせは以下の連絡先よりご連絡ください。
                     <br />
-                    お問い合わせは、<a href="/contact.html">お問い合わせページ</a>からお願いします。
+                    お問い合わせは、<Link to="/contact">お問い合わせページ</Link>からお願いします。
                 </p>
                 <h3>7.SSL(Secure Socket Layer)について</h3>
                 <p>
@@ -73,11 +74,12 @@ export default function PrivacyPage() {
                 <h3>9.プライバシーポリシーの制定日及び改定日</h3>
                 <p>
                     制定: 2022年3月12日
+                    <br />
                     改定: 2023年12月6日
                 </p>
                 <h3>10.免責事項</h3>
                 <p>
-                    免責事項に関して、別記<a href="/disclaimer.html">免責事項</a>にあります。
+                    免責事項に関して、別記<Link to="/legal/disclaimer">免責事項</Link>にあります。
                 </p>
             </p>
         </main>
