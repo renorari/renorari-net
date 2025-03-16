@@ -78,9 +78,9 @@ export default function HomePage() {
                     </CardList>
                 </section>
                 <section id="discord-servers">
-                    <h3>
+                    <h2>
                         Discordサーバー
-                    </h3>
+                    </h2>
                     <p>
                         れのらりがおすすめするDiscordサーバーです。
                     </p>
