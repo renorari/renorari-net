@@ -10,8 +10,6 @@
     padding: 0;
     transition-duration: 0.25s;
     transition-property: background, color, fill, box-shadow, transform, filter, border, opacity;
-    font-size: inherit;
-    vertical-align: middle;
 }
 
 body {
