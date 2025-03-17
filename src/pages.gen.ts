@@ -24,6 +24,7 @@ type Page =
 | ({ path: '/' } & GetConfigResponse<typeof Index_getConfig>)
 | ({ path: '/legal/disclaimer' } & GetConfigResponse<typeof LegalDisclaimer_getConfig>)
 | ({ path: '/legal/privacy' } & GetConfigResponse<typeof LegalPrivacy_getConfig>)
+| { path: '/tools/aspect'; render: 'dynamic' }
 | { path: '/tools/beep'; render: 'dynamic' }
 | { path: '/tools/generator'; render: 'dynamic' }
 | ({ path: '/tools' } & GetConfigResponse<typeof ToolsIndex_getConfig>)

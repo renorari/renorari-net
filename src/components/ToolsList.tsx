@@ -9,6 +9,7 @@ export default function ToolsList() {
             <ImageCard title="Renorari Generator" image="/images/tools/generator.svg" link="/tools/generator" />
             <ImageCard title="!Beep" image="/images/tools/beep.svg" link="/tools/beep" />
             <ImageCard title="QR Code Generator" image="/images/tools/qr.svg" link="/tools/qr" />
+            <ImageCard title="AviUtl Aspect Ratio" image="/images/tools/aspect.svg" link="/tools/aspect" />
         </CardList>
     );
 }
