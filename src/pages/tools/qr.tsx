@@ -19,6 +19,23 @@ export default function QRPage() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
+        const checkClipboard = async () => {
+            try {
+                if (navigator.clipboard && navigator.clipboard.readText) {
+                    const clipboardText = await navigator.clipboard.readText();
+                    if (clipboardText && clipboardText.trim() !== "") {
+                        setText(clipboardText);
+                    }
+                }
+            } catch (err) {
+                console.warn(err);
+            }
+        };
+
+        checkClipboard();
+    }, []);
+
+    useEffect(() => {
         if (text) {
             const options: QRCodeRenderersOptions = {
                 "color": {
@@ -57,8 +74,6 @@ export default function QRPage() {
             document.body.removeChild(link);
         }
     };
-
-    console.log(maskPattern);
 
     return (
         <main>
