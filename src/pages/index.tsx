@@ -1,10 +1,12 @@
 import "../styles/home.css";
 
 import React from "react";
+
 import CardList from "../components/CardList";
 import ImageCard from "../components/ImageCard";
 import NavBar from "../components/NavBar";
 import ProfileCard from "../components/ProfileCard";
+import ToolsList from "../components/ToolsList";
 
 export default function HomePage() {
     return (
@@ -44,6 +46,7 @@ export default function HomePage() {
                         <br />
                         ぜひ、ご活用ください。
                     </p>
+                    <ToolsList />
                 </section>
                 <section id="services">
                     <h2>

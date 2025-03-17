@@ -13,6 +13,8 @@ import type { getConfig as Index_getConfig } from './pages/index';
 import type { getConfig as LegalDisclaimer_getConfig } from './pages/legal/disclaimer';
 // prettier-ignore
 import type { getConfig as LegalPrivacy_getConfig } from './pages/legal/privacy';
+// prettier-ignore
+import type { getConfig as ToolsIndex_getConfig } from './pages/tools/index';
 
 // prettier-ignore
 type Page =
@@ -23,7 +25,8 @@ type Page =
 | ({ path: '/legal/disclaimer' } & GetConfigResponse<typeof LegalDisclaimer_getConfig>)
 | ({ path: '/legal/privacy' } & GetConfigResponse<typeof LegalPrivacy_getConfig>)
 | { path: '/tools/beep'; render: 'dynamic' }
-| { path: '/tools/generator'; render: 'dynamic' };
+| { path: '/tools/generator'; render: 'dynamic' }
+| ({ path: '/tools' } & GetConfigResponse<typeof ToolsIndex_getConfig>);
 
 // prettier-ignore
 declare module 'waku/router' {
