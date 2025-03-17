@@ -24,7 +24,7 @@ export default function QRPage() {
     const [errorCorrectionLevel, setErrorCorrectionLevel] = useState<QRCodeErrorCorrectionLevel>("L");
     const [maskPattern, setMaskPattern] = useState<QRCodeMaskPattern>(0);
     const [margin, setMargin] = useState(4);
-    const [scale, setScale] = useState(8);
+    const [scale, setScale] = useState(16);
     const [version, setVersion] = useState<QRCodeVersion | undefined>(undefined);
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -166,7 +166,7 @@ export default function QRPage() {
                             </tr>
                             <tr>
                                 <td>拡大率</td>
-                                <td>8</td>
+                                <td>16</td>
                                 <td>
                                     QRコードの拡大率を指定します。
                                     <br />
