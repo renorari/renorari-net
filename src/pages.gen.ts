@@ -28,7 +28,8 @@ type Page =
 | { path: '/tools/beep'; render: 'dynamic' }
 | { path: '/tools/generator'; render: 'dynamic' }
 | ({ path: '/tools' } & GetConfigResponse<typeof ToolsIndex_getConfig>)
-| { path: '/tools/qr'; render: 'dynamic' };
+| { path: '/tools/qr'; render: 'dynamic' }
+| { path: '/tools/thumbnail-maker'; render: 'dynamic' };
 
 // prettier-ignore
 declare module 'waku/router' {

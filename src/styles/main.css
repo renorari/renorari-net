@@ -80,6 +80,13 @@ a:hover {
     text-decoration: underline;
 }
 
+canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
 main {
     flex: 1;
     width: 100%;

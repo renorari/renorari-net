@@ -10,6 +10,7 @@ export default function ToolsList() {
             <ImageCard title="!Beep" image="/images/tools/beep.svg" link="/tools/beep" />
             <ImageCard title="QR Code Generator" image="/images/tools/qr.svg" link="/tools/qr" />
             <ImageCard title="AviUtl Aspect Ratio" image="/images/tools/aspect.svg" link="/tools/aspect" />
+            <ImageCard title="Thumbnail Maker" image="/images/tools/thumbnail-maker.svg" link="/tools/thumbnail-maker" />
         </CardList>
     );
 }
