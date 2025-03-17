@@ -6,6 +6,16 @@ import "../../styles/qr.css";
 // QRコードのバージョン: 1 - 40
 type QRCodeVersion = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40;
 
+function date2str(x: Date): string {
+    const y = x.getFullYear();
+    const m = ("00" + (x.getMonth() + 1)).slice(-2);
+    const d = ("00" + x.getDate()).slice(-2);
+    const h = ("00" + x.getHours()).slice(-2);
+    const i = ("00" + x.getMinutes()).slice(-2);
+    const s = ("00" + x.getSeconds()).slice(-2);
+    return y + m + d + h + i + s;
+}
+
 export default function QRPage() {
     const [text, setText] = useState("https://renorari.net");
     const [qrUrl, setQrUrl] = useState("");
@@ -67,7 +77,7 @@ export default function QRPage() {
     const handleDownload = () => {
         if (qrUrl) {
             const link = document.createElement("a");
-            link.download = "qrcode.png";
+            link.download = `QR_${date2str(new Date())}.png`;
             link.href = qrUrl;
             document.body.appendChild(link);
             link.click();
