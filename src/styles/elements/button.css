@@ -1,6 +1,9 @@
-button {
+button,
+input[type="submit"],
+input[type="button"] {
     box-shadow: var(--e-shadow);
     width: 100%;
+    margin: 0.5rem 0;
     padding: 0.5rem 1rem;
     background: var(--c-primary);
     cursor: pointer;
@@ -10,47 +13,68 @@ button {
     color: var(--c-primary-text);
 }
 
-button:hover {
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
     box-shadow: var(--e-shadow-hover);
     filter: brightness(1.1);
     will-change: filter;
     transform: translateY(-0.1rem) scale(1.005);
 }
 
-button:active {
+button:active,
+input[type="submit"]:active,
+input[type="button"]:active {
     box-shadow: var(--e-shadow);
     transform: translateY(0) scale(0.995);
 }
 
-button:disabled {
+button:disabled,
+input[type="submit"]:disabled,
+input[type="button"]:disabled {
     background: var(--c-primary-light);
     cursor: not-allowed;
     color: var(--c-primary-text);
 }
 
-button:disabled:hover {
+button:disabled:hover,
+input[type="submit"]:disabled:hover,
+input[type="button"]:disabled:hover {
     box-shadow: var(--e-shadow);
     transform: none;
 }
 
-button.secondary {
+button.secondary,
+input[type="submit"].secondary,
+input[type="button"].secondary {
     background: transparent;
     border: 1px solid var(--c-primary);
     color: var(--c-primary);
 }
 
-button.secondary:hover {
+button.secondary:hover,
+input[type="submit"].secondary:hover,
+input[type="button"].secondary:hover {
     background: var(--c-primary);
     color: var(--c-primary-text);
 }
 
-button.secondary:active {
+button.secondary:active,
+input[type="submit"].secondary:active,
+input[type="button"].secondary:active {
     background: var(--c-primary);
     color: var(--c-primary-text);
 }
 
-button.secondary:disabled {
+button.secondary:disabled,
+input[type="submit"].secondary:disabled,
+input[type="button"].secondary:disabled {
     background: transparent;
     border: 1px solid var(--c-primary-light);
     color: var(--c-primary-light);
+}
+
+.buttons {
+    display: flex;
+    gap: 0.5rem;
 }

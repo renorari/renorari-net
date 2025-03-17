@@ -6,6 +6,8 @@
     --c-text: #000000;
     --c-text-thin: #333333;
     --c-text-light: #666666;
+    --c-text-lighter: #999999;
+    --c-text-lightest: #cccccc;
 
     --c-primary: #1747e5;
     --c-primary-thin: #1747e580;

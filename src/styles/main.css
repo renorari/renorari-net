@@ -2,13 +2,16 @@
 @import url("./colors.css");
 @import url("./elements/button.css");
 @import url("./elements/table.css");
+@import url("./elements/inputs.css");
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     transition-duration: 0.25s;
-    transition-property: background, color, fill, box-shadow, transform, filter, border;
+    transition-property: background, color, fill, box-shadow, transform, filter, border, opacity;
+    font-size: inherit;
+    vertical-align: middle;
 }
 
 body {
@@ -78,7 +81,6 @@ a {
 a:hover {
     text-decoration: underline;
 }
-
 
 main {
     flex: 1;

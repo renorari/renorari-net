@@ -9,6 +9,15 @@ table {
     border-radius: 0.5rem;
 }
 
+.accordion-toggle:not(:checked) ~ table.accordion {
+    display: none;
+    opacity: 0;
+}
+
+.accordion-toggle:checked ~ table.accordion {
+    display: table;
+}
+
 th {
     background: var(--c-card-title-background);
     font-weight: bold;
