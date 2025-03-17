@@ -1,5 +1,5 @@
 "use client";
-import "../../styles/aspect.css";
+import "../../styles/tools/aspect.css";
 
 import React, { FC, useState } from "react";
 

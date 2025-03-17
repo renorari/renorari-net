@@ -1,4 +1,6 @@
 "use client";
+import "../../styles/tools/thumbnail.css";
+
 import React, { useEffect, useRef, useState } from "react";
 
 export default function ThumbnailMakerPage() {
