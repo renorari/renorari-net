@@ -26,7 +26,7 @@ export default function ProfileCard({ showTitle = false }: ProfileCardProps) {
                     <br />
                     また、自分のサービスを提供しています。
                     詳しくは、
-                    <Link to="/#services">関連サービス一覧</Link>
+                    <Link to="/#services" scroll>関連サービス一覧</Link>
                     をご覧ください。
                 </p>
             </div>
