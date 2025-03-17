@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
     transition-duration: 0.25s;
-    transition-property: background, color, fill, box-shadow, transform, filter;
+    transition-property: background, color, fill, box-shadow, transform, filter, border;
 }
 
 body {
@@ -50,12 +50,12 @@ p {
     font-size: 1rem;
 }
 
-h1 + p,
-h2 + p,
-h3 + p,
-h4 + p,
-h5 + p,
-h6 + p {
+h1+p,
+h2+p,
+h3+p,
+h4+p,
+h5+p,
+h6+p {
     margin-top: 0;
 }
 
@@ -115,6 +115,63 @@ main section:first-child {
     margin-top: 0;
 }
 
+button {
+    box-shadow: var(--e-shadow);
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background: var(--c-primary);
+    cursor: pointer;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: var(--c-primary-text);
+}
+
+button:hover {
+    box-shadow: var(--e-shadow-hover);
+    filter: brightness(1.1);
+    will-change: filter;
+    transform: translateY(-0.1rem) scale(1.005);
+}
+
+button:active {
+    box-shadow: var(--e-shadow);
+    transform: translateY(0) scale(0.995);
+}
+
+button:disabled {
+    background: var(--c-primary-light);
+    cursor: not-allowed;
+    color: var(--c-primary-text);
+}
+
+button:disabled:hover {
+    box-shadow: var(--e-shadow);
+    transform: none;
+}
+
+button.secondary {
+    background: transparent;
+    border: 1px solid var(--c-primary);
+    color: var(--c-primary);
+}
+
+button.secondary:hover {
+    background: var(--c-primary);
+    color: var(--c-primary-text);
+}
+
+button.secondary:active {
+    background: var(--c-primary);
+    color: var(--c-primary-text);
+}
+
+button.secondary:disabled {
+    background: transparent;
+    border: 1px solid var(--c-primary-light);
+    color: var(--c-primary-light);
+}
+
 table {
     border-collapse: collapse;
     box-shadow: var(--e-shadow);
@@ -132,7 +189,8 @@ th {
     text-align: left;
 }
 
-th, td {
+th,
+td {
     overflow-wrap: break-word;
     padding: 0.75rem 1rem;
     border-bottom: 1px solid var(--c-background);
@@ -147,16 +205,54 @@ tr:nth-child(even) {
     background: var(--c-shadow);
 }
 
-.w-10 { width: 10%; }
-.w-15 { width: 15%; }
-.w-20 { width: 20%; }
-.w-25 { width: 25%; }
-.w-30 { width: 30%; }
-.w-33 { width: 33.33%; }
-.w-40 { width: 40%; }
-.w-50 { width: 50%; }
-.w-60 { width: 60%; }
-.w-70 { width: 70%; }
-.w-80 { width: 80%; }
-.w-90 { width: 90%; }
-.w-auto { width: auto; }
+.w-10 {
+    width: 10%;
+}
+
+.w-15 {
+    width: 15%;
+}
+
+.w-20 {
+    width: 20%;
+}
+
+.w-25 {
+    width: 25%;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.w-33 {
+    width: 33.33%;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.w-70 {
+    width: 70%;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.w-90 {
+    width: 90%;
+}
+
+.w-auto {
+    width: auto;
+}

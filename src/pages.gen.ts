@@ -21,7 +21,8 @@ type Page =
 | ({ path: '/contact' } & GetConfigResponse<typeof Contact_getConfig>)
 | ({ path: '/' } & GetConfigResponse<typeof Index_getConfig>)
 | ({ path: '/legal/disclaimer' } & GetConfigResponse<typeof LegalDisclaimer_getConfig>)
-| ({ path: '/legal/privacy' } & GetConfigResponse<typeof LegalPrivacy_getConfig>);
+| ({ path: '/legal/privacy' } & GetConfigResponse<typeof LegalPrivacy_getConfig>)
+| { path: '/tools/generator'; render: 'dynamic' };
 
 // prettier-ignore
 declare module 'waku/router' {
