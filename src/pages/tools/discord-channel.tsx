@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 export default function DiscordChannelPage() {
     const [result, setResult] = useState("");
-    const [input, setInput] = useState("");
 
     const l2u: { [key: string]: string } = {
         "a": "ꓮ",
@@ -34,13 +33,19 @@ export default function DiscordChannelPage() {
         "z": "ꓜ"
     };
 
-    const uppercase = () => {
-        const uppercase = Array.from(input).map((c) => l2u[c] || c).join("");
-        setResult(uppercase);
+    const keyboardLayout = [
+        ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+        ["a", "s", "d", "f", "g", "h", "j", "k", "l", " "],
+        [" ", "z", "x", "c", "v", "b", "n", "m", " ", " "]
+    ];
+
+    const handleKeyClick = (key: string) => {
+        const uppercase = l2u[key] || "?";
+        setResult(prev => prev + uppercase);
     };
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInput(e.target.value.toLowerCase());
+    const handleBackspace = () => {
+        setResult(prev => prev.slice(0, -1));
     };
 
     return (
@@ -56,19 +61,37 @@ export default function DiscordChannelPage() {
             <section id="uppercase">
                 <h2>大文字化</h2>
                 <p>
-                    下の入力欄に小文字を入れると、Discordチャンネル用の大文字化された文字列が生成されます。
+                    キーボードから入力した文字列を大文字化します。
                 </p>
                 <div>
-                    <div style={{ "fontSize": "2em", "textAlign": "center" }}>
-                        {result}
+                    <div className="inputs">
+                        <div className="input-container" style={{"flex": "1"}}>
+                            <input type="text" value={result} readOnly />
+                        </div>
+                        <button onClick={() => navigator.clipboard.writeText(result)} style={{ "width": "unset" }}>
+                            コピー
+                        </button>
+                        <button onClick={handleBackspace} style={{ "width": "unset" }}>
+                            ⌫
+                        </button>
                     </div>
-                    <input 
-                        type="text" 
-                        value={input}
-                        onChange={handleInputChange}
-                        placeholder="小文字を入力" 
-                    />
-                    <button onClick={uppercase}>大文字化</button>
+                    
+                    <div className="virtual-keyboard">
+                        {keyboardLayout.map((row, rowIndex) => (
+                            <div key={rowIndex} className="buttons">
+                                {row.map((key) => (
+                                    <button 
+                                        key={key} 
+                                        onClick={() => handleKeyClick(key)}
+                                        disabled={Object.keys(l2u).includes(key) ? false : true}
+                                        style={{"opacity": Object.keys(l2u).includes(key) ? 1 : 0}}
+                                    >
+                                        {key}
+                                    </button>
+                                ))}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
         </main>
