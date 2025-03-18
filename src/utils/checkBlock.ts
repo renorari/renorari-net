@@ -14,8 +14,8 @@ interface GuildCollection {
     };
 }
 
-const kanaUrl = process.env.KANA_URL ?? "https://kana.renorari.net";
-const takasumiUrl = process.env.TAKASUMI_URL ?? "https://api.takasumibot.com";
+const kanaUrl = process.env.KANA_URL || "https://kana.renorari.net";
+const takasumiUrl = process.env.TAKASUMI_URL || "https://api.takasumibot.com";
 
 async function kanaUserBlock(): Promise<UserCollection> {
     const res = await fetch(`${kanaUrl}/api/v2/discord/nr_users`);
