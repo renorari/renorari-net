@@ -74,6 +74,35 @@ input[type="button"].secondary:disabled {
     color: var(--c-primary-light);
 }
 
+button.loading,
+input[type="submit"].loading,
+input[type="button"].loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+}
+
+button.loading::after,
+input[type="submit"].loading::after,
+input[type="button"].loading::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 0.5rem);
+    left: calc(50% - 0.5rem);
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--c-primary-text);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .buttons {
     display: flex;
     gap: 0.5rem;
