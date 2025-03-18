@@ -10,21 +10,25 @@
     --c-text-lightest: #cccccc;
 
     --c-primary: #1747e5;
+    --c-primary-color: var(--c-primary);
     --c-primary-thin: #1747e580;
     --c-primary-light: #1747e520;
     --c-primary-text: #ffffff;
 
     --c-secondary: #5ce66d;
+    --c-secondary-color: var(--c-secondary);
     --c-secondary-thin: #5ce66d80;
     --c-secondary-light: #5ce66d20;
     --c-secondary-text: #000000;
 
     --c-tertiary: #f2c13d;
+    --c-tertiary-color: var(--c-tertiary);
     --c-tertiary-thin: #f2c13d80;
     --c-tertiary-light: #f2c13d20;
     --c-tertiary-text: #000000;
 
     --c-quaternary: #e63a69;
+    --c-quaternary-color: var(--c-quaternary);
     --c-quaternary-thin: #e63a6980;
     --c-quaternary-light: #e63a6920;
     --c-quaternary-text: #ffffff;
@@ -45,6 +49,8 @@
         --c-text: #ffffff;
         --c-text-thin: #cccccc;
         --c-text-light: #999999;
+
+        --c-primary-color: #3867ff;
 
         --c-secondary: #4dbf5b;
         --c-secondary-thin: #4dbf5b80;
