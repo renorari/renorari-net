@@ -1,0 +1,17 @@
+.card>.card-title::before {
+    content: "■";
+    color: var(--c-secondary);
+    margin: auto 0.25em;
+}
+
+.card.unblocked>.card-title::before {
+    content: "■";
+    color: var(--c-primary);
+    margin: auto 0.25em;
+}
+
+.card.blocked>.card-title::before {
+    content: "■";
+    color: var(--c-quaternary);
+    margin: auto 0.25em;
+}

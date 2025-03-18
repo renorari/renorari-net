@@ -26,6 +26,7 @@ type Page =
 | ({ path: '/legal/privacy' } & GetConfigResponse<typeof LegalPrivacy_getConfig>)
 | { path: '/tools/aspect'; render: 'dynamic' }
 | { path: '/tools/beep'; render: 'dynamic' }
+| { path: '/tools/block-checker'; render: 'dynamic' }
 | { path: '/tools/discord-channel'; render: 'dynamic' }
 | { path: '/tools/generator'; render: 'dynamic' }
 | ({ path: '/tools' } & GetConfigResponse<typeof ToolsIndex_getConfig>)

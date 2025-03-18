@@ -7,12 +7,13 @@ type CardProps = {
     title?: string | null;
     link?: LinkProps["to"] | `${string}://${string}`;
     style?: CSSProperties;
+    className?: string | undefined;
     children: ReactNode;
 };
 
-export default function Card({ title, link, children,style }: CardProps) {
+export default function Card({ title, link, children,style, className = "" }: CardProps) {
     const card = (
-        <div className="card">
+        <div className={`card ${className}`}>
             {title && <div className="card-title">{title}</div>}
             <div className="card-content" style={style}>
                 {children}

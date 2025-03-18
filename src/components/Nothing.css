@@ -1,0 +1,14 @@
+.nothing {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    color: var(--c-text-light);
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.nothing .icon {
+    width: 3rem;
+    height: 3rem;
+    fill: var(--c-text-light);
+}

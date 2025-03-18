@@ -12,6 +12,7 @@ export default function ToolsList() {
             <ImageCard title="AviUtl Aspect Ratio" image="/images/tools/aspect.svg" link="/tools/aspect" />
             <ImageCard title="Thumbnail Maker" image="/images/tools/thumbnail-maker.svg" link="/tools/thumbnail-maker" />
             <ImageCard title="Discord Channel Namer" image="/images/tools/discord-channel.svg" link="/tools/discord-channel" />
+            <ImageCard title="Block Checker" image="/images/tools/block-checker.svg" link="/tools/block-checker" />
         </CardList>
     );
 }
