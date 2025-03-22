@@ -37,6 +37,7 @@
 }
 
 .card>.card-title {
+    height: 100%;
     padding: 1rem;
     background-color: var(--c-card-title-background);
     font-size: 1.25rem;

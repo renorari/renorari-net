@@ -7,6 +7,7 @@ import ImageCard from "../components/ImageCard";
 import NavBar from "../components/NavBar";
 import ProfileCard from "../components/ProfileCard";
 import ToolsList from "../components/ToolsList";
+import { Link } from "waku";
 
 export default function HomePage() {
     return (
@@ -90,6 +91,35 @@ export default function HomePage() {
 
                     <CardList>
                         <ImageCard title="Juicy Server" image="/images/discord/juicy.svg" link="https://discord.gg/ahd4aVgxeb" />
+                    </CardList>
+                </section>
+                <section id="links">
+                    <h2>
+                        相互リンク
+                    </h2>
+                    <p>
+                        れのらりと相互リンクをしているサイトです。
+                        <br />
+                        それぞれ面白い特徴があるので、ぜひご覧ください。
+                    </p>
+
+                    <CardList>
+                        <ImageCard title="TMKSoftのホームページ" image="/images/links/tmksoft.png" link="https://tmksoft.net/" className="dot ignore-aspect" />
+                        <ImageCard title="ぶどぶどうの部屋" image="/images/links/gbudou.png" link="https://gbudou.com/" className="dot ignore-aspect" />
+                        <ImageCard title="naisuのホームページ" image="/images/links/naisu.png" link="https://naisu.moe/" className="ignore-aspect" />
+                        <ImageCard title="をとすまっ！のページ" image="/images/links/wotosuma.png" link="https://wotosuma.f5.si/" className="dot ignore-aspect" />
+                    </CardList>
+
+                    <p>
+                        もし、相互リンクをご希望の方は、お気軽に
+                        <Link to="/contact">お問い合わせ</Link>
+                        ください。
+                        <br />
+                        また、ぜひ以下のバナーをお使いください！
+                    </p>
+                    <CardList>
+                        <ImageCard title="Renorari.net(SVG版 おすすめ)" image="/images/links/renorarinet.svg " className="ignore-aspect" />
+                        <ImageCard title="Renorari.net(BMP版 要image-rendering設定)" image="/images/links/renorarinet.bmp" className="dot ignore-aspect" />
                     </CardList>
                 </section>
             </main>

@@ -122,3 +122,12 @@ main section {
 main section:first-child {
     margin-top: 0;
 }
+
+.dot img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.ignore-aspect img {
+    aspect-ratio: unset !important;
+}
