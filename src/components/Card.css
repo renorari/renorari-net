@@ -37,6 +37,8 @@
 }
 
 .card>.card-title {
+    display: flex;
+    align-items:flex-end;
     height: 100%;
     padding: 1rem;
     background-color: var(--c-card-title-background);
