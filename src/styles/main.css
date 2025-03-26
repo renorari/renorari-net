@@ -112,7 +112,7 @@ main ul li::before {
     transform: rotate(45deg);
     width: 0.25rem;
     height: 0.25rem;
-    background: var(--c-primary);
+    background: var(--c-primary-color);
 }
 
 main section {
