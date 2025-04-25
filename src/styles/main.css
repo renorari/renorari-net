@@ -123,6 +123,10 @@ main section:first-child {
     margin-top: 0;
 }
 
+main .date {
+    color: var(--c-text-light);
+}
+
 .dot img {
     image-rendering: pixelated;
     image-rendering: crisp-edges;
