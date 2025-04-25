@@ -1,28 +1,17 @@
-import "../styles/home.css";
-
 import React from "react";
+import { Link } from "waku";
 
 import CardList from "../components/CardList";
+import Header from "../components/FullscreenHeader";
 import ImageCard from "../components/ImageCard";
 import NavBar from "../components/NavBar";
 import ProfileCard from "../components/ProfileCard";
 import ToolsList from "../components/ToolsList";
-import { Link } from "waku";
 
 export default function HomePage() {
     return (
         <>
-            <header>
-                <div>
-                    <h1>
-                        <img src="/images/symbol-logo.svg" alt="🙂" width="419px" height="48px" />
-                    </h1>
-                    <p>
-                        このページでは、れのらりが運営しているサービスや、ソフトウェアについて紹介しています。
-                    </p>
-                </div>
-            </header>
-
+            <Header />
             <NavBar />
 
             <main>
