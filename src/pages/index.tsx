@@ -105,7 +105,6 @@ export default function HomePage() {
 
                     <CardList>
                         <ImageCard title="TMKSoftのホームページ" image="/images/links/tmksoft.png" link="https://tmksoft.net/" className="dot ignore-aspect" />
-                        <ImageCard title="ぶどぶどうの部屋" image="/images/links/gbudou.png" link="https://gbudou.com/" className="dot ignore-aspect" />
                         <ImageCard title="naisuのホームページ" image="/images/links/naisu.png" link="https://naisu.moe/" className="ignore-aspect" />
                         <ImageCard title="をとすまっ！のページ" image="/images/links/wotosuma.png" link="https://wotosuma.f5.si/" className="dot ignore-aspect" />
                     </CardList>
