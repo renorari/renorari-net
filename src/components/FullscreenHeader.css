@@ -1,4 +1,4 @@
-header {
+header.fullscreen {
     background: url("/images/header.jpg");
     background-size: cover;
     background-position: center;
@@ -11,18 +11,18 @@ header {
     text-shadow: 0 0.354rem 2rem var(--c-shadow);
 }
 
-header div {
+header.fullscreen div {
     margin: auto 10%;
     text-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-header div h1 {
+header.fullscreen div h1 {
     display: flex;
     gap: 1rem;
     align-items: center;
 }
 
-header div h1 img {
+header.fullscreen div h1 img {
     max-width: 100%;
     height: auto;
     filter: invert(1);

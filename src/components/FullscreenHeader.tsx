@@ -3,7 +3,7 @@ import "./FullscreenHeader.css";
 
 export default function Header() {
     return (
-        <header>
+        <header className="fullscreen">
             <div>
                 <h1>
                     <img src="/images/symbol-logo.svg" alt="🙂" width="419px" height="48px" />
