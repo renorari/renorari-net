@@ -1,7 +1,7 @@
 import React from "react";
 import { PageProps } from "waku/router";
 
-export default async function BlogPage(
+export default async function BlogTagPage(
     {id}: PageProps<"/blog/tag/[id]">
 ) {
     return (

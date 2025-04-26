@@ -7,7 +7,8 @@ import { unstable_notFound } from "waku/router/server";
 import { getArticleById } from "../../../utils/database";
 
 import type { PageProps } from "waku/router";
-export default async function BlogPage(
+
+export default async function BlogArticlePage(
     { id }: PageProps<"/blog/[id]">
 ) {
     const article = await getArticleById(parseInt(id));
