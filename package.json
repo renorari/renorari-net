@@ -11,22 +11,22 @@
   "dependencies": {
     "mysql2": "^3.14.0",
     "qrcode": "^1.5.4",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "react-server-dom-webpack": "19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-server-dom-webpack": "^19.1.0",
     "waku": "^0.22.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
     "@stylistic/eslint-plugin-ts": "^4.1.0",
     "@types/qrcode": "^1.5.5",
-    "@types/react": "19.0.10",
-    "@types/react-dom": "19.0.4",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
     "eslint": "^9.21.0",
     "eslint-plugin-react": "^7.37.4",
     "globals": "^16.0.0",
-    "postcss": "8.5.3",
-    "typescript": "5.7.3",
+    "postcss": "^8.5.3",
+    "typescript": "^5.7.3",
     "typescript-eslint": "^8.25.0"
   },
   "nodemonConfig": {
