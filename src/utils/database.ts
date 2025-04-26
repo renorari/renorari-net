@@ -413,5 +413,10 @@ export {
     updateTag,
     deleteTag,
     setArticleTag,
-    removeArticleTag
+    removeArticleTag,
+
+    // interfaces
+    Article,
+    Category,
+    Tag
 };

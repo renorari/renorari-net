@@ -26,10 +26,10 @@
 
 @font-face {
     font-family: "Koruri";
-    src: url("/fonts/Koruri-SemiBold.woff2") format("woff2"),
-        url("/fonts/Koruri-SemiBold.woff") format("woff"),
-        url("/fonts/Koruri-SemiBold.eot") format("embedded-opentype"),
-        url("/fonts/Koruri-SemiBold.ttf") format("truetype");
+    src: url("/fonts/Koruri-Semibold.woff2") format("woff2"),
+        url("/fonts/Koruri-Semibold.woff") format("woff"),
+        url("/fonts/Koruri-Semibold.eot") format("embedded-opentype"),
+        url("/fonts/Koruri-Semibold.ttf") format("truetype");
     font-style: normal;
     font-weight: 500;
     font-display: swap;
@@ -48,10 +48,10 @@
 
 @font-face {
     font-family: "Koruri";
-    src: url("/fonts/Koruri-ExtraBold.woff2") format("woff2"),
-        url("/fonts/Koruri-ExtraBold.woff") format("woff"),
-        url("/fonts/Koruri-ExtraBold.eot") format("embedded-opentype"),
-        url("/fonts/Koruri-ExtraBold.ttf") format("truetype");
+    src: url("/fonts/Koruri-Extrabold.woff2") format("woff2"),
+        url("/fonts/Koruri-Extrabold.woff") format("woff"),
+        url("/fonts/Koruri-Extrabold.eot") format("embedded-opentype"),
+        url("/fonts/Koruri-Extrabold.ttf") format("truetype");
     font-style: normal;
     font-weight: 800;
     font-display: swap;
