@@ -1,6 +1,7 @@
 import React from "react";
 
 import {getArticles} from "../../utils/database";
+import { Link } from "waku";
 
 export default async function BlogPage() {
     const articles = await getArticles();
@@ -12,7 +13,9 @@ export default async function BlogPage() {
             <ul>
                 {articles.map((article) => (
                     <li key={article.id}>
-                        <a href={`/blog/${article.id}`}>{article.title}</a>
+                        <Link to={`/blog/${article.id}`}>
+                            {article.title}
+                        </Link>
                     </li>
                 ))}
             </ul>

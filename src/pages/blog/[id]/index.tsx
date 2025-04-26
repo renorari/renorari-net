@@ -8,7 +8,7 @@ import { getArticleById } from "../../../utils/database";
 
 import type { PageProps } from "waku/router";
 export default async function BlogPage(
-    { id }: PageProps<"/blog/[id]">
+    { id }: PageProps<"/blog/article/[id]">
 ) {
     const article = await getArticleById(parseInt(id));
 
