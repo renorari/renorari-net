@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "waku dev",
-    "build": "waku build",
+    "build": "WAKU_BUILD=true waku build",
     "start": "waku start"
   },
   "dependencies": {

@@ -74,6 +74,29 @@ const initDatabase = async (): Promise<void> => {
 // データベース初期化を実行
 initDatabase().catch(err => console.error("データベース初期化エラー:", err));
 
+/**
+ * データベース接続プールを終了する
+ * wakuビルド時などに呼び出すことでイベントループが終了できるようにする
+ */
+async function closePool(): Promise<void> {
+    try {
+        await pool.end();
+        console.log("データベース接続プールを正常に終了しました");
+    } catch (err) {
+        console.error("データベース接続プールの終了中にエラーが発生しました:", err);
+        throw err;
+    }
+}
+
+/**
+ * ビルド時に自動で終了するための設定
+*/
+setTimeout(() => {
+    if (process.env.WAKU_BUILD === "true") {
+        closePool();
+    }
+}, 5000);
+
 // インターフェース定義
 // --------------------
 
@@ -394,6 +417,7 @@ async function removeArticleTag(articleId: number, tagId: number): Promise<void>
 // エクスポート
 export {
     pool,
+    closePool,
     // 記事操作
     getArticles,
     getArticleById,
