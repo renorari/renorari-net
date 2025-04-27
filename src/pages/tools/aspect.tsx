@@ -39,7 +39,7 @@ export default function AspectPage() {
     return (
         <main>
             <section id="description">
-                <h2>AviUtl縦横比計算機</h2>
+                <h1>AviUtl縦横比計算機</h1>
                 <p>
                     AviUtl縦横比計算機は、AviUtlの縦横比を計算するためのツールです。
                 </p>

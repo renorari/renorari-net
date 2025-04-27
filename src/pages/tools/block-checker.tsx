@@ -25,7 +25,7 @@ export default function BlockCheckerPage() {
     return (
         <main>
             <section id="description">
-                <h2>Block Checker</h2>
+                <h1>Block Checker</h1>
                 <p>
                     ブロックチェッカーは、Kana/UGC/TakasumiBOTのブロックを確認するためのツールです。
                     <br />

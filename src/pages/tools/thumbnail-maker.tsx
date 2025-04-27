@@ -105,7 +105,7 @@ export default function ThumbnailMakerPage() {
     return (
         <main>
             <section>
-                <h2>Thumbnail Maker</h2>
+                <h1>Thumbnail Maker</h1>
                 <p>
                     このページでは、サムネイルを生成することができます。
                     <br />

@@ -62,7 +62,7 @@ export default function BeepPage() {
     return (
         <main>
             <section>
-                <h2>!Beepとは</h2>
+                <h1>!Beepとは</h1>
                 <p>
                     !Beepとは、れのらりが腕時計用に作成した、放送禁止音を鳴らすプログラムを、ウェブに移植したものです。
                     <br />

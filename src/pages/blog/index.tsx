@@ -5,8 +5,13 @@ import BlogList from "../../components/BlogList";
 export default function BlogPage() {
     return (
         <main>
-            <h2>ブログ</h2>
-            <p>私のブログです。</p>
+            <h1>ブログ</h1>
+            <p>
+                ようこそ！
+                ここでは私のブログ記事を共有しています。
+                <br />
+                最新の記事や興味深いトピックをぜひチェックしてみてください。
+            </p>
             <BlogList />
         </main>
     );

@@ -91,7 +91,7 @@ export default function QRPage() {
     return (
         <main>
             <section id="description">
-                <h2>QR Code Maker</h2>
+                <h1>QR Code Maker</h1>
                 <p>
                     このページでは、QRコードを生成することができます。
                     <br />

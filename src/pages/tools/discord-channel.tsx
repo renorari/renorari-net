@@ -51,7 +51,7 @@ export default function DiscordChannelPage() {
     return (
         <main>
             <section id="description">
-                <h2>Discord Channel Namerとは</h2>
+                <h1>Discord Channel Namerとは</h1>
                 <p>
                     Discord Channel Namerとは、Discordのチャンネル名で大文字などの特殊文字を使用するためのツールです。
                     <br />

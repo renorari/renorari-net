@@ -4,7 +4,7 @@ import { Link } from "waku";
 export default function DisclaimerPage() {
     return (
         <main>
-            <h2>免責事項</h2>
+            <h1>免責事項</h1>
             <p>
                 renorari.net（以下「本サイト」という）は、免責事項について以下のとおり免責事項（以下「本免責事項」という）を定めます。
                 <br />

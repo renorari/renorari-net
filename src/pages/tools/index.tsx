@@ -4,9 +4,9 @@ import ToolsList from "../../components/ToolsList";
 export default function ToolsListPage() {
     return (
         <main>
-            <h2>
+            <h1>
                 ウェブツール集
-            </h2>
+            </h1>
             <p>
                 れのらりが作成したウェブツール集です。
                 <br />

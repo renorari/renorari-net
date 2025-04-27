@@ -14,7 +14,7 @@ export default function GeneratorPage() {
     return (
         <main>
             <section id="description">
-                <h2>れのらりジェネレーターとは</h2>
+                <h1>れのらりジェネレーターとは</h1>
                 <p>
                     れのらりジェネレーターとは、れのらりが名前を決める際に使用したプログラムを、一般公開したものです。
                     <br />
