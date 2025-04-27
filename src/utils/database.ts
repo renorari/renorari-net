@@ -49,21 +49,6 @@ const initDatabase = async (): Promise<void> => {
             FOREIGN KEY (\`article_id\`) REFERENCES \`articles\`(\`id\`) ON DELETE CASCADE, 
             FOREIGN KEY (\`category_id\`) REFERENCES \`categories\`(\`id\`) ON DELETE CASCADE
         )`,
-        `CREATE TABLE IF NOT EXISTS \`tags\` (
-            \`id\` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-            \`name\` VARCHAR(255) NOT NULL UNIQUE, 
-            \`deleted\` BOOLEAN DEFAULT FALSE, 
-            \`created_at\` DATETIME DEFAULT CURRENT_TIMESTAMP, 
-            \`updated_at\` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-        )`,
-        `CREATE TABLE IF NOT EXISTS \`articles_tags\` (
-            \`article_id\` INT NOT NULL, 
-            \`tag_id\` INT NOT NULL, 
-            \`deleted\` BOOLEAN DEFAULT FALSE, 
-            PRIMARY KEY (\`article_id\`, \`tag_id\`), 
-            FOREIGN KEY (\`article_id\`) REFERENCES \`articles\`(\`id\`) ON DELETE CASCADE, 
-            FOREIGN KEY (\`tag_id\`) REFERENCES \`tags\`(\`id\`) ON DELETE CASCADE
-        )`,
         `CREATE TABLE IF NOT EXISTS \`files\` (
             \`id\` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
             \`name\` VARCHAR(255) NOT NULL UNIQUE, 
@@ -117,7 +102,6 @@ interface Article {
     title: string;
     content: string;
     categories: Category[];
-    tags: Tag[];
     createdAt: string;
     updatedAt: string;
 }
@@ -147,26 +131,6 @@ interface Category {
  * DB取得時のカテゴリデータの型定義
  */
 interface CategoryData extends mysql.RowDataPacket {
-    id: number;
-    name: string;
-    created_at: string;
-    updated_at: string;
-}
-
-/**
- * タグの型定義
- */
-interface Tag {
-    id: number;
-    name: string;
-    createdAt: string;
-    updatedAt: string;
-}
-
-/**
- * DB取得時のタグデータの型定義
- */
-interface TagData extends mysql.RowDataPacket {
     id: number;
     name: string;
     created_at: string;
@@ -211,16 +175,6 @@ const convertCategoryData = (data: CategoryData): Category => ({
 });
 
 /**
- * DBのレコードを適切な型に変換する (タグ)
- */
-const convertTagData = (data: TagData): Tag => ({
-    "id": data.id,
-    "name": data.name,
-    "createdAt": data.created_at,
-    "updatedAt": data.updated_at
-});
-
-/**
  * 記事データをデータベースから取得して整形する共通関数
  */
 async function formatArticleData(articleData: ArticleData): Promise<Article> {
@@ -230,19 +184,12 @@ async function formatArticleData(articleData: ArticleData): Promise<Article> {
         [articleData.id]
     );
 
-    // タグの取得
-    const [tagsData] = await pool.query<TagData[]>(
-        "SELECT t.* FROM `tags` t INNER JOIN `articles_tags` at ON t.id = at.tag_id WHERE at.article_id = ? AND t.deleted = FALSE",
-        [articleData.id]
-    );
-
     // 記事データの組み立て
     return {
         "id": articleData.id,
         "title": articleData.title,
         "content": articleData.content,
         "categories": categoriesData.map(convertCategoryData),
-        "tags": tagsData.map(convertTagData),
         "createdAt": articleData.created_at,
         "updatedAt": articleData.updated_at
     };
@@ -303,21 +250,6 @@ async function getArticlesByCategory(categoryId: number): Promise<Article[]> {
 }
 
 /**
- * 指定タグがついた記事を取得する
- */
-async function getArticlesByTag(tagId: number): Promise<Article[]> {
-    const [articlesData] = await pool.query<ArticleData[]>(
-        "SELECT a.* FROM `articles` a INNER JOIN `articles_tags` at ON a.id = at.article_id " +
-        "WHERE at.tag_id = ? AND a.deleted = FALSE ORDER BY a.created_at DESC",
-        [tagId]
-    );
-
-    return Promise.all(
-        articlesData.map(article => formatArticleData(article))
-    );
-}
-
-/**
  * 新しい記事を追加する
  */
 async function addArticle(title: string, content: string): Promise<number> {
@@ -363,6 +295,33 @@ async function addCategory(name: string): Promise<number> {
 }
 
 /**
+ * すべてのカテゴリを取得する
+ */
+async function getAllCategories(): Promise<Category[]> {
+    const [categoriesData] = await pool.query<CategoryData[]>(
+        "SELECT * FROM `categories` WHERE `deleted` = FALSE ORDER BY `created_at` DESC"
+    );
+
+    return categoriesData.map(convertCategoryData);
+}
+
+/**
+ * 指定カテゴリを取得する
+ */
+async function getCategoryById(id: number): Promise<Category | null> {
+    const [categoriesData] = await pool.execute<CategoryData[]>(
+        "SELECT * FROM `categories` WHERE `id` = ? AND `deleted` = FALSE",
+        [id]
+    );
+
+    if (categoriesData.length === 0) {
+        return null;
+    }
+
+    return categoriesData[0] ? convertCategoryData(categoriesData[0]) : null;
+}
+
+/**
  * カテゴリを更新する
  */
 async function updateCategory(id: number, name: string): Promise<void> {
@@ -399,60 +358,6 @@ async function removeArticleCategory(articleId: number, categoryId: number): Pro
     await pool.execute(
         "DELETE FROM `articles_categories` WHERE `article_id` = ? AND `category_id` = ?", 
         [articleId, categoryId]
-    );
-}
-
-// タグ関連の関数
-// -----------
-
-/**
- * 新しいタグを追加する
- */
-async function addTag(name: string): Promise<number> {
-    const [result] = await pool.execute(
-        "INSERT INTO `tags` (`name`) VALUES (?)", 
-        [name]
-    );
-    return (result as mysql.ResultSetHeader).insertId;
-}
-
-/**
- * タグを更新する
- */
-async function updateTag(id: number, name: string): Promise<void> {
-    await pool.execute(
-        "UPDATE `tags` SET `name` = ? WHERE `id` = ?", 
-        [name, id]
-    );
-}
-
-/**
- * タグを削除する (論理削除)
- */
-async function deleteTag(id: number): Promise<void> {
-    await pool.execute(
-        "UPDATE `tags` SET `deleted` = TRUE WHERE `id` = ?", 
-        [id]
-    );
-}
-
-/**
- * 記事にタグを設定する
- */
-async function setArticleTag(articleId: number, tagId: number): Promise<void> {
-    await pool.execute(
-        "INSERT INTO `articles_tags` (`article_id`, `tag_id`) VALUES (?, ?)", 
-        [articleId, tagId]
-    );
-}
-
-/**
- * 記事からタグを削除する
- */
-async function removeArticleTag(articleId: number, tagId: number): Promise<void> {
-    await pool.execute(
-        "DELETE FROM `articles_tags` WHERE `article_id` = ? AND `tag_id` = ?", 
-        [articleId, tagId]
     );
 }
 
@@ -548,19 +453,14 @@ export {
     updateArticle,
     deleteArticle,
     getArticlesByCategory,
-    getArticlesByTag,
     // カテゴリ操作
     addCategory,
+    getAllCategories,
+    getCategoryById,
     updateCategory,
     deleteCategory,
     setArticleCategory,
     removeArticleCategory,
-    // タグ操作
-    addTag,
-    updateTag,
-    deleteTag,
-    setArticleTag,
-    removeArticleTag,
     // ファイル操作
     addFile,
     getFileByName,
@@ -572,6 +472,5 @@ export {
     // インターフェース
     Article,
     Category,
-    Tag,
     File
 };

@@ -32,21 +32,12 @@ export default async function BlogArticlePage(
                         "day": "2-digit"
                     })}
                 </p>
-                <div className="info">
-                    <div className="categories">
-                        {article.categories.map((category) => (
-                            <Link key={category.id} className="category" to={`/blog/category/${category.id}`}>
-                                {category.name}
-                            </Link>
-                        ))}
-                    </div>
-                    <div className="tags">
-                        {article.tags.map((tag) => (
-                            <Link key={tag.id} className="tag" to={`/blog/tag/${tag.id}`}>
-                                #{tag.name}
-                            </Link>
-                        ))}
-                    </div>
+                <div className="categories">
+                    {article.categories.map((category) => (
+                        <Link key={category.id} className="category" to={`/blog/category/${category.id}`}>
+                            {category.name}
+                        </Link>
+                    ))}
                 </div>
             </header>
 
