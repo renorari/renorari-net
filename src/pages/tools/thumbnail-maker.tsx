@@ -3,6 +3,8 @@ import "../../styles/tools/thumbnail.css";
 
 import React, { useEffect, useRef, useState } from "react";
 
+import Metadata from "../../components/Metadata";
+
 export default function ThumbnailMakerPage() {
     const [title, setTitle] = useState("タイトル");
     const [subtitle, setSubtitle] = useState("サブタイトル");
@@ -103,82 +105,78 @@ export default function ThumbnailMakerPage() {
     };
 
     return (
-        <main>
-            <section>
-                <h1>Thumbnail Maker</h1>
-                <p>
-                    このページでは、サムネイルを生成することができます。
-                    <br />
-                    生成したサムネイルは、PNG形式でダウンロードすることができます。
-                </p>
-            </section>
-            <section>
-                <h2>Type - 1</h2>
-                <p>
-                    原作サムネイル: <a href="https://psychiatry-hospitalization.hateblo.jp/">精神科病棟に入院した高校生の日記。</a>
-                </p>
-                <div>
-                    <canvas ref={canvasRef} width="1920" height="1080">
-                        thumbnail
-                    </canvas>
-                    <div className="input-container">
-                        <label htmlFor="title">タイトル</label>
-                        <div className="inputs">
-                            <input 
-                                type="text" 
-                                id="title" 
-                                value={title} 
-                                onChange={(e) => setTitle(e.target.value)} 
-                            />
-                            <input 
-                                type="color" 
-                                id="title-color" 
-                                value={titleColor} 
-                                onChange={(e) => setTitleColor(e.target.value)} 
-                            />
+        <>
+            <Metadata title="サムネイルメーカー" description="サムネイルを生成することができるツールです。" keywords={["サムネイル", "生成", "ツール"]} image="https://renorari.net/images/tools/thumbnail-maker.png" /><main>
+                <section>
+                    <h1>Thumbnail Maker</h1>
+                    <p>
+                        このページでは、サムネイルを生成することができます。
+                        <br />
+                        生成したサムネイルは、PNG形式でダウンロードすることができます。
+                    </p>
+                </section>
+                <section>
+                    <h2>Type - 1</h2>
+                    <p>
+                        原作サムネイル: <a href="https://psychiatry-hospitalization.hateblo.jp/">精神科病棟に入院した高校生の日記。</a>
+                    </p>
+                    <div>
+                        <canvas ref={canvasRef} width="1920" height="1080">
+                            thumbnail
+                        </canvas>
+                        <div className="input-container">
+                            <label htmlFor="title">タイトル</label>
+                            <div className="inputs">
+                                <input
+                                    type="text"
+                                    id="title"
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)} />
+                                <input
+                                    type="color"
+                                    id="title-color"
+                                    value={titleColor}
+                                    onChange={(e) => setTitleColor(e.target.value)} />
+                            </div>
+                        </div>
+                        <div className="input-container">
+                            <label htmlFor="subtitle">サブタイトル</label>
+                            <div className="inputs">
+                                <input
+                                    type="text"
+                                    id="subtitle"
+                                    value={subtitle}
+                                    onChange={(e) => setSubtitle(e.target.value)} />
+                                <input
+                                    type="color"
+                                    id="subtitle-color"
+                                    value={subtitleColor}
+                                    onChange={(e) => setSubtitleColor(e.target.value)} />
+                            </div>
+                        </div>
+                        <div className="input-container">
+                            <label htmlFor="background-color">背景色1</label>
+                            <input
+                                type="color"
+                                id="background-color"
+                                value={backgroundColor}
+                                onChange={(e) => setBackgroundColor(e.target.value)} />
+                        </div>
+                        <div className="input-container">
+                            <label htmlFor="background-color-2">背景色2</label>
+                            <input
+                                type="color"
+                                id="background-color-2"
+                                value={backgroundColor2}
+                                onChange={(e) => setBackgroundColor2(e.target.value)} />
                         </div>
                     </div>
-                    <div className="input-container">
-                        <label htmlFor="subtitle">サブタイトル</label>
-                        <div className="inputs">
-                            <input 
-                                type="text" 
-                                id="subtitle" 
-                                value={subtitle} 
-                                onChange={(e) => setSubtitle(e.target.value)} 
-                            />
-                            <input 
-                                type="color" 
-                                id="subtitle-color" 
-                                value={subtitleColor} 
-                                onChange={(e) => setSubtitleColor(e.target.value)} 
-                            />
-                        </div>
+                    <div className="buttons">
+                        <button onClick={download}>ダウンロード</button>
+                        <button onClick={reset} className="secondary">リセット</button>
                     </div>
-                    <div className="input-container">
-                        <label htmlFor="background-color">背景色1</label>
-                        <input 
-                            type="color" 
-                            id="background-color" 
-                            value={backgroundColor} 
-                            onChange={(e) => setBackgroundColor(e.target.value)} 
-                        />
-                    </div>
-                    <div className="input-container">
-                        <label htmlFor="background-color-2">背景色2</label>
-                        <input 
-                            type="color" 
-                            id="background-color-2" 
-                            value={backgroundColor2} 
-                            onChange={(e) => setBackgroundColor2(e.target.value)} 
-                        />
-                    </div>
-                </div>
-                <div className="buttons">
-                    <button onClick={download}>ダウンロード</button>
-                    <button onClick={reset} className="secondary">リセット</button>
-                </div>
-            </section>
-        </main>
+                </section>
+            </main>
+        </>
     );
 }

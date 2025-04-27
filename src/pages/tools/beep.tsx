@@ -1,5 +1,7 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+
+import Metadata from "../../components/Metadata";
 
 export default function BeepPage() {
     const buttonRef = useRef<HTMLButtonElement>(null);
@@ -60,33 +62,37 @@ export default function BeepPage() {
     };
 
     return (
-        <main>
-            <section>
-                <h1>!Beepとは</h1>
-                <p>
-                    !Beepとは、れのらりが腕時計用に作成した、放送禁止音を鳴らすプログラムを、ウェブに移植したものです。
+        <>
+            <Metadata title="!Beep" description="れのらりが腕時計用に作成した、放送禁止音を鳴らすプログラムを、ウェブに移植したものです。" keywords={["!Beep", "放送禁止音", "音"]} image="https://renorari.net/images/tools/beep.png" />
+
+            <main>
+                <section>
+                    <h1>!Beepとは</h1>
+                    <p>
+                        !Beepとは、れのらりが腕時計用に作成した、放送禁止音を鳴らすプログラムを、ウェブに移植したものです。
+                        <br />
+                        大きな音が鳴りますので、音量にはご注意ください。
+                    </p>
+                </section>
+                <section>
+                    <h2>遊ぶ</h2>
+                    下のボタンを押すと、ピー🤬という音がなります。
                     <br />
-                    大きな音が鳴りますので、音量にはご注意ください。
-                </p>
-            </section>
-            <section>
-                <h2>遊ぶ</h2>
-                下のボタンを押すと、ピー🤬という音がなります。
-                <br />
-                <button 
-                    id="beep" 
-                    ref={buttonRef}
-                    onMouseDown={startBeep} 
-                    onMouseUp={stopBeep}
-                    onTouchStart={startBeep}
-                    onTouchEnd={stopBeep}
-                    onKeyDown={handleKeyDown}
-                    onKeyUp={handleKeyUp}
-                    tabIndex={0}
-                >
-                    Beep!
-                </button>
-            </section>
-        </main>
+                    <button
+                        id="beep"
+                        ref={buttonRef}
+                        onMouseDown={startBeep}
+                        onMouseUp={stopBeep}
+                        onTouchStart={startBeep}
+                        onTouchEnd={stopBeep}
+                        onKeyDown={handleKeyDown}
+                        onKeyUp={handleKeyUp}
+                        tabIndex={0}
+                    >
+                        Beep!
+                    </button>
+                </section>
+            </main>
+        </>
     );
 }

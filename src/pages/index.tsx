@@ -1,17 +1,20 @@
 import React from "react";
 import { Link } from "waku";
 
+import BlogList from "../components/BlogList";
 import CardList from "../components/CardList";
 import Header from "../components/FullscreenHeader";
 import ImageCard from "../components/ImageCard";
+import Metadata from "../components/Metadata";
 import NavBar from "../components/NavBar";
 import ProfileCard from "../components/ProfileCard";
 import ToolsList from "../components/ToolsList";
-import BlogList from "../components/BlogList";
 
 export default function HomePage() {
     return (
         <>
+            <Metadata />
+
             <Header />
             <NavBar />
 

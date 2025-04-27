@@ -3,6 +3,8 @@ import "../../styles/tools/aspect.css";
 
 import React, { FC, useState } from "react";
 
+import Metadata from "../../components/Metadata";
+
 // 計算用ヘルパー関数
 const calculateRatio = (width: number, height: number): number => {
     const ratio = (1 - (1 / Math.max(width, height)) * Math.min(width, height)) * 100;
@@ -37,51 +39,55 @@ export default function AspectPage() {
     const [size, setSize] = useState(1920);
 
     return (
-        <main>
-            <section id="description">
-                <h1>AviUtl縦横比計算機</h1>
-                <p>
-                    AviUtl縦横比計算機は、AviUtlの縦横比を計算するためのツールです。
-                </p>
-            </section>
+        <>
+            <Metadata title="AviUtl縦横比計算機" description="AviUtlの縦横比を計算するためのツールです。" keywords={["AviUtl", "縦横比", "計算機"]} image="https://renorari.net/images/tools/aspect.png" />
 
-            <section id="aspect-calculator">
-                <h2>幅から縦横比</h2>
-                <p>
-                    以下のフォームに、縦横幅を入力してください。
-                    <br />
-                    AviUtlは、小数点1桁までの縦横比をサポートしています。
-                    <br />
-                    そのため、AviUtl上では、多少の誤差が生じる可能性があります。
-                </p>
-                <label htmlFor="width">横幅</label>
-                <input type="number" id="width" name="width" placeholder="16" value={width} onChange={(e) => setWidth(parseInt(e.target.value))} required />
-                <label htmlFor="height">縦幅</label>
-                <input type="number" id="height" name="height" placeholder="9" value={height} onChange={(e) => setHeight(parseInt(e.target.value))} required />
+            <main>
+                <section id="description">
+                    <h1>AviUtl縦横比計算機</h1>
+                    <p>
+                        AviUtl縦横比計算機は、AviUtlの縦横比を計算するためのツールです。
+                    </p>
+                </section>
 
-                {isNaN(calculateRatio(width, height)) ? <div className="result-container error">エラー</div> :
-                    <ResultDisplay aspectRatio={`${width}/${height}`} result={calculateRatio(width, height).toFixed(2)} />
-                }
-            </section>
+                <section id="aspect-calculator">
+                    <h2>幅から縦横比</h2>
+                    <p>
+                        以下のフォームに、縦横幅を入力してください。
+                        <br />
+                        AviUtlは、小数点1桁までの縦横比をサポートしています。
+                        <br />
+                        そのため、AviUtl上では、多少の誤差が生じる可能性があります。
+                    </p>
+                    <label htmlFor="width">横幅</label>
+                    <input type="number" id="width" name="width" placeholder="16" value={width} onChange={(e) => setWidth(parseInt(e.target.value))} required />
+                    <label htmlFor="height">縦幅</label>
+                    <input type="number" id="height" name="height" placeholder="9" value={height} onChange={(e) => setHeight(parseInt(e.target.value))} required />
 
-            <section id="size-calculator">
-                <h2>縦横比から幅</h2>
-                <p>
-                    以下のフォームに、縦横比とサイズを入力してください。
-                    <br />
-                    AviUtlは、小数点1桁までの縦横比をサポートしています。
-                    <br />
-                    そのため、AviUtl上の値を入力すると、多少の誤差が生じる可能性があります。
-                </p>
-                <label htmlFor="ratio">縦横比</label>
-                <input type="number" id="ratio" name="ratio" placeholder="-43.75" value={ratio} onChange={(e) => setRatio(parseFloat(e.target.value))} required />
-                <label htmlFor="size">サイズ</label>
-                <input type="number" id="size" name="size" placeholder="1920" value={size} onChange={(e) => setSize(parseInt(e.target.value))} required />
+                    {isNaN(calculateRatio(width, height)) ? <div className="result-container error">エラー</div> :
+                        <ResultDisplay aspectRatio={`${width}/${height}`} result={calculateRatio(width, height).toFixed(2)} />
+                    }
+                </section>
 
-                {isNaN(calculateDimensions(ratio, size).width) ? <div className="result-container error">エラー</div> :
-                    <ResultDisplay aspectRatio={`${calculateDimensions(ratio, size).width}/${calculateDimensions(ratio, size).height}`} result={calculateDimensions(ratio, size).width + " x " + calculateDimensions(ratio, size).height} />
-                }
-            </section>
-        </main>
+                <section id="size-calculator">
+                    <h2>縦横比から幅</h2>
+                    <p>
+                        以下のフォームに、縦横比とサイズを入力してください。
+                        <br />
+                        AviUtlは、小数点1桁までの縦横比をサポートしています。
+                        <br />
+                        そのため、AviUtl上の値を入力すると、多少の誤差が生じる可能性があります。
+                    </p>
+                    <label htmlFor="ratio">縦横比</label>
+                    <input type="number" id="ratio" name="ratio" placeholder="-43.75" value={ratio} onChange={(e) => setRatio(parseFloat(e.target.value))} required />
+                    <label htmlFor="size">サイズ</label>
+                    <input type="number" id="size" name="size" placeholder="1920" value={size} onChange={(e) => setSize(parseInt(e.target.value))} required />
+
+                    {isNaN(calculateDimensions(ratio, size).width) ? <div className="result-container error">エラー</div> :
+                        <ResultDisplay aspectRatio={`${calculateDimensions(ratio, size).width}/${calculateDimensions(ratio, size).height}`} result={calculateDimensions(ratio, size).width + " x " + calculateDimensions(ratio, size).height} />
+                    }
+                </section>
+            </main>
+        </>
     );
 }
