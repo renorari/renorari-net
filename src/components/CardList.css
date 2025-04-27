@@ -2,6 +2,8 @@
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 @media (min-width: 45rem) {
