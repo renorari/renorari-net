@@ -7,6 +7,7 @@ import { unstable_notFound } from "waku/router/server";
 import { getArticleById } from "../../../utils/database";
 
 import type { PageProps } from "waku/router";
+import Markdown from "../../../components/Markdown";
 
 export default async function BlogArticlePage(
     { id }: PageProps<"/blog/[id]">
@@ -48,6 +49,10 @@ export default async function BlogArticlePage(
                     </div>
                 </div>
             </header>
+
+            <article>
+                <Markdown contentMD={article.content} />
+            </article>
         </main>
     );
 }

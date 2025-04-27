@@ -127,6 +127,16 @@ main .date {
     color: var(--c-text-light);
 }
 
+main code.hljs {
+    border-radius: 0.5rem;
+}
+
+main img:not(.card-image) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
 .dot img {
     image-rendering: pixelated;
     image-rendering: crisp-edges;

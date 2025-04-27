@@ -9,6 +9,9 @@
     "start": "waku start"
   },
   "dependencies": {
+    "highlight.js": "^11.11.1",
+    "html-react-parser": "^5.2.3",
+    "marked": "^15.0.11",
     "mysql2": "^3.14.0",
     "qrcode": "^1.5.4",
     "react": "^19.1.0",

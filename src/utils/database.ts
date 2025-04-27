@@ -36,7 +36,7 @@ const initDatabase = async (): Promise<void> => {
         )`,
         `CREATE TABLE IF NOT EXISTS \`categories\` (
             \`id\` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-            \`name\` VARCHAR(255) NOT NULL, 
+            \`name\` VARCHAR(255) NOT NULL UNIQUE, 
             \`deleted\` BOOLEAN DEFAULT FALSE, 
             \`created_at\` DATETIME DEFAULT CURRENT_TIMESTAMP, 
             \`updated_at\` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -51,7 +51,7 @@ const initDatabase = async (): Promise<void> => {
         )`,
         `CREATE TABLE IF NOT EXISTS \`tags\` (
             \`id\` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-            \`name\` VARCHAR(255) NOT NULL, 
+            \`name\` VARCHAR(255) NOT NULL UNIQUE, 
             \`deleted\` BOOLEAN DEFAULT FALSE, 
             \`created_at\` DATETIME DEFAULT CURRENT_TIMESTAMP, 
             \`updated_at\` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -63,6 +63,15 @@ const initDatabase = async (): Promise<void> => {
             PRIMARY KEY (\`article_id\`, \`tag_id\`), 
             FOREIGN KEY (\`article_id\`) REFERENCES \`articles\`(\`id\`) ON DELETE CASCADE, 
             FOREIGN KEY (\`tag_id\`) REFERENCES \`tags\`(\`id\`) ON DELETE CASCADE
+        )`,
+        `CREATE TABLE IF NOT EXISTS \`files\` (
+            \`id\` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+            \`name\` VARCHAR(255) NOT NULL UNIQUE, 
+            \`content_type\` VARCHAR(255) NOT NULL, 
+            \`data\` LONGBLOB NOT NULL, 
+            \`deleted\` BOOLEAN DEFAULT FALSE, 
+            \`created_at\` DATETIME DEFAULT CURRENT_TIMESTAMP, 
+            \`updated_at\` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         )`
     ];
 
@@ -164,6 +173,30 @@ interface TagData extends mysql.RowDataPacket {
     updated_at: string;
 }
 
+/**
+ * ファイルの型定義
+ */
+interface File {
+    id: number;
+    name: string;
+    contentType: string;
+    data: Buffer;
+    createdAt: string;
+    updatedAt: string;
+}
+
+/**
+ * DB取得時のファイルデータの型定義
+ */
+interface FileData extends mysql.RowDataPacket {
+    id: number;
+    name: string;
+    content_type: string;
+    data: Buffer;
+    created_at: string;
+    updated_at: string;
+}
+
 // ヘルパー関数
 // ----------
 
@@ -214,6 +247,15 @@ async function formatArticleData(articleData: ArticleData): Promise<Article> {
         "updatedAt": articleData.updated_at
     };
 }
+
+const convertFileData = (data: FileData): File => ({
+    "id": data.id,
+    "name": data.name,
+    "contentType": data.content_type,
+    "data": data.data,
+    "createdAt": data.created_at,
+    "updatedAt": data.updated_at
+});
 
 // 記事関連の関数
 // -------------
@@ -414,6 +456,87 @@ async function removeArticleTag(articleId: number, tagId: number): Promise<void>
     );
 }
 
+// ファイル関連の関数
+// ---------------
+
+/**
+ * ファイルを追加する
+ */
+async function addFile(name: string, contentType: string, data: Buffer): Promise<number> {
+    const [result] = await pool.execute(
+        "INSERT INTO `files` (`name`, `content_type`, `data`) VALUES (?, ?, ?)",
+        [name, contentType, data]
+    );
+    return (result as mysql.ResultSetHeader).insertId;
+}
+
+/**
+ * ファイル名でファイルを取得する
+ */
+async function getFileByName(name: string): Promise<File | null> {
+    const [files] = await pool.execute<FileData[]>(
+        "SELECT * FROM `files` WHERE `name` = ? AND `deleted` = FALSE",
+        [name]
+    );
+    
+    if (files.length === 0) {
+        return null;
+    }
+    
+    return files[0] ? convertFileData(files[0]) : null;
+}
+
+/**
+ * IDでファイルを取得する
+ */
+async function getFileById(id: number): Promise<File | null> {
+    const [files] = await pool.execute<FileData[]>(
+        "SELECT * FROM `files` WHERE `id` = ? AND `deleted` = FALSE",
+        [id]
+    );
+    
+    if (files.length === 0) {
+        return null;
+    }
+    
+    return files[0] ? convertFileData(files[0]) : null;
+}
+
+/**
+ * ファイルを更新する
+ */
+async function updateFile(id: number, name: string, contentType: string, data: Buffer): Promise<void> {
+    await pool.execute(
+        "UPDATE `files` SET `name` = ?, `content_type` = ?, `data` = ? WHERE `id` = ?",
+        [name, contentType, data, id]
+    );
+}
+
+/**
+ * ファイルを削除する (論理削除)
+ */
+async function deleteFile(id: number): Promise<void> {
+    await pool.execute(
+        "UPDATE `files` SET `deleted` = TRUE WHERE `id` = ?",
+        [id]
+    );
+}
+
+/**
+ * すべてのファイル情報を取得する (データを含まない)
+ */
+async function getAllFiles(): Promise<Omit<File, "data">[]> {
+    const [files] = await pool.query<FileData[]>(
+        "SELECT `id`, `name`, `content_type`, `created_at`, `updated_at` FROM `files` WHERE `deleted` = FALSE"
+    );
+    
+    return files.map(file => {
+        const fullFile = convertFileData({ ...file, "data": Buffer.from([]) });
+        const { data: _, ...fileWithoutData } = fullFile;
+        return fileWithoutData;
+    });
+}
+
 // エクスポート
 export {
     pool,
@@ -438,9 +561,17 @@ export {
     deleteTag,
     setArticleTag,
     removeArticleTag,
+    // ファイル操作
+    addFile,
+    getFileByName,
+    getFileById,
+    updateFile,
+    deleteFile,
+    getAllFiles,
 
-    // interfaces
+    // インターフェース
     Article,
     Category,
-    Tag
+    Tag,
+    File
 };

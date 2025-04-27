@@ -19,6 +19,7 @@ import type { getConfig as ToolsIndex_getConfig } from './pages/tools/index';
 // prettier-ignore
 type Page =
 | ({ path: '/about' } & GetConfigResponse<typeof About_getConfig>)
+| { path: '/api/files/[name]'; render: 'dynamic' }
 | { path: '/blog/[id]'; render: 'dynamic' }
 | { path: '/blog/category/[id]'; render: 'dynamic' }
 | { path: '/blog'; render: 'dynamic' }
