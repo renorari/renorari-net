@@ -7,6 +7,7 @@ import ImageCard from "../components/ImageCard";
 import NavBar from "../components/NavBar";
 import ProfileCard from "../components/ProfileCard";
 import ToolsList from "../components/ToolsList";
+import BlogList from "../components/BlogList";
 
 export default function HomePage() {
     return (
@@ -25,7 +26,8 @@ export default function HomePage() {
                     <p>
                         最近のブログ記事をダイジェストで紹介します。
                     </p>
-                    {/* ここにブログのカードが入る */}
+                    <BlogList amount={6} />
+                    <Link to="/blog" className="button secondary">もっと見る</Link>
                 </section>
                 <section id="tools">
                     <h2>

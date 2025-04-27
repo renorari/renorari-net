@@ -1,6 +1,8 @@
 button,
 input[type="submit"],
-input[type="button"] {
+input[type="button"],
+a.button {
+    display: block;
     box-shadow: var(--e-shadow);
     width: 100%;
     margin: 0.5rem 0;
@@ -15,23 +17,28 @@ input[type="button"] {
 
 button:hover,
 input[type="submit"]:hover,
-input[type="button"]:hover {
+input[type="button"]:hover,
+a.button:hover {
     box-shadow: var(--e-shadow-hover);
     filter: brightness(1.1);
     will-change: filter;
     transform: translateY(-0.1rem) scale(1.005);
+    text-decoration: none;
 }
 
 button:active,
 input[type="submit"]:active,
-input[type="button"]:active {
+input[type="button"]:active,
+a.button:active {
     box-shadow: var(--e-shadow);
     transform: translateY(0) scale(0.995);
 }
 
 button:disabled,
 input[type="submit"]:disabled,
-input[type="button"]:disabled {
+input[type="button"]:disabled,
+a.button:disabled,
+a.button.disabled {
     background: var(--c-primary-light);
     cursor: not-allowed;
     color: var(--c-primary-text);
@@ -39,14 +46,17 @@ input[type="button"]:disabled {
 
 button:disabled:hover,
 input[type="submit"]:disabled:hover,
-input[type="button"]:disabled:hover {
+input[type="button"]:disabled:hover,
+a.button:disabled:hover,
+a.button.disabled:hover {
     box-shadow: var(--e-shadow);
     transform: none;
 }
 
 button.secondary,
 input[type="submit"].secondary,
-input[type="button"].secondary {
+input[type="button"].secondary,
+a.button.secondary {
     background: transparent;
     border: 1px solid var(--c-primary);
     color: var(--c-primary);
@@ -54,21 +64,25 @@ input[type="button"].secondary {
 
 button.secondary:hover,
 input[type="submit"].secondary:hover,
-input[type="button"].secondary:hover {
+input[type="button"].secondary:hover,
+a.button.secondary:hover {
     background: var(--c-primary);
     color: var(--c-primary-text);
 }
 
 button.secondary:active,
 input[type="submit"].secondary:active,
-input[type="button"].secondary:active {
+input[type="button"].secondary:active,
+a.button.secondary:active {
     background: var(--c-primary);
     color: var(--c-primary-text);
 }
 
 button.secondary:disabled,
 input[type="submit"].secondary:disabled,
-input[type="button"].secondary:disabled {
+input[type="button"].secondary:disabled,
+a.button.secondary:disabled,
+a.button.secondary.disabled {
     background: transparent;
     border: 1px solid var(--c-primary-light);
     color: var(--c-primary-light);
@@ -76,7 +90,8 @@ input[type="button"].secondary:disabled {
 
 button.loading,
 input[type="submit"].loading,
-input[type="button"].loading {
+input[type="button"].loading,
+a.button.loading {
     position: relative;
     color: transparent !important;
     pointer-events: none;
@@ -84,7 +99,8 @@ input[type="button"].loading {
 
 button.loading::after,
 input[type="submit"].loading::after,
-input[type="button"].loading::after {
+input[type="button"].loading::after,
+a.button.loading::after {
     content: "";
     position: absolute;
     top: calc(50% - 0.5rem);
