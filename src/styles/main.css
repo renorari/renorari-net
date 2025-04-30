@@ -148,6 +148,24 @@ main hr {
     border-top: 1px solid var(--c-text-lightest);
 }
 
+main blockquote {
+    position: relative;
+    padding-left: 2rem;
+    color: var(--c-text-thin);
+}
+
+main blockquote::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    width: 0.25rem;
+    height: 100%;
+    background: var(--c-text-lightest);
+    border-radius: 100vw;
+}
+
 .dot img {
     image-rendering: pixelated;
     image-rendering: crisp-edges;

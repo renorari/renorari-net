@@ -49,6 +49,8 @@
         --c-text: #ffffff;
         --c-text-thin: #cccccc;
         --c-text-light: #999999;
+        --c-text-lighter: #666666;
+        --c-text-lightest: #333333;
 
         --c-primary-color: #406cff;
 
