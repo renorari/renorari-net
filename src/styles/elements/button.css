@@ -2,8 +2,8 @@ button,
 input[type="submit"],
 input[type="button"],
 a.button {
-    display: block;
     box-shadow: var(--e-shadow);
+    display: block;
     width: 100%;
     margin: 0.5rem 0;
     padding: 0.5rem 1rem;
@@ -13,6 +13,7 @@ a.button {
     border-radius: 0.5rem;
     font-size: 1rem;
     color: var(--c-primary-text);
+    text-align: center;
 }
 
 button.short,
@@ -100,9 +101,9 @@ button.loading,
 input[type="submit"].loading,
 input[type="button"].loading,
 a.button.loading {
+    pointer-events: none;
     position: relative;
     color: transparent !important;
-    pointer-events: none;
 }
 
 button.loading::after,
@@ -115,10 +116,10 @@ a.button.loading::after {
     left: calc(50% - 0.5rem);
     width: 1rem;
     height: 1rem;
-    border: 2px solid var(--c-primary-text);
-    border-radius: 50%;
-    border-top-color: transparent;
     animation: spin 1s linear infinite;
+    border: 2px solid var(--c-primary-text);
+    border-top-color: transparent;
+    border-radius: 50%;
 }
 
 @keyframes spin {
