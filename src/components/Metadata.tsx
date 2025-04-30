@@ -20,7 +20,7 @@ export default function Metadata({ title, description, keywords, image, noindex 
             <meta name="description" content={viewDescription} />
             <meta name="keywords" content={viewKeywords} />
             <meta name="author" content="renorari" />
-            <link rel="icon" type="image/png" href="/favicon.png" />
+            <link rel="icon" type="image/png" href="/images/favicon.png" />
             {noindex && <meta name="robots" content="noindex" />}
 
             <meta property="og:title" content={viewTitle} />
