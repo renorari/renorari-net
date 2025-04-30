@@ -20,6 +20,8 @@ export default function Metadata({ title, description, keywords, image, noindex 
             <meta name="description" content={viewDescription} />
             <meta name="keywords" content={viewKeywords} />
             <meta name="author" content="renorari" />
+            <link rel="icon" type="image/png" href="/favicon.png" />
+            {noindex && <meta name="robots" content="noindex" />}
 
             <meta property="og:title" content={viewTitle} />
             <meta property="og:locale" content="ja_JP" />
@@ -31,8 +33,6 @@ export default function Metadata({ title, description, keywords, image, noindex 
 
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:site" content="@renorari" />
-
-            {noindex && <meta name="robots" content="noindex" />}
         </>
         
     );
