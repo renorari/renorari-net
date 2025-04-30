@@ -8,8 +8,6 @@ import type { getConfig as About_getConfig } from './pages/about';
 // prettier-ignore
 import type { getConfig as Contact_getConfig } from './pages/contact';
 // prettier-ignore
-import type { getConfig as Index_getConfig } from './pages/index';
-// prettier-ignore
 import type { getConfig as LegalDisclaimer_getConfig } from './pages/legal/disclaimer';
 // prettier-ignore
 import type { getConfig as LegalPrivacy_getConfig } from './pages/legal/privacy';
@@ -24,7 +22,7 @@ type Page =
 | { path: '/blog/category/[id]'; render: 'dynamic' }
 | { path: '/blog'; render: 'dynamic' }
 | ({ path: '/contact' } & GetConfigResponse<typeof Contact_getConfig>)
-| ({ path: '/' } & GetConfigResponse<typeof Index_getConfig>)
+| { path: '/'; render: 'dynamic' }
 | ({ path: '/legal/disclaimer' } & GetConfigResponse<typeof LegalDisclaimer_getConfig>)
 | ({ path: '/legal/privacy' } & GetConfigResponse<typeof LegalPrivacy_getConfig>)
 | { path: '/tools/aspect'; render: 'dynamic' }
