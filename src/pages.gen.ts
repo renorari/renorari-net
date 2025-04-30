@@ -4,6 +4,8 @@
 import type { PathsForPages, GetConfigResponse } from 'waku/router';
 
 // prettier-ignore
+import type { getConfig as 404_getConfig } from './pages/404';
+// prettier-ignore
 import type { getConfig as About_getConfig } from './pages/about';
 // prettier-ignore
 import type { getConfig as Contact_getConfig } from './pages/contact';
@@ -16,6 +18,7 @@ import type { getConfig as ToolsIndex_getConfig } from './pages/tools/index';
 
 // prettier-ignore
 type Page =
+| ({ path: '/404' } & GetConfigResponse<typeof 404_getConfig>)
 | ({ path: '/about' } & GetConfigResponse<typeof About_getConfig>)
 | { path: '/api/files/[name]'; render: 'dynamic' }
 | { path: '/api/sitemap.xml'; render: 'dynamic' }

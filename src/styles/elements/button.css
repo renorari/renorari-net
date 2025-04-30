@@ -15,6 +15,14 @@ a.button {
     color: var(--c-primary-text);
 }
 
+button.short,
+input[type="submit"].short,
+input[type="button"].short,
+a.button.short {
+    width: auto;
+    border-radius: 100vw;
+}
+
 button:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover,

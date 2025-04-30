@@ -148,6 +148,15 @@ main hr {
     border-top: 1px solid var(--c-text-lightest);
 }
 
+main hr.short {
+    width: 50%;
+}
+
+main hr.clear {
+    margin: 1rem 0;
+    border-color: transparent;
+}
+
 main blockquote {
     position: relative;
     padding-left: 2rem;
@@ -164,6 +173,17 @@ main blockquote::before {
     height: 100%;
     background: var(--c-text-lightest);
     border-radius: 100vw;
+}
+
+main.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+main .quote {
+    color: var(--c-text-light);
 }
 
 .dot img {
