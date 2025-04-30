@@ -297,7 +297,7 @@ async function addCategory(name: string): Promise<number> {
 /**
  * すべてのカテゴリを取得する
  */
-async function getAllCategories(): Promise<Category[]> {
+async function getCategories(): Promise<Category[]> {
     const [categoriesData] = await pool.query<CategoryData[]>(
         "SELECT * FROM `categories` WHERE `deleted` = FALSE ORDER BY `created_at` DESC"
     );
@@ -455,7 +455,7 @@ export {
     getArticlesByCategory,
     // カテゴリ操作
     addCategory,
-    getAllCategories,
+    getCategories,
     getCategoryById,
     updateCategory,
     deleteCategory,
