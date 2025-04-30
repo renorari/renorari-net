@@ -5,9 +5,10 @@ interface MetadataProps {
     description?: string;
     keywords?: string[];
     image?: string;
+    noindex?: boolean;
 }
 
-export default function Metadata({ title, description, keywords, image }: MetadataProps) {
+export default function Metadata({ title, description, keywords, image, noindex }: MetadataProps) {
     const viewTitle = title ? title + " - Renorari.net" : "Renorari.net";
     const viewDescription = description || "れのらりが運営しているサービスや、ソフトウェアについて紹介しています。";
     const viewKeywords = keywords ? keywords.join(", ") : "れのらり, renorari, renorari.net, renorarinet";
@@ -30,6 +31,8 @@ export default function Metadata({ title, description, keywords, image }: Metada
 
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:site" content="@renorari" />
+
+            {noindex && <meta name="robots" content="noindex" />}
         </>
         
     );
