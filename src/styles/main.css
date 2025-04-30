@@ -127,6 +127,10 @@ main .date {
     color: var(--c-text-light);
 }
 
+main code {
+    font-family: 'Ubuntu Mono', monospace;
+}
+
 main code.hljs {
     border-radius: 0.5rem;
 }
@@ -138,10 +142,10 @@ main img:not(.card-image) {
 }
 
 main hr {
+    width: 100%;
+    margin: 2rem 0;
     border: none;
     border-top: 1px solid var(--c-text-lightest);
-    margin: 2rem 0;
-    width: 100%;
 }
 
 .dot img {
