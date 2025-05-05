@@ -38,11 +38,14 @@
 
 .card>.card-title {
     display: flex;
-    align-items:flex-end;
-    height: 100%;
+    align-items: flex-end;
     padding: 1rem;
     background-color: var(--c-card-title-background);
     font-size: 1.25rem;
+}
+
+.card.image-card>.card-title {
+    height: 100%;
 }
 
 .card>.card-content {

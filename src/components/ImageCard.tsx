@@ -12,7 +12,7 @@ type ImageCardProps = {
 
 export default function ImageCard({ title, link, image, className = "" }: ImageCardProps) {
     const card = (
-        <div className={`card ${className}`}>
+        <div className={`card image-card ${className}`}>
             <img src={image} alt={title + "の画像"} className="card-image" />
             <div className="card-title">
                 {title}

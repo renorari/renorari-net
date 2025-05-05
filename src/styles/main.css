@@ -186,6 +186,11 @@ main .quote {
     color: var(--c-text-light);
 }
 
+main .details {
+    color: var(--c-text-light);
+    font-size: 0.75rem;
+}
+
 .dot img {
     image-rendering: pixelated;
     image-rendering: crisp-edges;

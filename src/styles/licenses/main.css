@@ -1,0 +1,7 @@
+.card.ok>.card-title {
+    background: linear-gradient(var(--c-secondary-light), transparent);
+}
+
+.card.ng>.card-title {
+    background: linear-gradient(var(--c-quaternary-light), transparent);
+}

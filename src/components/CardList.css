@@ -11,3 +11,11 @@
         grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     }
 }
+
+.card-list.two-column {
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+}
+
+.card-list.one-column {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+}
