@@ -21,7 +21,7 @@ export default async function BlogArticlePage(
 
     return (
         <>
-            <Metadata title={article.title} keywords={["ブログ", "記事", article.title, ...article.categories.map((category) => category.name)]} image={markdownImage(article.content).startsWith("http") ? markdownImage(article.content) : "https://renorari.net" + markdownImage(article.content)} />
+            <Metadata title={article.title} keywords={["ブログ", "記事", article.title, ...article.categories.map((category) => category.name)]} image={markdownImage(article.content).startsWith("http") ? markdownImage(article.content) : "https://new.renorari.net" + markdownImage(article.content)} />
 
             <main>
                 <header>
