@@ -11,6 +11,14 @@ export default function GeneratorPage() {
         const N = 4;
         const text = Array.from(Array(N)).map(() => S[Math.floor(Math.random() * S.length)]).join("");
         setResult(text);
+
+        const speech = document.getElementById("speech") as HTMLInputElement;
+        if (speech.checked) {
+            const audio = new Audio(`/api/speech/renorari?text=${text}`);
+            audio.play().catch((error) => {
+                console.error("Audio playback failed:", error);
+            });
+        }
     };
 
     return (
@@ -31,6 +39,11 @@ export default function GeneratorPage() {
                 <section id="play">
                     <h2>遊ぶ</h2>
                     下のボタンを押すと、ランダムな文字列が生成されます。
+                    <br />
+                    <div>
+                        <input type="checkbox" name="speech" id="speech" />
+                        <label htmlFor="speech">音声読み上げを有効にする</label>
+                    </div>
                     <br />
                     <div style={{ "width": "100%", "textAlign": "center", "fontSize": "1.5em", "fontWeight": 600, "padding": "1em 0" }}>
                         {result}

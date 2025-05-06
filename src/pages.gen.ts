@@ -24,6 +24,7 @@ type Page =
 | ({ path: '/about' } & GetConfigResponse<typeof About_getConfig>)
 | { path: '/api/files/[name]'; render: 'dynamic' }
 | { path: '/api/sitemap.xml'; render: 'dynamic' }
+| { path: '/api/speech/renorari'; render: 'dynamic' }
 | { path: '/blog/[id]'; render: 'dynamic' }
 | { path: '/blog/category/[id]'; render: 'dynamic' }
 | { path: '/blog'; render: 'dynamic' }
