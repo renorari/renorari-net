@@ -25,7 +25,7 @@ export default function BlockCheckerPage() {
 
     return (
         <>
-            <Metadata title="Block Checker" description="Kana/UGC/TakasumiBOTのブロックを確認するためのツールです。" keywords={["Block Checker", "Kana", "UGC", "TakasumiBOT"]} image="https://renorari.net/images/tools/block-checker.png" />
+            <Metadata title="Block Checker" description="Kana/UGC/TakasumiBOTのブロックを確認するためのツールです。" keywords={["Block Checker", "Kana", "UGC", "TakasumiBOT"]} image="https://new.renorari.net/images/tools/block-checker.png" />
 
             <main>
                 <section id="description">

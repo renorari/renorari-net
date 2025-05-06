@@ -40,7 +40,7 @@ export default function AspectPage() {
 
     return (
         <>
-            <Metadata title="AviUtl縦横比計算機" description="AviUtlの縦横比を計算するためのツールです。" keywords={["AviUtl", "縦横比", "計算機"]} image="https://renorari.net/images/tools/aspect.png" />
+            <Metadata title="AviUtl縦横比計算機" description="AviUtlの縦横比を計算するためのツールです。" keywords={["AviUtl", "縦横比", "計算機"]} image="https://new.renorari.net/images/tools/aspect.png" />
 
             <main>
                 <section id="description">

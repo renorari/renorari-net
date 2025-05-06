@@ -12,6 +12,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <html lang="ja">
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1265980632516511" crossOrigin="anonymous"></script>
             </head>
             <body>
                 <NavBar />

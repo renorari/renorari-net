@@ -92,7 +92,7 @@ export default function QRPage() {
 
     return (
         <>
-            <Metadata title="QRコードメーカー" description="QRコードを生成するツールです。" keywords={["QRコード", "QR Code", "QR Code Maker"]} image="/images/tools/qr.png" /><main>
+            <Metadata title="QRコードメーカー" description="QRコードを生成するツールです。" keywords={["QRコード", "QR Code", "QR Code Maker"]} image="https://new.renorari.net/images/tools/qr.png" /><main>
                 <section id="description">
                     <h1>QR Code Maker</h1>
                     <p>
