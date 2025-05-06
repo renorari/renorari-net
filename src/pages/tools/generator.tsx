@@ -42,7 +42,12 @@ export default function GeneratorPage() {
                     <br />
                     <div>
                         <input type="checkbox" name="speech" id="speech" />
-                        <label htmlFor="speech">音声読み上げを有効にする</label>
+                        <label htmlFor="speech">
+                            音声読み上げを有効にする
+                            <span className="details">
+                                (Powered by KanaVoice)
+                            </span>
+                        </label>
                     </div>
                     <br />
                     <div style={{ "width": "100%", "textAlign": "center", "fontSize": "1.5em", "fontWeight": 600, "padding": "1em 0" }}>
