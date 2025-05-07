@@ -5,6 +5,8 @@ import Metadata from "../../components/Metadata";
 
 export default function GeneratorPage() {
     const [result, setResult] = useState("れのらり");
+    const [lastSpeechTime, setLastSpeechTime] = useState(0);
+    const SPEECH_COOLDOWN = 1000; // 音声再生の間隔を1秒に設定
 
     const generate = () => {
         const S = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん";
@@ -14,10 +16,14 @@ export default function GeneratorPage() {
 
         const speech = document.getElementById("speech") as HTMLInputElement;
         if (speech.checked) {
-            const audio = new Audio(`/api/speech/renorari?text=${text}`);
-            audio.play().catch((error) => {
-                console.error("Audio playback failed:", error);
-            });
+            const now = Date.now();
+            if (now - lastSpeechTime >= SPEECH_COOLDOWN) {
+                const audio = new Audio(`/api/speech/renorari?text=${text}`);
+                audio.play().catch((error) => {
+                    console.error("Audio playback failed:", error);
+                });
+                setLastSpeechTime(now);
+            }
         }
     };
 
