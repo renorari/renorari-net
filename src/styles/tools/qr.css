@@ -1,0 +1,22 @@
+canvas.qr {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 25vw;
+    max-height: 25vw;
+    aspect-ratio: 1 / 1;
+    border-radius: 0.5rem;
+}
+
+@media screen and (max-width: 50rem) {
+    canvas.qr {
+        max-width: 50vw;
+        max-height: 50vw;
+    }
+}
+
+@media screen and (max-width: 30rem) {
+    canvas.qr {
+        max-width: 100vw;
+        max-height: 100vw;
+    }
+}

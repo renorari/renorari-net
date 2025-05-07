@@ -1,0 +1,30 @@
+.info,
+.categories,
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.categories .category,
+.tags .tag {
+    padding: 0.25rem 1rem;
+    background-color: var(--c-card-background);
+    border-radius: 100vw;
+    color: var(--c-text);
+}
+
+.categories .category:hover,
+.tags .tag:hover {
+    box-shadow: var(--e-shadow);
+    filter: brightness(1.1);
+    will-change: filter;
+    transform: translateY(-0.1rem) scale(1.005);
+    text-decoration: none;
+}
+
+.categories .category:active,
+.tags .tag:active {
+    box-shadow: var(--e-shadow);
+    transform: translateY(0) scale(0.995);
+}
