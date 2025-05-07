@@ -14,7 +14,7 @@ export default function SakkijarvenPolkkaVideoPage() {
 
     return (
         <>
-            <Metadata title="動画配布 Säkkijärven Polkka" />
+            <Metadata title="動画配布 Säkkijärven Polkka" image="/images/downloads/sakkijarven-polkka-video.png" />
 
             <main>
                 <h1>

@@ -33,6 +33,7 @@ type Page =
 | ({ path: '/contact' } & GetConfigResponse<typeof Contact_getConfig>)
 | { path: '/downloads/goluboi-bagon'; render: 'dynamic' }
 | { path: '/downloads/goluboi-vagon'; render: 'dynamic' }
+| { path: '/downloads'; render: 'dynamic' }
 | { path: '/downloads/sakkijarven-polkka-ust'; render: 'dynamic' }
 | { path: '/downloads/sakkijarven-polkka-video'; render: 'dynamic' }
 | { path: '/'; render: 'dynamic' }

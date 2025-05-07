@@ -14,7 +14,7 @@ export default function SakkijarvenPolkkaUstPage() {
 
     return (
         <>
-            <Metadata title="UST配布 Säkkijärven Polkka" />
+            <Metadata title="UST配布 Säkkijärven Polkka" image="/images/downloads/sakkijarven-polkka-ust.png" />
 
             <main>
                 <h1>

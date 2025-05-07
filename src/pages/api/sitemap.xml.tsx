@@ -89,6 +89,11 @@ export const GET = async (request: Request): Promise<Response> => {
             "url": "/blog",
             "changeFrequency": "weekly",
             "priority": 0.9
+        },
+        {
+            "url": "/downloads",
+            "changeFrequency": "weekly",
+            "priority": 0.9
         }
     ];
 

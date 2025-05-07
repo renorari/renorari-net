@@ -14,7 +14,7 @@ export default function GoluboiVagonPage() {
 
     return (
         <>
-            <Metadata title="UST Inst配布 Голубой вагон(青い列車 日本語バージョン)" />
+            <Metadata title="UST Inst配布 Голубой вагон(青い列車 日本語バージョン)" image="/images/downloads/goluboi-vagon.png" />
 
             <main>
                 <h1>

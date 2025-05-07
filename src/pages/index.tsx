@@ -9,6 +9,7 @@ import Metadata from "../components/Metadata";
 import NavBar from "../components/NavBar";
 import ProfileCard from "../components/ProfileCard";
 import ToolsList from "../components/ToolsList";
+import DownloadsList from "../components/DownloadsList";
 
 export default function HomePage() {
     return (
@@ -59,6 +60,18 @@ export default function HomePage() {
                         <ImageCard title="VoiceJP" image="/images/services/voicejp.svg" link="https://voicejp.renorari.net/" />
                         <ImageCard title="Union Global Chat" image="/images/services/ugc.svg" link="https://ugc.renorari.net/" />
                     </CardList>
+                </section>
+                <section id="downloads">
+                    <h2>
+                        ダウンロード
+                    </h2>
+                    <p>
+                        れのらりが作成したUSTなどのダウンロード集です。
+                        <br />
+                        ぜひ、ご活用ください。
+                    </p>
+
+                    <DownloadsList />
                 </section>
                 <section id="communities">
                     <h2>
