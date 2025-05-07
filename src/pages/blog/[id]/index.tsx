@@ -25,7 +25,7 @@ export default async function BlogArticlePage(
                 title={article.title}
                 keywords={["ブログ", "記事", article.title, ...article.categories.map((category) => category.name)]}
                 description={markdownToHtml(article.content).replace(/<[^>]+>/g, "").trim().substring(0, 100) + "..."}
-                image={markdownImage(article.content).startsWith("http") ? markdownImage(article.content) : "https://new.renorari.net" + markdownImage(article.content)}
+                image={markdownImage(article.content).startsWith("http") ? markdownImage(article.content) : "https://renorari.net" + markdownImage(article.content)}
             />
 
             <main>

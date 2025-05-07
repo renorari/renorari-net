@@ -106,7 +106,7 @@ export default function ThumbnailMakerPage() {
 
     return (
         <>
-            <Metadata title="サムネイルメーカー" description="サムネイルを生成することができるツールです。" keywords={["サムネイル", "生成", "ツール"]} image="https://new.renorari.net/images/tools/thumbnail-maker.png" /><main>
+            <Metadata title="サムネイルメーカー" description="サムネイルを生成することができるツールです。" keywords={["サムネイル", "生成", "ツール"]} image="https://renorari.net/images/tools/thumbnail-maker.png" /><main>
                 <section>
                     <h1>Thumbnail Maker</h1>
                     <p>

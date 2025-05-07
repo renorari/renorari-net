@@ -52,7 +52,7 @@ export default function DiscordChannelPage() {
 
     return (
         <>
-            <Metadata title="Discord Channel Namer" description="Discordのチャンネル名で大文字などの特殊文字を使用するためのツールです。" keywords={["Discord", "チャンネル名", "大文字", "特殊文字"]} image="https://new.renorari.net/images/tools/discord-channel.png" />
+            <Metadata title="Discord Channel Namer" description="Discordのチャンネル名で大文字などの特殊文字を使用するためのツールです。" keywords={["Discord", "チャンネル名", "大文字", "特殊文字"]} image="https://renorari.net/images/tools/discord-channel.png" />
 
             <main>
                 <section id="description">

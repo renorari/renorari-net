@@ -12,7 +12,7 @@ export default function Metadata({ title, description, keywords, image, noindex 
     const viewTitle = title ? title + " - Renorari.net" : "Renorari.net";
     const viewDescription = description || "れのらりが運営しているサービスや、ソフトウェアについて紹介しています。";
     const viewKeywords = keywords ? keywords.join(", ") : "れのらり, renorari, renorari.net, renorarinet";
-    const viewImage = image?.startsWith("/") ? "https://new.renorari.net" + image : image || "https://new.renorari.net/images/ogp.png";
+    const viewImage = image?.startsWith("/") ? "https://renorari.net" + image : image || "https://renorari.net/images/ogp.png";
 
     return (
         <>
@@ -26,7 +26,7 @@ export default function Metadata({ title, description, keywords, image, noindex 
             <meta property="og:title" content={viewTitle} />
             <meta property="og:locale" content="ja_JP" />
             <meta property="og:type" content="website" />
-            <meta property="og:url" content="https://new.renorari.net/" />
+            <meta property="og:url" content="https://renorari.net/" />
             <meta property="og:image" content={viewImage} />
             <meta property="og:site_name" content="Renorari.net" />
             <meta property="og:description" content={viewDescription} />

@@ -63,7 +63,7 @@ export default function BeepPage() {
 
     return (
         <>
-            <Metadata title="!Beep" description="れのらりが腕時計用に作成した、放送禁止音を鳴らすプログラムを、ウェブに移植したものです。" keywords={["!Beep", "放送禁止音", "音"]} image="https://new.renorari.net/images/tools/beep.png" />
+            <Metadata title="!Beep" description="れのらりが腕時計用に作成した、放送禁止音を鳴らすプログラムを、ウェブに移植したものです。" keywords={["!Beep", "放送禁止音", "音"]} image="https://renorari.net/images/tools/beep.png" />
 
             <main>
                 <section>

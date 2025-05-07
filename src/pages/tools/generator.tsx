@@ -23,7 +23,7 @@ export default function GeneratorPage() {
 
     return (
         <>
-            <Metadata title="れのらりジェネレーター" description="れのらりが名前を決める際に使用したプログラムを、一般公開したものです。" keywords={["れのらりジェネレーター", "名前ジェネレーター", "ランダムジェネレーター"]} image="https://new.renorari.net/images/tools/generator.png" />
+            <Metadata title="れのらりジェネレーター" description="れのらりが名前を決める際に使用したプログラムを、一般公開したものです。" keywords={["れのらりジェネレーター", "名前ジェネレーター", "ランダムジェネレーター"]} image="https://renorari.net/images/tools/generator.png" />
 
             <main>
                 <section id="description">

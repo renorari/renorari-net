@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://new.renorari.net/api/sitemap.xml
+Sitemap: https://renorari.net/api/sitemap.xml
