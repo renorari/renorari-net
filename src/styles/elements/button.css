@@ -68,7 +68,7 @@ input[type="button"].secondary,
 a.button.secondary {
     background: transparent;
     border: 1px solid var(--c-primary);
-    color: var(--c-primary);
+    color: var(--c-primary-color);
 }
 
 button.secondary:hover,
