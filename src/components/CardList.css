@@ -1,19 +1,19 @@
 .card-list {
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
 @media (min-width: 45rem) {
     .card-list {
-        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
     }
 }
 
 .card-list.two-column {
-    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(30rem, 100%), 1fr));
 }
 
 .card-list.one-column {
