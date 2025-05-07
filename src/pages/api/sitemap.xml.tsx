@@ -94,6 +94,21 @@ export const GET = async (request: Request): Promise<Response> => {
             "url": "/downloads",
             "changeFrequency": "weekly",
             "priority": 0.9
+        },
+        {
+            "url": "/downloads/goluboi-vagon",
+            "changeFrequency": "weekly",
+            "priority": 0.8
+        },
+        {
+            "url": "/downloads/sakkijarven-polkka-ust",
+            "changeFrequency": "weekly",
+            "priority": 0.8
+        },
+        {
+            "url": "/downloads/sakkijarven-polkka-video",
+            "changeFrequency": "weekly",
+            "priority": 0.8
         }
     ];
 
