@@ -16,6 +16,8 @@ import type { getConfig as LegalPrivacy_getConfig } from './pages/legal/privacy'
 // prettier-ignore
 import type { getConfig as LicensesUst1_getConfig } from './pages/licenses/ust/1';
 // prettier-ignore
+import type { getConfig as LicensesVideo1_getConfig } from './pages/licenses/video/1';
+// prettier-ignore
 import type { getConfig as ToolsIndex_getConfig } from './pages/tools/index';
 
 // prettier-ignore
@@ -31,10 +33,13 @@ type Page =
 | ({ path: '/contact' } & GetConfigResponse<typeof Contact_getConfig>)
 | { path: '/downloads/goluboi-bagon'; render: 'dynamic' }
 | { path: '/downloads/goluboi-vagon'; render: 'dynamic' }
+| { path: '/downloads/sakkijarven-polkka-ust'; render: 'dynamic' }
+| { path: '/downloads/sakkijarven-polkka-video'; render: 'dynamic' }
 | { path: '/'; render: 'dynamic' }
 | ({ path: '/legal/disclaimer' } & GetConfigResponse<typeof LegalDisclaimer_getConfig>)
 | ({ path: '/legal/privacy' } & GetConfigResponse<typeof LegalPrivacy_getConfig>)
 | ({ path: '/licenses/ust/1' } & GetConfigResponse<typeof LicensesUst1_getConfig>)
+| ({ path: '/licenses/video/1' } & GetConfigResponse<typeof LicensesVideo1_getConfig>)
 | { path: '/tools/aspect'; render: 'dynamic' }
 | { path: '/tools/beep'; render: 'dynamic' }
 | { path: '/tools/block-checker'; render: 'dynamic' }
