@@ -72,6 +72,8 @@ export default function HomePage() {
                     </p>
 
                     <DownloadsList />
+
+                    <Link to="/downloads" className="button secondary">もっと見る</Link>
                 </section>
                 <section id="communities">
                     <h2>
