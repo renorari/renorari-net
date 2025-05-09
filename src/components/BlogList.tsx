@@ -27,7 +27,7 @@ export default async function BlogList({ amount, articles, disableAd }: BlogList
                             title={article.title}
                             image={markdownImage(article.content)}
                         />
-                        {!disableAd && (Math.random() < 0.25) && <CardAd />}
+                        {!disableAd && (Math.random() < 0.1) && <CardAd />}
                     </Fragment>
                 ))}
         </CardList>
