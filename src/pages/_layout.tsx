@@ -2,8 +2,8 @@ import "../styles/main.css";
 
 import React, { ReactNode } from "react";
 
-import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
 
 type RootLayoutProps = { children: ReactNode };
 
