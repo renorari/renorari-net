@@ -30,7 +30,7 @@ export default function HomePage() {
                     <p>
                         最近のブログ記事をダイジェストで紹介します。
                     </p>
-                    <BlogList amount={6} />
+                    <BlogList amount={6} disableAd />
                     <Link to="/blog" className="button secondary">もっと見る</Link>
                 </section>
                 <section id="tools">
