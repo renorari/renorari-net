@@ -8,7 +8,7 @@ export default function LandscapeAd() {
         <Adsense
             client="ca-pub-1265980632516511"
             slot="5007805121"
-            style={{ "display": "block" }}
+            className="ad"
             format="auto"
             responsive="true"
         />
