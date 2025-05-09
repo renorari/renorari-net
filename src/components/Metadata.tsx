@@ -11,7 +11,7 @@ interface MetadataProps {
 export default function Metadata({ title, description, keywords, image, noindex }: MetadataProps) {
     const viewTitle = title ? title + " - Renorari.net" : "Renorari.net";
     const viewDescription = description || "れのらりが運営しているサービスや、ソフトウェアについて紹介しています。";
-    const viewKeywords = keywords ? keywords.join(", ") : "れのらり, renorari, renorari.net, renorarinet";
+    const viewKeywords = keywords ? keywords.join(", ") : "れのらり, renorari, renorari.net, renorarinet, ренорари, ленолари";
     const viewImage = image?.startsWith("/") ? "https://renorari.net" + image : image || "https://renorari.net/images/ogp.png";
 
     return (
