@@ -19,11 +19,12 @@ nav {
     }
 }
 
-nav>h1 {
-    display:contents;
+nav>h1,
+nav>h1>a {
+    display: contents;
 }
 
-nav>h1>img {
+nav>h1>a>img {
     filter: var(--f-black-image);
     width: auto;
     height: 2rem;
