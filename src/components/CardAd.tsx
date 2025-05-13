@@ -3,7 +3,7 @@ import React from "react";
 
 import { Adsense } from "@ctrl/react-adsense";
 
-export default function LandscapeAd() {
+export default function CardAd() {
     return (
         <Adsense
             format="fluid"
