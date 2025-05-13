@@ -46,6 +46,7 @@ type Page =
 | { path: '/tools/block-checker'; render: 'dynamic' }
 | { path: '/tools/discord-channel'; render: 'dynamic' }
 | { path: '/tools/generator'; render: 'dynamic' }
+| { path: '/tools/grade'; render: 'dynamic' }
 | ({ path: '/tools' } & GetConfigResponse<typeof ToolsIndex_getConfig>)
 | { path: '/tools/qr'; render: 'dynamic' }
 | { path: '/tools/thumbnail-maker'; render: 'dynamic' };
