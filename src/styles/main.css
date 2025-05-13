@@ -86,7 +86,8 @@ canvas {
     border-radius: 0.5rem;
 }
 
-main {
+main,
+.main-width {
     flex: 1;
     width: 100%;
     max-width: 64rem;
