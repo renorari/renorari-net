@@ -31,7 +31,6 @@ type Page =
 | { path: '/blog/category/[id]'; render: 'dynamic' }
 | { path: '/blog'; render: 'dynamic' }
 | ({ path: '/contact' } & GetConfigResponse<typeof Contact_getConfig>)
-| { path: '/downloads/goluboi-bagon'; render: 'dynamic' }
 | { path: '/downloads/goluboi-vagon'; render: 'dynamic' }
 | { path: '/downloads'; render: 'dynamic' }
 | { path: '/downloads/sakkijarven-polkka-ust'; render: 'dynamic' }
