@@ -62,7 +62,7 @@ const redirectMap: Record<string, string> = {
 
 const redirectsMiddleware: Middleware = () => {
     return async (ctx, next) => {
-        const url = ctx.req.url.pathname;
+        const url = decodeURIComponent(ctx.req.url.pathname);
         if (url in redirectMap) {
             const newUrl = redirectMap[url] || "";
             ctx.res.status = 308;
