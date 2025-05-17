@@ -1,7 +1,5 @@
 header.fullscreen {
-    background: url("/images/header2.jpg");
-    background-size: cover;
-    background-position: center;
+    position: relative;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -9,6 +7,18 @@ header.fullscreen {
     text-align: center;
     font-size: 2rem;
     text-shadow: 0 0.354rem 2rem var(--c-shadow);
+    overflow: hidden;
+}
+
+header.fullscreen .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
 }
 
 header.fullscreen div {

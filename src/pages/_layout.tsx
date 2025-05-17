@@ -35,6 +35,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
                     </>
                 )}
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1265980632516511" crossOrigin="anonymous"></script>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet" />
             </head>
             <body>
                 <NavBar />
