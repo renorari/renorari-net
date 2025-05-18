@@ -6,7 +6,7 @@ import Metadata from "../../components/Metadata";
 export default function GeneratorPage() {
     const [result, setResult] = useState("れのらり");
     const [lastSpeechTime, setLastSpeechTime] = useState(0);
-    const SPEECH_COOLDOWN = 1000; // 音声再生の間隔を1秒に設定
+    const SPEECH_COOLDOWN = 500; // 音声再生の間隔を500ミリ秒に設定
 
     const generate = () => {
         const S = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん";
