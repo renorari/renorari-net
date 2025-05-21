@@ -17,7 +17,7 @@ function w3cDateTime(date: Date): `${number}-${string}-${string}` {
 
 export const GET = async (request: Request): Promise<Response> => {
     const url = new URL(request.url);
-    const baseUrl = url.origin;
+    const baseUrl = "https://" + url.host;
 
     const staticPages: Page[] = [
         {
