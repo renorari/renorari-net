@@ -48,6 +48,7 @@ type Page =
 | { path: '/tools/grade'; render: 'dynamic' }
 | ({ path: '/tools' } & GetConfigResponse<typeof ToolsIndex_getConfig>)
 | { path: '/tools/qr'; render: 'dynamic' }
+| { path: '/tools/reverse'; render: 'dynamic' }
 | { path: '/tools/thumbnail-maker'; render: 'dynamic' };
 
 // prettier-ignore

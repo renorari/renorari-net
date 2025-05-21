@@ -14,6 +14,7 @@ export default function ToolsList() {
             <ImageCard title="Discord Channel Namer" image="/images/tools/discord-channel.svg" link="/tools/discord-channel" />
             <ImageCard title="Block Checker" image="/images/tools/block-checker.svg" link="/tools/block-checker" />
             <ImageCard title="Kosen Grade Calculator" image="/images/tools/grade.svg" link="/tools/grade" />
+            <ImageCard title="Text Reverser" image="/images/tools/reverse.svg" link="/tools/reverse" />
         </CardList>
     );
 }
