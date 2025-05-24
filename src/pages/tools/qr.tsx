@@ -26,7 +26,7 @@ export default function QRPage() {
     const [qrUrl, setQrUrl] = useState("");
     const [colorDark, setColorDark] = useState("#000000");
     const [colorLight, setColorLight] = useState("#ffffff");
-    const [errorCorrectionLevel, setErrorCorrectionLevel] = useState<QRCodeErrorCorrectionLevel>("L");
+    const [errorCorrectionLevel, setErrorCorrectionLevel] = useState<QRCodeErrorCorrectionLevel>("M");
     const [maskPattern, setMaskPattern] = useState<QRCodeMaskPattern>(0);
     const [margin, setMargin] = useState(4);
     const [scale, setScale] = useState(16);
@@ -145,7 +145,7 @@ export default function QRPage() {
                                 </tr>
                                 <tr>
                                     <td>誤り訂正レベル</td>
-                                    <td>L</td>
+                                    <td>M</td>
                                     <td>
                                         QRコードの誤り訂正レベルを指定します。
                                         <br />
