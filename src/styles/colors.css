@@ -68,7 +68,7 @@
         --c-quaternary-thin: #bf305780;
         --c-quaternary-light: #bf305720;
 
-        --c-shadow: rgba(0, 0, 0, 0.5);
+        --c-shadow: rgba(0, 0, 0, 0.25);
 
         --f-black-image: invert(1);
     }
