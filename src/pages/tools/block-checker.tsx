@@ -1,7 +1,7 @@
 "use client";
 import "../../styles/tools/block.css";
 
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 
 import Card from "../../components/Card";
 import CardList from "../../components/CardList";
@@ -22,6 +22,16 @@ export default function BlockCheckerPage() {
         setResult(res);
         setLoading(false);
     };
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const params = new URLSearchParams(window.location.search);
+            const idParam = params.get("id");
+            if (idParam && /^\d{17,20}$/.test(idParam)) {
+                setId(idParam);
+            }
+        }
+    }, []);
 
     return (
         <>
