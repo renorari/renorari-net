@@ -47,7 +47,7 @@ export default function DisclaimerPage() {
                 </p>
                 <h2>プライバシーポリシー</h2>
                 <p>
-                    プライバシーポリシーに関して、別記<Link to="/legal/disclaimer">プライバシーポリシー</Link>にあります。
+                    プライバシーポリシーに関して、別記<Link to="/legal/privacy">プライバシーポリシー</Link>にあります。
                 </p>
             </main>
         </>
