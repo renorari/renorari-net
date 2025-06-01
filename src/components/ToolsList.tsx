@@ -15,6 +15,7 @@ export default function ToolsList() {
             <ImageCard title="Block Checker" image="/images/tools/block-checker.svg" link="/tools/block-checker" />
             <ImageCard title="Kosen Grade Calculator" image="/images/tools/grade.svg" link="/tools/grade" />
             <ImageCard title="Text Reverser" image="/images/tools/reverse.svg" link="/tools/reverse" />
+            <ImageCard title="Open Sékigae" image="/images/tools/sekigae.svg" link="https://sekigae.renorari.net" />
         </CardList>
     );
 }
