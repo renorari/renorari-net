@@ -42,6 +42,11 @@ export default function Footer() {
                         <Link to="/about">About</Link>
                     </li>
                     <li>
+                        <a href="https://stats.uptimerobot.com/ttv9KAAUvI" target="_blank" rel="noopener noreferrer">
+                            Service Status
+                        </a>
+                    </li>
+                    <li>
                         <Link to="/legal/privacy">Privacy Policy</Link>
                     </li>
                     <li>
