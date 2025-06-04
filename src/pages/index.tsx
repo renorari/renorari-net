@@ -84,7 +84,7 @@ export default function HomePage() {
                     </p>
 
                     <CardList>
-                        <ImageCard title="DERTA Gig" image="/images/communities/derta.svg" link="https://derta.co.jp/" />
+                        <ImageCard title="DERTA Gig" image="/images/communities/derta.svg" link="https://derta.co.jp/community" />
                         <ImageCard title="Startup Weekend 長岡" image="/images/communities/sw-nagaoka.svg" link="https://swnagaoka.doorkeeper.jp/" />
                         <ImageCard title="Japan Student DAO" image="/images/communities/js-dao.svg" link="https://vivixy.co.jp/" />
                         <ImageCard title="Nagaoka DAO" image="/images/communities/nagaoka-dao.svg" />
