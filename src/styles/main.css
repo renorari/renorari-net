@@ -137,6 +137,7 @@ main code.hljs {
 }
 
 main img:not(.card-image) {
+    max-height: 75vh;
     max-width: 100%;
     height: auto;
     border-radius: 0.5rem;
