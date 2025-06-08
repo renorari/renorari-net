@@ -33,14 +33,37 @@ export default async function BlogArticlePage(
                     <h1>
                         {article.title}
                     </h1>
-                    <p className="date">
-                        最終更新:&nbsp;
-                        {new Date(article.updatedAt).toLocaleDateString("ja-JP", {
-                            "year": "numeric",
-                            "month": "2-digit",
-                            "day": "2-digit"
-                        })}
-                    </p>
+                    <div className="date">
+                        {new Date(article.createdAt).toDateString() !== new Date(article.updatedAt).toDateString() ? (
+                            <>
+                                <span className="created-at">
+                                    投稿日:&nbsp;
+                                    {new Date(article.createdAt).toLocaleDateString("ja-JP", {
+                                        "year": "numeric",
+                                        "month": "2-digit",
+                                        "day": "2-digit"
+                                    })}
+                                </span>
+                                <span className="updated-at">
+                                    最終更新:&nbsp;
+                                    {new Date(article.updatedAt).toLocaleDateString("ja-JP", {
+                                        "year": "numeric",
+                                        "month": "2-digit",
+                                        "day": "2-digit"
+                                    })}
+                                </span>
+                            </>
+                        ) : (
+                            <span className="created-at">
+                                投稿日:&nbsp;
+                                {new Date(article.createdAt).toLocaleDateString("ja-JP", {
+                                    "year": "numeric",
+                                    "month": "2-digit",
+                                    "day": "2-digit"
+                                })}
+                            </span>
+                        )}
+                    </div>
                     <div className="categories">
                         {article.categories.map((category) => (
                             <Link key={category.id} className="category" to={`/blog/category/${category.id}`}>

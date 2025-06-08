@@ -125,7 +125,9 @@ main section:first-child {
 }
 
 main .date {
+    display: flex;
     color: var(--c-text-light);
+    gap: 1rem;
 }
 
 main code {
