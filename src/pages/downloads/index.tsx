@@ -7,14 +7,14 @@ import { Link } from "waku";
 export default function ToolsListPage() {
     return (
         <>
-            <Metadata title="ダウンロード" description="れのらりが作成したUSTなどのダウンロード集です。" keywords={["ダウンロード", "UST", "instrumental"]} />
+            <Metadata title="ダウンロード" description="れのらりが作成したUSTやアプリなどのダウンロード集です。" keywords={["ダウンロード", "UST", "instrumental", "アプリ", "ソフト", "アプリケーション", "ソフトウエア", "app", "application", "software"]} />
             <main>
                 <section id="list">
                     <h1>
                         ダウンロード
                     </h1>
                     <p>
-                        れのらりが作成したUSTなどのダウンロード集です。
+                        れのらりが作成したUSTやアプリなどのダウンロード集です。
                         <br />
                         ぜひ、ご活用ください。
                     </p>
@@ -23,7 +23,7 @@ export default function ToolsListPage() {
                 <section id="licences">
                     <h2>ライセンス</h2>
                     <p>
-                        上記ファイルにそれぞれに適用されるライセンスです。
+                        上記ファイルのいずれかに適用されるライセンスです。
                         <br />
                         リンク切れ等ありましたら、<Link to="/contact" target="_blank" rel="noopener noreferrer">お問い合わせ</Link>にご連絡いただき、以下よりご確認ください。
                         <ul>
