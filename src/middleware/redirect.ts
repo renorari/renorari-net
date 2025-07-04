@@ -57,7 +57,8 @@ const redirectMap: Record<string, string> = {
     "/blog/私がサクッと認証付きで-node-js-からメールを送った話/": "/blog/38",
     "/blog/自己自動更新のためのメモ/": "/blog/39",
     "/blog/誰でもできる！discordのbotアカウント作成/": "/blog/40",
-    "/blog/未来のiPhone 30：デジタルの新時代への扉/": "/blog/37"
+    "/blog/未来のiPhone 30：デジタルの新時代への扉/": "/blog/37",
+    "/downloads/danotes": "https://github.com/renorari/DaNotes"
 };
 
 const redirectsMiddleware: Middleware = () => {
