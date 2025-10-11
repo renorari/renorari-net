@@ -8,6 +8,10 @@ import type { getConfig as File_404_getConfig } from './pages/404';
 // prettier-ignore
 import type { getConfig as File_About_getConfig } from './pages/about';
 // prettier-ignore
+import type { getConfig as File_BlogIdIndex_getConfig } from './pages/blog/[id]/index';
+// prettier-ignore
+import type { getConfig as File_BlogCategoryIdIndex_getConfig } from './pages/blog/category/[id]/index';
+// prettier-ignore
 import type { getConfig as File_Contact_getConfig } from './pages/contact';
 // prettier-ignore
 import type { getConfig as File_LegalDisclaimer_getConfig } from './pages/legal/disclaimer';
@@ -27,8 +31,8 @@ type Page =
 | { path: '/api/files/[name]'; render: 'dynamic' }
 | { path: '/api/sitemap.xml'; render: 'dynamic' }
 | { path: '/api/speech/renorari'; render: 'dynamic' }
-| { path: '/blog/[id]'; render: 'dynamic' }
-| { path: '/blog/category/[id]'; render: 'dynamic' }
+| ({ path: '/blog/[id]' } & GetConfigResponse<typeof File_BlogIdIndex_getConfig>)
+| ({ path: '/blog/category/[id]' } & GetConfigResponse<typeof File_BlogCategoryIdIndex_getConfig>)
 | { path: '/blog'; render: 'dynamic' }
 | ({ path: '/contact' } & GetConfigResponse<typeof File_Contact_getConfig>)
 | { path: '/downloads/goluboi-vagon'; render: 'dynamic' }

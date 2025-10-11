@@ -80,3 +80,9 @@ export default async function BlogArticlePage(
         </>
     );
 }
+
+export const getConfig = async () => {
+    return {
+        "render": "dynamic"
+    } as const;
+};

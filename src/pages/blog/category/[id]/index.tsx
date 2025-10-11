@@ -33,3 +33,9 @@ export default async function BlogCategoryPage(
         </>
     );
 }
+
+export const getConfig = async () => {
+    return {
+        "render": "dynamic"
+    } as const;
+};
