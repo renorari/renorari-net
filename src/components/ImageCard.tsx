@@ -5,7 +5,7 @@ import { Link, LinkProps } from "waku/router/client";
 
 type ImageCardProps = {
     title: string;
-    link?: LinkProps["to"] | `${string}://${string}`;
+    link?: LinkProps["to"] | `${string}://${string}` | string;
     image: string;
     className?: string | undefined;
 };

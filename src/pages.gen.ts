@@ -49,6 +49,7 @@ type Page =
 | { path: '/downloads'; render: 'static' }
 | { path: '/downloads/sakkijarven-polkka-ust'; render: 'static' }
 | { path: '/downloads/sakkijarven-polkka-video'; render: 'static' }
+| { path: '/downloads/scores'; render: 'static' }
 | ({ path: '/' } & GetConfigResponse<typeof File_Index_getConfig>)
 | ({ path: '/legal/disclaimer' } & GetConfigResponse<typeof File_LegalDisclaimer_getConfig>)
 | ({ path: '/legal/privacy' } & GetConfigResponse<typeof File_LegalPrivacy_getConfig>)
