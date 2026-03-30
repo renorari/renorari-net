@@ -33,6 +33,20 @@ export default function GoluboiVagonPage() {
                     <br />
                     また、同じくチェブラーシカの誕生日の歌(ワニのゲーナの歌)とも知られている、「Песенка крокодила Гены(ぺシェンカ・クロコジーラ・ゲーナ)」と、ソ連の有名な愛国歌「Катюша(カチューシャ)」の楽譜も配布しています。
                 </p>
+                <div>
+                    <h3>
+                        演奏例
+                    </h3>
+                    <audio controls>
+                        <source src="/musics/goluboi-vagon.mp3" type="audio/mpeg" />
+                    </audio>
+                    <audio controls>
+                        <source src="/musics/pesenka-krokodila-genyi.mp3" type="audio/mpeg" />
+                    </audio>
+                    <audio controls>
+                        <source src="/musics/katyusha.mp3" type="audio/mpeg" />
+                    </audio>
+                </div>
                 <CardList>
                     <ImageCard title="Голубой вагон" image="/images/downloads/scores/goluboi-vagon.svg" link="/pdf/scores/goluboi-vagon.pdf" />
                     <ImageCard title="Песенка крокодила Гены" image="/images/downloads/scores/pesenka-krokodila-genyi.svg" link="/pdf/scores/pesenka-krokodila-genyi.pdf" />
@@ -48,6 +62,14 @@ export default function GoluboiVagonPage() {
                     <br />
                     第二次世界大戦中、フィンランドがソ連からの攻撃に対抗するために使用したことでも知られている曲です。
                 </p>
+                <div>
+                    <h3>
+                        演奏例
+                    </h3>
+                    <audio controls>
+                        <source src="/musics/sakkijarven-polkka.mp3" type="audio/mpeg" />
+                    </audio>
+                </div>
                 <CardList>
                     <ImageCard title="Säkkijärven polkka" image="/images/downloads/scores/sakkijarven-polkka.svg" link="/pdf/scores/sakkijarven-polkka.pdf" />
                 </CardList>
