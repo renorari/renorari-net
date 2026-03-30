@@ -8,7 +8,7 @@ export default function Footer() {
         <footer>
             <div className="about-me">
                 <p className="copyright">
-                    &copy; 2025 Renorari
+                    &copy; 2026 Renorari
                 </p>
                 <ul className="social">
                     <li>

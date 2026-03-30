@@ -27,33 +27,33 @@ import type { getConfig as File_ToolsIndex_getConfig } from './pages/tools/index
 // prettier-ignore
 type Page =
 | ({ path: '/404' } & GetConfigResponse<typeof File_404_getConfig>)
+| { path: '/_api/files/[name]'; render: 'dynamic' }
+| { path: '/_api/sitemap.xml'; render: 'dynamic' }
+| { path: '/_api/speech/renorari'; render: 'dynamic' }
 | ({ path: '/about' } & GetConfigResponse<typeof File_About_getConfig>)
-| { path: '/api/files/[name]'; render: 'dynamic' }
-| { path: '/api/sitemap.xml'; render: 'dynamic' }
-| { path: '/api/speech/renorari'; render: 'dynamic' }
 | ({ path: '/blog/[id]' } & GetConfigResponse<typeof File_BlogIdIndex_getConfig>)
 | ({ path: '/blog/category/[id]' } & GetConfigResponse<typeof File_BlogCategoryIdIndex_getConfig>)
 | { path: '/blog'; render: 'dynamic' }
 | ({ path: '/contact' } & GetConfigResponse<typeof File_Contact_getConfig>)
-| { path: '/downloads/goluboi-vagon'; render: 'dynamic' }
-| { path: '/downloads'; render: 'dynamic' }
-| { path: '/downloads/sakkijarven-polkka-ust'; render: 'dynamic' }
-| { path: '/downloads/sakkijarven-polkka-video'; render: 'dynamic' }
+| { path: '/downloads/goluboi-vagon'; render: 'static' }
+| { path: '/downloads'; render: 'static' }
+| { path: '/downloads/sakkijarven-polkka-ust'; render: 'static' }
+| { path: '/downloads/sakkijarven-polkka-video'; render: 'static' }
 | { path: '/'; render: 'dynamic' }
 | ({ path: '/legal/disclaimer' } & GetConfigResponse<typeof File_LegalDisclaimer_getConfig>)
 | ({ path: '/legal/privacy' } & GetConfigResponse<typeof File_LegalPrivacy_getConfig>)
 | ({ path: '/licenses/ust/1' } & GetConfigResponse<typeof File_LicensesUst1_getConfig>)
 | ({ path: '/licenses/video/1' } & GetConfigResponse<typeof File_LicensesVideo1_getConfig>)
-| { path: '/tools/aspect'; render: 'dynamic' }
-| { path: '/tools/beep'; render: 'dynamic' }
-| { path: '/tools/block-checker'; render: 'dynamic' }
-| { path: '/tools/discord-channel'; render: 'dynamic' }
-| { path: '/tools/generator'; render: 'dynamic' }
-| { path: '/tools/grade'; render: 'dynamic' }
+| { path: '/tools/aspect'; render: 'static' }
+| { path: '/tools/beep'; render: 'static' }
+| { path: '/tools/block-checker'; render: 'static' }
+| { path: '/tools/discord-channel'; render: 'static' }
+| { path: '/tools/generator'; render: 'static' }
+| { path: '/tools/grade'; render: 'static' }
 | ({ path: '/tools' } & GetConfigResponse<typeof File_ToolsIndex_getConfig>)
-| { path: '/tools/qr'; render: 'dynamic' }
-| { path: '/tools/reverse'; render: 'dynamic' }
-| { path: '/tools/thumbnail-maker'; render: 'dynamic' };
+| { path: '/tools/qr'; render: 'static' }
+| { path: '/tools/reverse'; render: 'static' }
+| { path: '/tools/thumbnail-maker'; render: 'static' };
 
 // prettier-ignore
 declare module 'waku/router' {

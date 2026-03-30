@@ -18,7 +18,7 @@ export default function GeneratorPage() {
         if (speech.checked) {
             const now = Date.now();
             if (now - lastSpeechTime >= SPEECH_COOLDOWN) {
-                const audio = new Audio(`/api/speech/renorari?text=${text}`);
+                const audio = new Audio(`/speech/renorari?text=${text}`);
                 audio.play().catch((error) => {
                     console.error("Audio playback failed:", error);
                 });

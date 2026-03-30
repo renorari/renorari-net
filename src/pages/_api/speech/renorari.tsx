@@ -73,3 +73,9 @@ export const GET = async (request: Request): Promise<Response> => {
         }, { "status": 500 });
     }
 };
+
+export const getConfig = async () => {
+    return {
+        "render": "dynamic"
+    } as const;
+};
