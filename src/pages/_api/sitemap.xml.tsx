@@ -86,6 +86,16 @@ export const GET = async (request: Request): Promise<Response> => {
             "priority": 0.8
         },
         {
+            "url": "/tools/reverse",
+            "changeFrequency": "weekly",
+            "priority": 0.8
+        },
+        {
+            "url": "/tools/grade",
+            "changeFrequency": "weekly",
+            "priority": 0.8
+        },
+        {
             "url": "/blog",
             "changeFrequency": "weekly",
             "priority": 0.9
@@ -94,6 +104,21 @@ export const GET = async (request: Request): Promise<Response> => {
             "url": "/downloads",
             "changeFrequency": "weekly",
             "priority": 0.9
+        },
+        {
+            "url": "/licenses",
+            "changeFrequency": "weekly",
+            "priority": 0.8
+        },
+        {
+            "url": "/licenses/ust/1",
+            "changeFrequency": "weekly",
+            "priority": 0.7
+        },
+        {
+            "url": "/licenses/video/1",
+            "changeFrequency": "weekly",
+            "priority": 0.7
         },
         {
             "url": "/downloads/goluboi-vagon",
@@ -109,6 +134,31 @@ export const GET = async (request: Request): Promise<Response> => {
             "url": "/downloads/sakkijarven-polkka-video",
             "changeFrequency": "weekly",
             "priority": 0.8
+        },
+        {
+            "url": "/downloads/scores",
+            "changeFrequency": "weekly",
+            "priority": 0.8
+        },
+        {
+            "url": "/pdf/scores/goluboi-vagon.pdf",
+            "changeFrequency": "monthly",
+            "priority": 0.6
+        },
+        {
+            "url": "/pdf/scores/katyusha.pdf",
+            "changeFrequency": "monthly",
+            "priority": 0.6
+        },
+        {
+            "url": "/pdf/scores/pesenka-krokodila-genyi.pdf",
+            "changeFrequency": "monthly",
+            "priority": 0.6
+        },
+        {
+            "url": "/pdf/scores/sakkijarven-polkka.pdf",
+            "changeFrequency": "monthly",
+            "priority": 0.6
         }
     ];
 
