@@ -63,14 +63,26 @@ const redirectMap: Record<string, string> = {
 
 const redirectsMiddleware: Middleware = () => {
     return async (ctx, next) => {
-        const url = decodeURIComponent(ctx.req.url.pathname);
+        const pathname = ctx.req.path || new URL(ctx.req.url).pathname;
+        const url = decodeURIComponent(pathname);
+        if (url === "/api" || url.startsWith("/api/")) {
+            const newUrl = url === "/api" ? "/" : url.slice(4);
+            return new Response(null, {
+                "status": 308,
+                "headers": {
+                    "Location": newUrl
+                }
+            });
+        }
+
         if (url in redirectMap) {
             const newUrl = redirectMap[url] || "";
-            ctx.res.status = 308;
-            ctx.res.headers = {
-                ...ctx.res.headers,
-                "Location": newUrl
-            };
+            return new Response(null, {
+                "status": 308,
+                "headers": {
+                    "Location": newUrl
+                }
+            });
         } else {
             return await next();
         }
