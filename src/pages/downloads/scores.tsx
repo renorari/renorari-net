@@ -31,7 +31,7 @@ export default function GoluboiVagonPage() {
                 <p>
                     空色の列車(青い列車)としても知られている、ソ連の人気キャラクター、チェブラーシカの「Голубой вагон(ゴルボィ・ヴァゴン)」の楽譜です。
                     <br />
-                    また、同じくチェブラーシカの誕生日の歌(ワニのゲーナの歌)とも知られている、「Песенка крокодила Гены(ぺシェンカ・クロコジーラ・ゲーナ)」と、ソ連の有名な愛国歌「Катюша(カチューシャ)」の楽譜も配布しています。
+                    また、同じくチェブラーシカの誕生日の歌(ワニのゲーナの歌)とも知られている、「Песенка крокодила Гены(ぺシェンカ・クロコジーラ・ゲーナ)」と、ソ連の有名な愛国歌「Катюша(カチューシャ)」、そしてテトリスのテーマ曲としても知られている「Коробейники(コロベイニキ)」の楽譜も配布しています。
                 </p>
                 <div>
                     <h3>
@@ -46,11 +46,15 @@ export default function GoluboiVagonPage() {
                     <audio controls>
                         <source src="/musics/katyusha.mp3" type="audio/mpeg" />
                     </audio>
+                    <audio controls>
+                        <source src="/musics/korobeiniki.mp3" type="audio/mpeg" />
+                    </audio>
                 </div>
                 <CardList>
                     <ImageCard title="Голубой вагон" image="/images/downloads/scores/goluboi-vagon.svg" link="/pdf/scores/goluboi-vagon.pdf" />
                     <ImageCard title="Песенка крокодила Гены" image="/images/downloads/scores/pesenka-krokodila-genyi.svg" link="/pdf/scores/pesenka-krokodila-genyi.pdf" />
                     <ImageCard title="Катюша" image="/images/downloads/scores/katyusha.svg" link="/pdf/scores/katyusha.pdf" />
+                    <ImageCard title="Коробейники" image="/images/downloads/scores/korobeiniki.svg" link="/pdf/scores/korobeiniki.pdf" />
                 </CardList>
             </section>
             <section>
