@@ -11,6 +11,7 @@ export default function DownloadsList() {
             <ImageCard title="【動画配布】Säkkijärven Polkka" image="/images/downloads/sakkijarven-polkka-video.svg" link="/downloads/sakkijarven-polkka-video" />
             <ImageCard title="【UST/Inst配布】Голубой вагон" image="/images/downloads/goluboi-vagon.svg" link="/downloads/goluboi-vagon" />
             <ImageCard title="DaNotes" image="/images/downloads/danotes.svg" link="https://apps.apple.com/jp/app/danotes/id6756778682" />
+            <ImageCard title="Board Log" image="/images/downloads/boardlog.svg" link="https://apps.apple.com/jp/app/board-log/id6767869447" />
         </CardList>
     );
 }
