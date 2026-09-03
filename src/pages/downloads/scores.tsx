@@ -62,10 +62,11 @@ export default function GoluboiVagonPage() {
                     フィンランド民謡・Polka
                 </h2>
                 <p>
-                    フィンランドの民謡である「Säkkijärven polkka(サッキヤルヴェン・ポルカ)」の楽譜です。
+                    フィンランドの民謡である「Säkkijärven Polkka(サッキヤルヴェン・ポルカ)」の楽譜です。第二次世界大戦中、フィンランドがソ連からの攻撃に対抗するために使用したことでも知られている曲です。
                     <br />
-                    第二次世界大戦中、フィンランドがソ連からの攻撃に対抗するために使用したことでも知られている曲です。
+                    また、同じくフィンランドの民謡である「Ievan Polkka(イエヴァン・ポルカ)」の楽譜も配布しています。初音ミクのネギ回しやロイツマの歌としても知られている曲で、別名「Ellin Polkka(エッリン・ポルカ)」とも呼ばれています。
                 </p>
+            
                 <div>
                     <h3>
                         演奏例
@@ -73,9 +74,14 @@ export default function GoluboiVagonPage() {
                     <audio controls>
                         <source src="/musics/sakkijarven-polkka.mp3" type="audio/mpeg" />
                     </audio>
+                    <audio controls>
+                        <source src="/musics/ievan-polkka.mp3" type="audio/mpeg" />
+                    </audio>
                 </div>
                 <CardList>
-                    <ImageCard title="Säkkijärven polkka" image="/images/downloads/scores/sakkijarven-polkka.svg" link="/pdf/scores/sakkijarven-polkka.pdf" />
+                    <ImageCard title="Säkkijärven Polkka" image="/images/downloads/scores/sakkijarven-polkka.svg" link="/pdf/scores/sakkijarven-polkka.pdf" />
+                    <ImageCard title="Ievan Polkka(かんたん)" image="/images/downloads/scores/ievan-polkka.svg" link="/pdf/scores/ievan-polkka.pdf" />
+                    <ImageCard title="Ievan Polkka" image="/images/downloads/scores/ievan-polkka-2.svg" link="/pdf/scores/ievan-polkka-2.pdf" />
                 </CardList>
             </section>
         </main>
