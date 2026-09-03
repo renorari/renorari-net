@@ -159,6 +159,21 @@ export const GET = async (request: Request): Promise<Response> => {
             "url": "/pdf/scores/sakkijarven-polkka.pdf",
             "changeFrequency": "monthly",
             "priority": 0.6
+        },
+        {
+            "url": "/pdf/scores/korobeiniki.pdf",
+            "changeFrequency": "monthly",
+            "priority": 0.6
+        },
+        {
+            "url": "/pdf/scores/ievan-polkka.pdf",
+            "changeFrequency": "monthly",
+            "priority": 0.6
+        },
+        {
+            "url": "/pdf/scores/ievan-polkka-2.pdf",
+            "changeFrequency": "monthly",
+            "priority": 0.6
         }
     ];
 
