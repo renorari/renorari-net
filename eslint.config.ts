@@ -3,14 +3,15 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 import pluginJs from "@eslint/js";
-import stylisticTs from "@stylistic/eslint-plugin-ts";
+import stylistic from "@stylistic/eslint-plugin";
 
 import pluginRenorari from "./eslint/index.js";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-    {"files": ["**/*.{js,mjs,cjs,ts,jsx,tsx}"]},
-    {"languageOptions": { "globals": globals.browser }},
+    { "ignores": ["dist/**", "src/pages.gen.ts"] },
+    { "files": ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
+    { "languageOptions": { "globals": globals.browser } },
     pluginJs.configs.recommended,
     ...tseslint.configs.recommended,
     pluginReact.configs.flat.recommended,
@@ -21,10 +22,17 @@ export default [
             }
         },
         "plugins": {
-            "@stylistic/ts": stylisticTs,
+            "@stylistic": stylistic,
             "@renorari": pluginRenorari
         },
         "rules": {
+            // "func-style": [
+            //     "error",
+            //     "declaration",
+            //     {
+            //         "allowArrowFunctions": false
+            //     }
+            // ],
             "@/linebreak-style": ["error", "unix"],
             "@typescript-eslint/no-unused-vars": [
                 "error",
@@ -35,10 +43,10 @@ export default [
                     "varsIgnorePattern": "^_"
                 }
             ],
-            "@stylistic/ts/indent": ["error", 4],
-            "@stylistic/ts/quotes": ["error", "double"],
-            "@stylistic/ts/semi": ["error", "always"],
-            "@stylistic/ts/comma-dangle": ["error", "never"],
+            "@stylistic/indent": ["error", 4, { "SwitchCase": 1 }],
+            "@stylistic/quotes": ["error", "double"],
+            "@stylistic/semi": ["error", "always"],
+            "@stylistic/comma-dangle": ["error", "never"],
             "@renorari/no-unquoted-keys": "error"
         }
     }

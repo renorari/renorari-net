@@ -2,7 +2,9 @@
     No unquoted keys in objects
 */
 
-export default {
+import { type Rule } from "eslint";
+
+const rule: Rule.RuleModule = {
     "meta": {
         "type": "suggestion",
         "docs": {
@@ -30,8 +32,7 @@ export default {
                             "key": node.key.name
                         },
                         "fix": function (fixer) {
-                            const sourceCode = context.getSourceCode();
-                            const keyText = sourceCode.getText(node.key);
+                            const keyText = context.sourceCode.getText(node.key);
                             return fixer.replaceText(node.key, `"${keyText}"`);
                         }
                     });
@@ -40,3 +41,5 @@ export default {
         };
     }
 };
+
+export default rule;

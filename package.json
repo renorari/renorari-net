@@ -10,27 +10,28 @@
   },
   "dependencies": {
     "@ctrl/react-adsense": "^2.1.0",
-    "highlight.js": "^11.11.1",
-    "marked": "^18.0.4",
-    "mysql2": "^3.22.3",
+    "highlight.js": "^11.12.0",
+    "marked": "^18.0.14",
+    "mysql2": "^3.24.4",
     "qrcode": "^1.5.4",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
-    "react-server-dom-webpack": "^19.2.6",
-    "waku": "^1.0.0-beta.0"
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-server-dom-webpack": "^19.3.0",
+    "waku": "^1.0.0-rc.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.4",
-    "@stylistic/eslint-plugin-ts": "^4.4.1",
+    "@eslint/js": "^9.39.5",
+    "@stylistic/eslint-plugin": "^5.10.0",
     "@types/qrcode": "^1.5.6",
-    "@types/react": "^19.2.15",
-    "@types/react-dom": "^19.2.3",
-    "eslint": "^9.39.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
     "eslint-plugin-react": "^7.37.5",
-    "globals": "^17.6.0",
-    "postcss": "^8.5.15",
+    "globals": "^17.12.0",
+    "jiti": "^2.7.0",
+    "postcss": "^8.5.28",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.4"
+    "typescript-eslint": "^8.70.1"
   },
   "nodemonConfig": {
     "ext": "ts",

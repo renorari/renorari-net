@@ -1,7 +1,7 @@
 // deno-fmt-ignore-file
 // biome-ignore format: generated types do not need formatting
 // prettier-ignore
-import type { PathsForPages, GetConfigResponse } from 'waku/router';
+import type { PathsForPages, GetConfigResponse, SearchCodecsForPages } from 'waku/router';
 
 // prettier-ignore
 import type { getConfig as File_404_getConfig } from './pages/404';
@@ -67,11 +67,22 @@ type Page =
 | { path: '/tools/thumbnail-maker'; render: 'static' };
 
 // prettier-ignore
+type Layout =
+| { path: '/' }
+| { path: '/blog' }
+| { path: '/downloads' }
+| { path: '/legal' }
+| { path: '/licenses' }
+| { path: '/tools' };
+
+// prettier-ignore
 declare module 'waku/router' {
   interface RouteConfig {
     paths: PathsForPages<Page>;
   }
   interface CreatePagesConfig {
     pages: Page;
+    layouts: Layout;
   }
+  interface SearchCodecsConfig extends SearchCodecsForPages<Page> {}
 }
