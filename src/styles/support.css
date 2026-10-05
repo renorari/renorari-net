@@ -1,0 +1,165 @@
+/* 既存のボタン・入力欄のスタイルはそのまま使い、アクセントの色だけをピンクに差し替える */
+.donate-theme {
+    --c-primary: var(--c-quaternary);
+    --c-primary-color: var(--c-quaternary);
+    --c-primary-thin: var(--c-quaternary-thin);
+    --c-primary-light: var(--c-quaternary-light);
+    --c-primary-text: var(--c-quaternary-text);
+}
+
+.card.donate-theme {
+    background: linear-gradient(to bottom, var(--c-quaternary-light), var(--c-card-background) 60%);
+}
+
+.card.donate-quick {
+    background: linear-gradient(150deg, var(--c-quaternary-light), var(--c-card-background) 70%);
+}
+
+/* カード内は既存の段落の余白(2rem)だと間延びするので詰める */
+.donate-theme p,
+.donate-theme ul {
+    margin-top: 0.75rem;
+}
+
+.donate-icon + h1,
+.donate-heading p {
+    margin-top: 0;
+}
+
+/* 募金ページは細めのカラムで中央に寄せる */
+.donate-page {
+    max-width: 40rem;
+    margin: 0 auto;
+}
+
+.donate-center {
+    text-align: center;
+}
+
+.donate-center .buttons {
+    justify-content: center;
+}
+
+/* アイコン */
+.icon {
+    flex-shrink: 0;
+    vertical-align: -0.125em;
+}
+
+.donate-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 4rem;
+    height: 4rem;
+    background: var(--c-quaternary-light);
+    border-radius: 50%;
+    color: var(--c-quaternary);
+    font-size: 2rem;
+}
+
+.donate-center .donate-icon {
+    margin: 0 auto 1rem;
+}
+
+.donate-heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* アイコンつきのボタン */
+.donate-theme button,
+.donate-theme a.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.donate-theme .buttons {
+    flex-wrap: wrap;
+}
+
+.donate-theme button.secondary {
+    background: var(--c-card-title-background);
+}
+
+.donate-theme button.secondary:hover {
+    background: var(--c-primary);
+}
+
+/* 一度だけ・毎月の切り替え */
+.donate-segment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25rem;
+    margin-top: 1rem;
+    padding: 0.25rem;
+    background: var(--c-primary-light);
+    border-radius: 100vw;
+}
+
+.donate-segment button {
+    margin: 0;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 100vw;
+    color: var(--c-text-light);
+}
+
+.donate-segment button:hover {
+    box-shadow: none;
+    transform: none;
+}
+
+.donate-segment button[aria-pressed="true"] {
+    background: var(--c-card-title-background);
+    box-shadow: var(--e-shadow);
+    color: var(--c-text);
+}
+
+/* 金額の選択 */
+.donate-amounts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin: 0.5rem 0 1rem;
+}
+
+.donate-amounts label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 3.5rem;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    background: var(--c-card-title-background);
+    border: 1px solid var(--c-text-lightest);
+    border-radius: 0.5rem;
+    color: var(--c-text);
+    font-size: 1.125rem;
+    cursor: pointer;
+}
+
+.donate-amounts label:has(input:checked) {
+    border-color: var(--c-primary);
+    box-shadow: 0 0 0 1px var(--c-primary);
+}
+
+.donate-amounts input {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    accent-color: var(--c-primary);
+}
+
+@media screen and (max-width: 30rem) {
+    .donate-amounts {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.donate-error {
+    color: var(--c-quaternary);
+}

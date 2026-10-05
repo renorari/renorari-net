@@ -8,6 +8,7 @@ import ImageCard from "../components/ImageCard";
 import Metadata from "../components/Metadata";
 import NavBar from "../components/NavBar";
 import ProfileCard from "../components/ProfileCard";
+import QuickDonate from "../components/QuickDonate";
 import ToolsList from "../components/ToolsList";
 import DownloadsList from "../components/DownloadsList";
 
@@ -75,6 +76,7 @@ export default function HomePage() {
 
                     <Link to="/downloads" className="button secondary">もっと見る</Link>
                 </section>
+                <QuickDonate />
                 <section id="communities">
                     <h2>
                         関連コミュニティ一覧

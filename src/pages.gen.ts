@@ -32,6 +32,8 @@ import type { getConfig as File_LicensesUst1_getConfig } from './pages/licenses/
 // prettier-ignore
 import type { getConfig as File_LicensesVideo1_getConfig } from './pages/licenses/video/1';
 // prettier-ignore
+import type { getConfig as File_SupportThanks_getConfig } from './pages/support/thanks';
+// prettier-ignore
 import type { getConfig as File_ToolsIndex_getConfig } from './pages/tools/index';
 
 // prettier-ignore
@@ -40,6 +42,8 @@ type Page =
 | ({ path: '/_api/files/[name]' } & GetConfigResponse<typeof File_ApiFilesName_getConfig>)
 | ({ path: '/_api/sitemap.xml' } & GetConfigResponse<typeof File_ApiSitemapXml_getConfig>)
 | ({ path: '/_api/speech/renorari' } & GetConfigResponse<typeof File_ApiSpeechRenorari_getConfig>)
+| { path: '/_api/support/checkout'; render: 'static' }
+| { path: '/_api/support/portal'; render: 'static' }
 | ({ path: '/about' } & GetConfigResponse<typeof File_About_getConfig>)
 | ({ path: '/blog/[id]' } & GetConfigResponse<typeof File_BlogIdIndex_getConfig>)
 | ({ path: '/blog/category/[id]' } & GetConfigResponse<typeof File_BlogCategoryIdIndex_getConfig>)
@@ -55,6 +59,8 @@ type Page =
 | ({ path: '/legal/privacy' } & GetConfigResponse<typeof File_LegalPrivacy_getConfig>)
 | ({ path: '/licenses/ust/1' } & GetConfigResponse<typeof File_LicensesUst1_getConfig>)
 | ({ path: '/licenses/video/1' } & GetConfigResponse<typeof File_LicensesVideo1_getConfig>)
+| { path: '/support'; render: 'static' }
+| ({ path: '/support/thanks' } & GetConfigResponse<typeof File_SupportThanks_getConfig>)
 | { path: '/tools/aspect'; render: 'static' }
 | { path: '/tools/beep'; render: 'static' }
 | { path: '/tools/block-checker'; render: 'static' }

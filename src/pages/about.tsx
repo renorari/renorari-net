@@ -5,6 +5,7 @@ import ContactList from "../components/ContactList";
 import ImageCard from "../components/ImageCard";
 import Metadata from "../components/Metadata";
 import ProfileCard from "../components/ProfileCard";
+import QuickDonate from "../components/QuickDonate";
 
 export default function AboutPage() {
     return (
@@ -28,6 +29,8 @@ export default function AboutPage() {
                         <ImageCard title="Union Global Chat" image="/images/services/ugc.svg" link="https://ugc.renorari.net/" />
                     </CardList>
                 </section>
+
+                <QuickDonate />
 
                 <section id="contact">
                     <h2>連絡先</h2>

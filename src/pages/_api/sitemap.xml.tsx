@@ -36,6 +36,11 @@ export const GET = async (request: Request): Promise<Response> => {
             "priority": 0.9
         },
         {
+            "url": "/support",
+            "changeFrequency": "monthly",
+            "priority": 0.5
+        },
+        {
             "url": "/legal/disclaimer",
             "changeFrequency": "monthly",
             "priority": 0.5
