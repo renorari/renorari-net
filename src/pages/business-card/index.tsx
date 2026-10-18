@@ -6,6 +6,7 @@ import React from "react";
 
 import CardList from "../../components/CardList";
 import ImageCard from "../../components/ImageCard";
+import Metadata from "../../components/Metadata";
 import ShareButton from "../../components/ShareButton";
 import { downloadVCard } from "./vcard";
 
@@ -217,133 +218,137 @@ function Affiliation({ language }: { language: keyof typeof affiliations }) {
 
 export default function BusinessCard() {
     return (
-        <main className="business-card-page">
-            <input type="checkbox" id="business-card-flip" className="business-card-flip-toggle" aria-label="Switch language (EN / JA)" />
-            <label htmlFor="business-card-flip" className="business-card-flipper">
-                <div className="business-card-inner">
-                    <div className="business-card en">
-                        <div className="name">
-                            <div>
-                                <p className="job-title">
-                                    Software Engineer
-                                </p>
-                                <h1 className="name-text">
-                                    NAKANO, Gakuto
-                                </h1>
+        <>
+            <Metadata title="名刺" noindex />
+
+            <main className="business-card-page">
+                <input type="checkbox" id="business-card-flip" className="business-card-flip-toggle" aria-label="Switch language (EN / JA)" />
+                <label htmlFor="business-card-flip" className="business-card-flipper">
+                    <div className="business-card-inner">
+                        <div className="business-card en">
+                            <div className="name">
+                                <div>
+                                    <p className="job-title">
+                                        Software Engineer
+                                    </p>
+                                    <h1 className="name-text">
+                                        NAKANO, Gakuto
+                                    </h1>
+                                </div>
+                                <Affiliation language="en" />
                             </div>
-                            <Affiliation language="en" />
+                            <div className="image">
+                                <img src="/images/gakuto.jpg" alt="NAKANO, Gakuto" />
+                                <p>
+                                    Hi, I’m Gakuto.
+                                    <br />
+                                    I build -
+                                    <br /> what the future needs.
+                                </p>
+                            </div>
                         </div>
-                        <div className="image">
-                            <img src="/images/gakuto.jpg" alt="NAKANO, Gakuto" />
-                            <p>
-                                Hi, I’m Gakuto.
-                                <br />
-                                I build -
-                                <br /> what the future needs.
-                            </p>
+                        <div className="business-card ja">
+                            <div className="name">
+                                <div>
+                                    <p className="job-title">
+                                        ソフトウエア エンジニア
+                                    </p>
+                                    <h1 className="name-text">
+                                        中野 楽士
+                                    </h1>
+                                </div>
+                                <Affiliation language="ja" />
+                            </div>
+                            <div className="image">
+                                <img src="/images/gakuto.jpg" alt="NAKANO, Gakuto" />
+                                <p>
+                                    作る力で、
+                                    <br />
+                                    未来をワクワクに。
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div className="business-card ja">
-                        <div className="name">
-                            <div>
-                                <p className="job-title">
-                                    ソフトウエア エンジニア
-                                </p>
-                                <h1 className="name-text">
-                                    中野 楽士
-                                </h1>
-                            </div>
-                            <Affiliation language="ja" />
-                        </div>
-                        <div className="image">
-                            <img src="/images/gakuto.jpg" alt="NAKANO, Gakuto" />
-                            <p>
-                                作る力で、
-                                <br />
-                                未来をワクワクに。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </label>
+                </label>
 
-            <section className="action">
-                <Actions />
-            </section>
+                <section className="action">
+                    <Actions />
+                </section>
 
-            <section className="self-introduction">
-                <img src="/images/gakuto.jpg" alt="NAKANO, Gakuto" />
-                <p className="self-introduction-text">
-                    Hi, I’m Gakuto.
-                    <br />
-                    I build what the future needs.
-                </p>
-            </section>
+                <section className="self-introduction">
+                    <img src="/images/gakuto.jpg" alt="NAKANO, Gakuto" />
+                    <p className="self-introduction-text">
+                        Hi, I’m Gakuto.
+                        <br />
+                        I build what the future needs.
+                    </p>
+                </section>
 
-            <section className="works">
-                <h2 className="works-title">
-                    Works
-                </h2>
-                <CardList>
-                    {works.map((work) => (
-                        <ImageCard
-                            key={work.title}
-                            {...work}
-                            noTitle
-                            newTab
-                        />
-                    ))}
-                </CardList>
-            </section>
+                <section className="works">
+                    <h2 className="works-title">
+                        Works
+                    </h2>
+                    <CardList>
+                        {works.map((work) => (
+                            <ImageCard
+                                key={work.title}
+                                {...work}
+                                noTitle
+                                newTab
+                            />
+                        ))}
+                    </CardList>
+                </section>
 
-            <section className="communities">
-                <h2 className="communities-title">
-                    Communities
-                </h2>
-                <CardList>
-                    {communities.map((community) => (
-                        <ImageCard
-                            key={community.title}
-                            {...community}
-                            noTitle
-                        />
-                    ))}
-                </CardList>
-            </section>
+                <section className="communities">
+                    <h2 className="communities-title">
+                        Communities
+                    </h2>
+                    <CardList>
+                        {communities.map((community) => (
+                            <ImageCard
+                                key={community.title}
+                                {...community}
+                                noTitle
+                            />
+                        ))}
+                    </CardList>
+                </section>
 
-            <section className="contacts">
-                <h2>
-                    Contacts
-                </h2>
-                <ul className="contacts-list">
-                    {contactLinks.map(([href, label, Icon]) => (
-                        <li key={href}>
-                            <a href={href}>
-                                <Icon className="icon" width="1em" height="1em" aria-hidden="true" />
-                                {label}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-                <ul className="social-list">
-                    {socialLinks.map(([title, href, newTab]) => (
-                        <li key={title}>
-                            <a
-                                href={href}
-                                {...(newTab ? { "target": "_blank", "rel": "noopener noreferrer" } : {})}
-                            >
-                                {title}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
+                <section className="contacts">
+                    <h2>
+                        Contacts
+                    </h2>
+                    <ul className="contacts-list">
+                        {contactLinks.map(([href, label, Icon]) => (
+                            <li key={href}>
+                                <a href={href}>
+                                    <Icon className="icon" width="1em" height="1em" aria-hidden="true" />
+                                    {label}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                    <ul className="social-list">
+                        {socialLinks.map(([title, href, newTab]) => (
+                            <li key={title}>
+                                <a
+                                    href={href}
+                                    {...(newTab ? { "target": "_blank", "rel": "noopener noreferrer" } : {})}
+                                >
+                                    {title}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
 
-                <Actions />
+                    <Actions />
 
-                <p>
-                    &copy; 2026 NAKANO, Gakuto.
-                </p>
-            </section>
-        </main>
+                    <p>
+                        &copy; 2026 NAKANO, Gakuto.
+                    </p>
+                </section>
+            </main>
+        </>
     );
 }
