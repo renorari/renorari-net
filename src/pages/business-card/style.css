@@ -1,0 +1,259 @@
+@import "./font.css";
+
+.slash-gap {
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    color: var(--c-text-light);
+}
+
+main.business-card-page {
+    font-family: "YsansStd", "Hiragino Sans", sans-serif;
+    font-weight: 400;
+    width: 100%;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    padding-top: 4rem;
+    margin: 0;
+}
+
+main.business-card-page section {
+    margin: 0;
+}
+
+.business-card {
+    border-radius: 1cqw;
+    background: var(--c-card-title-background);
+    aspect-ratio: 91/55;
+    width: 100%;
+    max-width: 136.5mm;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    overflow: hidden;
+    container-type: inline-size;
+}
+
+.business-card .name {
+    grid-column: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3cqw;
+    gap: 3cqw;
+}
+
+.business-card h1 {
+    margin: 0;
+    font-size: 7.5cqw;
+}
+
+.business-card p {
+    margin: 0;
+    font-size: 2.5cqw;
+}
+
+.business-card a {
+    color: var(--c-text);
+    text-decoration: none;
+}
+
+.business-card .job-title {
+    color: var(--c-primary);
+    font-size: 3cqw;
+}
+
+.business-card .image {
+    background: var(--c-primary);
+    color: var(--c-primary-text);
+    padding: 3cqw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3cqw;
+}
+
+main.business-card-page .business-card .image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 100vw;
+}
+
+
+/* Flip (CSS only: checkbox + label) */
+.business-card-flip-toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.business-card-flipper {
+    display: block;
+    width: 100%;
+    max-width: 136.5mm;
+    perspective: 1500px;
+    cursor: pointer;
+    border-radius: 1cqw;
+}
+
+.business-card-flip-toggle:focus-visible+.business-card-flipper {
+    outline: 2px solid var(--c-primary);
+    outline-offset: 4px;
+}
+
+/* グローバルの input[type="checkbox"] + label ルールの margin-left を打ち消す */
+.business-card-flip-toggle+.business-card-flipper {
+    margin-left: 0;
+}
+
+.business-card-inner {
+    display: grid;
+    transform-style: preserve-3d;
+    transition: transform 0.25s ease-in-out;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.business-card-inner>.business-card {
+    grid-area: 1 / 1;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.business-card-inner>.business-card.ja {
+    transform: rotateY(180deg);
+    pointer-events: none;
+}
+
+.business-card-flip-toggle:checked+.business-card-flipper .business-card-inner {
+    transform: rotateY(180deg);
+}
+
+.business-card-flip-toggle:checked+.business-card-flipper .business-card.en {
+    pointer-events: none;
+}
+
+.business-card-flip-toggle:checked+.business-card-flipper .business-card.ja {
+    pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .business-card-inner {
+        transition: none;
+    }
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.actions button {
+    background: var(--c-card-title-background);
+    color: var(--c-text);
+    border: none;
+    border-radius: 100vw;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.actions button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.self-introduction,
+.contacts {
+    width: 100%;
+    background: var(--c-primary);
+    color: var(--c-primary-text);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+main.business-card-page .self-introduction img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 100vw;
+    max-width: 8rem;
+}
+
+main.business-card-page .self-introduction p.self-introduction-text {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 32rem) {
+    main.business-card-page .self-introduction {
+        flex-direction: column;
+    }
+}
+
+main.business-card-page .works,
+main.business-card-page .communities {
+    width: 100%;
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+main.business-card-page .contacts {
+    flex-direction: column;
+}
+
+main.business-card-page .contacts a {
+    color: var(--c-primary-text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+main.business-card-page .contacts ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main.business-card-page .contacts ul.social-list {
+    width: 100%;
+    max-width: 64rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0rem 1rem;
+}
+
+main.business-card-page .contacts li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+main.business-card-page .contacts li::before {
+    content: "";
+    display: none;
+}

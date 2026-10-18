@@ -48,6 +48,7 @@ type Page =
 | ({ path: '/blog/[id]' } & GetConfigResponse<typeof File_BlogIdIndex_getConfig>)
 | ({ path: '/blog/category/[id]' } & GetConfigResponse<typeof File_BlogCategoryIdIndex_getConfig>)
 | ({ path: '/blog' } & GetConfigResponse<typeof File_BlogIndex_getConfig>)
+| { path: '/business-card'; render: 'static' }
 | ({ path: '/contact' } & GetConfigResponse<typeof File_Contact_getConfig>)
 | { path: '/downloads/goluboi-vagon'; render: 'static' }
 | { path: '/downloads'; render: 'static' }

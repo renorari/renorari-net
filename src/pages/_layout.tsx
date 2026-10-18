@@ -12,6 +12,10 @@ type RootLayoutProps = { children: ReactNode };
 
 const baseUrl = "https://renorari.net";
 
+const hideNavFooterPaths = [
+    "/business-card"
+];
+
 export default function RootLayout({ children }: RootLayoutProps) {
     const router = useRouter();
     const location = router.path;
@@ -40,9 +44,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet" />
             </head>
             <body>
-                <NavBar />
-                {children}
-                <Footer />
+                {hideNavFooterPaths.some((path) => location.startsWith(path)) ? children : (
+                    <>
+                        <NavBar />
+                        {children}
+                        <Footer />
+                    </>
+                )}
             </body>
         </html>
     );

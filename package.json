@@ -10,15 +10,16 @@
   },
   "dependencies": {
     "@ctrl/react-adsense": "^2.1.0",
+    "@gravity-ui/icons": "^2.23.0",
     "highlight.js": "^11.12.0",
-    "marked": "^18.0.14",
-    "mysql2": "^3.24.4",
+    "marked": "^18.1.1",
+    "mysql2": "^3.24.6",
     "qrcode": "^1.5.4",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0",
-    "react-server-dom-webpack": "^19.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-server-dom-webpack": "^19.3.1",
     "stripe": "^23.0.0",
-    "waku": "^1.0.0-rc.1"
+    "waku": "^1.0.0-rc.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
@@ -28,14 +29,17 @@
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.39.5",
     "eslint-plugin-react": "^7.37.5",
-    "globals": "^17.12.0",
+    "globals": "^17.13.0",
     "jiti": "^2.7.0",
-    "postcss": "^8.5.28",
+    "postcss": "^8.5.30",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.70.1"
+    "typescript-eslint": "^8.71.2"
   },
   "nodemonConfig": {
     "ext": "ts",
     "exec": "npm run dev"
+  },
+  "allowScripts": {
+    "fsevents@2.3.3": true
   }
 }

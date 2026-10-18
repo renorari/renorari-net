@@ -1,0 +1,64 @@
+.share-dialog {
+    /* グローバルの margin: 0 を打ち消して中央配置 */
+    margin: auto;
+    border: none;
+    border-radius: 1rem;
+    padding: 0;
+    background: var(--c-card-title-background);
+    color: var(--c-text);
+    width: min(20rem, calc(100% - 2rem));
+}
+
+.share-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.share-dialog-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.share-dialog-qr {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 0.5rem;
+    image-rendering: pixelated;
+}
+
+.share-dialog-url {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--c-text-light);
+    word-break: break-all;
+    text-align: center;
+}
+
+.share-dialog-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.share-dialog-buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 100vw;
+    background: var(--c-primary-light);
+    color: var(--c-text);
+    font: inherit;
+    cursor: pointer;
+}
+
+.share-dialog-buttons button.primary {
+    background: var(--c-primary);
+    color: var(--c-primary-text);
+}
