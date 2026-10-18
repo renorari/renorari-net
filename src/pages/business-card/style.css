@@ -47,6 +47,7 @@ main.business-card-page section {
 .business-card h1 {
     margin: 0;
     font-size: 7.5cqw;
+    color: var(--c-text);
 }
 
 .business-card p {
