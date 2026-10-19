@@ -156,8 +156,8 @@ const socialLinks = [
 
 const affiliations = {
     "en": {
+        "school": ["Nagaoka College, National Institute of Technology", "https://nagaoka-ct.ac.jp/"],
         "companies": [
-            ["Nagaoka College, National Institute of Technology", "https://nagaoka-ct.ac.jp/"],
             ["Kontas Inc.", "https://kontas-happy.studio.site/"],
             ["DERTA Inc.", "https://derta.co.jp/"],
             ["hint Inc.", "https://hint.co.jp/"],
@@ -169,8 +169,8 @@ const affiliations = {
         ]
     },
     "ja": {
+        "school": ["長岡工業高等専門学校", "https://nagaoka-ct.ac.jp/"],
         "companies": [
-            ["長岡工業高等専門学校", "https://nagaoka-ct.ac.jp/"],
             ["㈱ コンタス", "https://kontas-happy.studio.site/"],
             ["㈱ DERTA", "https://derta.co.jp/"],
             ["㈱ hint", "https://hint.co.jp/"],
@@ -190,10 +190,14 @@ const contactLinks = [
 ] as const;
 
 function Affiliation({ language }: { language: keyof typeof affiliations }) {
-    const { companies, communities } = affiliations[language];
+    const { school, companies, communities } = affiliations[language];
 
     return (
         <p className="affiliation">
+            <a href={school[1]} target="_blank" rel="noopener noreferrer">
+                {school[0]}
+            </a>
+            <br />
             {companies.map(([title, href], index) => (
                 <React.Fragment key={title}>
                     {index > 0 && <Gap />}
@@ -203,13 +207,13 @@ function Affiliation({ language }: { language: keyof typeof affiliations }) {
                 </React.Fragment>
             ))}
             <br />
-            {communities.map(([title, href, role]) => (
+            {communities.map(([title, href, role], index) => (
                 <React.Fragment key={title}>
                     <a href={href} target="_blank" rel="noopener noreferrer">
                         {title}
                     </a>
                     &nbsp;{role}
-                    <br />
+                    {index < communities.length - 1 && <br />}
                 </React.Fragment>
             ))}
         </p>
