@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to indigo
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          script_stop: true
+          script: |
+            set -e
+            # systemd サービスと同じ node を使う
+            export PATH="$HOME/.nvm/versions/node/v24.22.0/bin:$PATH"
+            cd ~/new-renorari-net
+            git fetch origin main
+            git reset --hard origin/main
+            npm ci
+            npm run build
+            sudo -n /usr/bin/systemctl restart new-renorari-net.service
