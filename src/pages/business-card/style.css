@@ -161,7 +161,7 @@ main.business-card-page .business-card .image img {
 }
 
 .actions button,
-.actions a {
+.actions a.button {
     background: var(--c-card-title-background);
     color: var(--c-text);
     border: none;
@@ -174,7 +174,7 @@ main.business-card-page .business-card .image img {
 }
 
 .actions button svg,
-.actions a svg {
+.actions a.button svg {
     width: 1.5rem;
     height: 1.5rem;
 }
