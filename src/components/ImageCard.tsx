@@ -1,5 +1,6 @@
 import "./Card.css";
 
+import { ArrowUpRight } from "@gravity-ui/icons";
 import React from "react";
 import { Link, LinkProps } from "waku/router/client";
 
@@ -11,12 +12,16 @@ type ImageCardProps = {
     className?: string | undefined;
     noTitle?: boolean | undefined;
     newTab?: boolean | undefined;
+    linkIcon?: boolean | undefined;
 };
 
-export default function ImageCard({ title, link, image, className = "", noTitle, newTab }: ImageCardProps) {
+export default function ImageCard({ title, link, image, className = "", noTitle, newTab, linkIcon }: ImageCardProps) {
     const card = (
         <div className={`card image-card ${className}`}>
             <img src={image} alt={title + "の画像"} className="card-image" />
+            {linkIcon && link &&
+                <ArrowUpRight className="card-link-icon" width="1em" height="1em" aria-hidden="true" />
+            }
             {!noTitle &&
                 <div className="card-title">
                     {title}

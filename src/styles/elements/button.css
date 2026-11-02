@@ -10,7 +10,7 @@ a.button {
     background: var(--c-primary);
     cursor: pointer;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     font-size: 1rem;
     color: var(--c-primary-text);
     text-align: center;

@@ -4,7 +4,7 @@ canvas.qr {
     max-width: 25vw;
     max-height: 25vw;
     aspect-ratio: 1 / 1;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
 }
 
 @media screen and (max-width: 50rem) {

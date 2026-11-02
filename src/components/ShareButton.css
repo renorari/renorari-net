@@ -25,7 +25,7 @@
     width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     image-rendering: pixelated;
 }
 

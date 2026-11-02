@@ -136,7 +136,7 @@
     padding: 0.5rem 2rem 0.5rem 1rem;
     background: var(--c-card-title-background);
     border: 1px solid var(--c-text-lightest);
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     color: var(--c-text);
     font-size: 1.125rem;
     cursor: pointer;

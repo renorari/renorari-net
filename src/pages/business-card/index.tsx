@@ -307,6 +307,7 @@ export default function BusinessCard() {
                                 {...work}
                                 noTitle
                                 newTab
+                                linkIcon
                             />
                         ))}
                     </CardList>

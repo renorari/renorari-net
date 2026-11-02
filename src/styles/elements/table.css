@@ -6,7 +6,7 @@ table {
     width: 100%;
     margin: 1rem 0;
     background: var(--c-card-background);
-    border-radius: 0.5rem;
+    border-radius: 1rem;
 }
 
 .accordion-toggle:not(:checked) ~ table.accordion {
