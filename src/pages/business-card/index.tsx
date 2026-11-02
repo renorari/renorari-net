@@ -23,6 +23,14 @@ function Actions() {
         <div className="actions">
             <ShareButton />
 
+            <a href="mailto:gakuto.nakano.2007@gmail.com" className="button" aria-label="メールを送る" title="メールを送る">
+                <Envelope className="icon" width="1em" height="1em" aria-hidden="true" />
+            </a>
+
+            <a href="tel:+817090292952" className="button" aria-label="電話をかける" title="電話をかける">
+                <Handset className="icon" width="1em" height="1em" aria-hidden="true" />
+            </a>
+
             <button type="button" onClick={downloadVCard} aria-label="連絡先をvCardとして保存" title="連絡先をvCardとして保存">
                 <ArrowDownToLine className="icon" width="1em" height="1em" aria-hidden="true" />
             </button>
@@ -184,7 +192,7 @@ const affiliations = {
 } as const;
 
 const contactLinks = [
-    ["mailto:gakuchan.256@gmail.com", "gakuchan.256@gmail.com", Envelope],
+    ["mailto:gakuto.nakano.2007@gmail.com", "gakuto.nakano.2007@gmail.com", Envelope],
     ["tel:+817090292952", "070-9029-2952", Handset],
     ["sms:+817090292952", "070-9029-2952", Comment]
 ] as const;

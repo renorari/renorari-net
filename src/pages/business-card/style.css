@@ -160,7 +160,8 @@ main.business-card-page .business-card .image img {
     padding: 1rem;
 }
 
-.actions button {
+.actions button,
+.actions a {
     background: var(--c-card-title-background);
     color: var(--c-text);
     border: none;
@@ -172,7 +173,8 @@ main.business-card-page .business-card .image img {
     cursor: pointer;
 }
 
-.actions button svg {
+.actions button svg,
+.actions a svg {
     width: 1.5rem;
     height: 1.5rem;
 }
@@ -227,6 +229,10 @@ main.business-card-page .contacts a {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+main.business-card-page .contacts .actions a {
+    color: var(--c-text);
 }
 
 main.business-card-page .contacts ul {
